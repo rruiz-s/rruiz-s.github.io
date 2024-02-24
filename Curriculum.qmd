@@ -1,4 +1,5 @@
----
-title: "Curriculum"
----
-
+<iframe 
+  width="800" 
+  height="800" 
+  src="quarto_cv_test_3.pdf">
+</iframe>
