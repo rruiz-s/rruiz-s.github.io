@@ -5,7 +5,6 @@ date: today
 Institute: GIMA
 format:
   html:
-    
     page-layout: full
 ---
 
@@ -145,7 +144,7 @@ ggplot() +
 ```
 
 | Step | Deliverable                             | Time                  | Description                                                                                                                                                                                                         |
-|------|-----------------------------------------|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|----------|----------|----------|-------------------------------------------|
 | 1    | Internship Identification Description   | Before the internship | The student finds a company and sends a research proposal to the Internship Coordinator. After this, the student finds a GIMA internship supervisor expert on its research topic from any of the four universities. |
 | 2    | Agreement Internship                    | week 0-2              | Student fills the internship agreement and collects signatures. This step should be taken before the start of the internship, otherwise within two weeks after the start of the internship.                         |
 | 3    | Personal Learning Goals Internship      | week 3-4              | Student writes his/her Personal Learning Goals and arranges a kick-off meeting.                                                                                                                                     |
