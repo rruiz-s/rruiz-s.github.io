@@ -82,8 +82,8 @@ The following Gantt chart and table explain in detail the 7 steps or work packag
 df_internship_raw <- readODS::read_ods("../rruiz-s.github.io/data/thesis_gantt.ods",
                   sheet= 5)
 # Tidy & Transform
-df_tidy <- df_internship_raw %>%
-  pivot_longer(cols = -c(task, activity), names_to = "date_type", values_to = "date") %>%
+df_tidy <- df_internship_raw |>
+  dplyr::gather(key = date_type, value = date, -task, -activity) |>
   mutate(task = as.factor(task))
 
 df_tidy <- df_tidy %>% mutate(activity= recode(activity,
