@@ -34,7 +34,7 @@ tribble(~Option,~Organization,~Duration,~Hours,
         "B","2 organizations","2.5-3 months","420 h*2",
         "C","1 organization and courses","3months","560 h+280 h") |>
   kbl(caption ="Table 1: Options to arrange an Internship within GIMA MSc") |>
-  kable_styling()
+  kableExtra::kable_styling()
 ```
 
 ```{r, echo =FALSE}
@@ -161,5 +161,5 @@ tribble(~Step,~Deliverable,~Time,~Description,
         "6","Personal Reflection Report","final weeks","The student writes the Personal Reflection Report expressing its academic opinion of the experience",
         "7","Summary report, Poster, or PowerPoint","final weeks","the Student submits a summary report") |>
   kbl(caption ="Table 2: The 7 steps that represent the work breakdown structure of the internship") |>
-  kable_styling()
+  kableExtra::kable_styling()
 ```
