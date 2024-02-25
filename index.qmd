@@ -1,5 +1,164 @@
 ---
-title: "My Portofolio"
+title: Internship
+author: Ricardo Ruiz Sánchez
+date: today
+Institute: GIMA
+format:
+  html:
+    
+    page-layout: full
 ---
 
-Content
+```{r}
+#| include: false
+#| fig.align: left
+
+lapply(c("knitr","dplyr","ggplot2","kableExtra","tidyverse","lubridate","readODS","plotly"), require, character.only=TRUE)
+```
+
+# Introduction
+
+I am excited about the opportunity to intern in a Geo-Information workplace to apply my practical and theoretical skills from the master GIMA, Geographical Information Management and Applications. Coming from a background as a laboratory technician, I have always been familiar with measurements and data. This emphasis on data proved to be valuable during my internship in Air Europa, ensuring ISO 14001 and 9001 compliance in the Information Management System department based on evidence. GIMA studies deepened my interest in resolving challenges through spatial analysis, specially those related to climate change, given my environment sciences background. Please do get in touch if you are interested in discussing potential internships opportunities.
+
+![Four universities in the Netherlands take part in the GIMA Master, which stands for Geographical Information Management and Applications](media/gima_all.png){width="50%" fig-align="center"}
+
+The next sections give more information about this internship.
+
+To accommodate organizations and students needs, GIMA offers **three different options** to arrange an Internship. The option A is focused on one company, while option B lasts the half and includes two companies. Lastly, option C is an intermediate with 540 hours as internship and 280 h to do 10 ECTs in courses. In all cases, 60% of the duration is spent to research a topic and 40% to gain professional skills, for example helping with existing projects.
+
+The table 1 summarize these options and Figure Y illustrates them.
+
+```{r, echo=FALSE}
+tribble(~Option,~Organization,~Duration,~Hours,
+        "A","1 organization", "5-6 months", "840 h",
+        "B","2 organizations","2.5-3 months","420 h*2",
+        "C","1 organization and courses","3months","560 h+280 h") %>% kbl(caption ="Table 1: Options to arrange an Internship within GIMA MSc") %>% 
+  kable_styling()
+```
+
+```{r, echo =FALSE}
+fig <- plot_ly(
+    type = "sankey",
+    orientation = "h",
+
+    node = list(
+      label = c("Option A", "Option B", "Option C", "Internship 1/1", "Internship 1/2", "Internship 2/2","Internship 1/1","Course 10 ECTS","Research","Work"),
+      color = c("#179498", "#80b1d3", "#ad7237", "#179498", "#80b1d3", "#80b1d3","#ad7237","#ad7237","#fb8072","#9ad236"),
+      pad = 15,
+      thickness = 15,
+      line = list(
+        color = "black",
+        width = 0.5
+      )
+    ),
+  link = list(
+    source = c(0,1,1,2,2,3,3,4,4,5,5,6,6,7),  # Sources for the flows
+    target = c(3,4,5,6,7,8,9,8,9,8,9,8,9,8),  # Targets for the flows
+    value = c(840,420, 420,560,280,504,336,252,168,252,168,336,184,280 ))
+)
+fig %>% layout(
+  title="The three options to arrange an Internship"
+)
+```
+
+# Purpose & Objectives
+
+The internship aims to:
+
+> * To apply your gained theoretical and practical skills in a GIS working environment
+> * Increase your technical skills, gain insight into
+business/research, grow in social and professional
+attitude
+
+The general objective is:
+
+> To become familiar with the professional Geo-Information working environment
+
+The main **benefits** for the organization are new solutions for their clients needs through a research project and support for the current needs and problems. This GIMA internship is academic in terms of having a research component where results are created and reflected upon. That is why the supervisor in the company must have a MSc degree and GI experience. Apart from that, any geo-information public, private organization or research institute is eligible to take part.
+
+# Work Breakdown Structure & Time
+
+The following Gantt chart and table explain in detail the 7 steps or work packages of this project.
+
+
+```{r, echo=FALSE, warning=FALSE, out.width="85%"}
+# Import
+df_internship_raw <- readODS::read_ods("../rruiz-s.github.io/data/thesis_gantt.ods",
+                  sheet= 5)
+# Tidy & Transform
+df_tidy <- df_internship_raw %>%
+  gather(key = date_type, value = date, -task, -activity) %>%
+  mutate(task = as.factor(task))
+
+df_tidy <- df_tidy %>% mutate(activity= recode(activity,
+                                    "Internship provider"="Find company" ))
+
+## Visualize
+ggplot() +
+  geom_line(data=df_tidy, mapping=aes(x=fct_rev(fct_inorder(activity)), y=date, color=activity), size=12) +
+  labs(
+    title ="MSc GIMA Internship",
+    subtitle = "Geographical Information Management and Applications",
+    x = "Work packages",
+    y = "Date",
+  ) +
+  scale_colour_manual(values =c(
+    "Find company" = "#67a9cf",
+    "Agreement Internship" = "#b0c4d0",
+    "Research Proposal" = "#b0c4d0",
+    "Learning Goals skills" = "#b0c4d0",
+    "Internship" ="#ef8a62",
+    "Research (60%)" ="#f2bea9",
+    "Professional skills (40%)" ="#f2bea9"
+  )) +
+  ## Step 1
+  geom_hline(yintercept = as.Date("2024-03-15"), colour ="#67a9cf", linetype="dashed") +
+  geom_label(aes(x="Find company", y =as.Date("2024-03-15"),
+                 label="S1"), hjust= -2, vjust= 0.01, color="#67a9cf", fill="white", inherit.aes = FALSE) +
+  geom_text(aes(x="Find company", y=as.Date("2024-03-15"), label="2024-03-15"), hjust= -0.7, vjust=1.2, color="#67a9cf", inherit.aes = FALSE) +
+  ## Step 2
+  geom_label(aes(x="Agreement Internship", y =as.Date("2024-04-01"),
+                 label="S2"), hjust= -2, vjust= 0.01, color="#b0c4d0", fill="white", inherit.aes = FALSE) +
+  geom_text(aes(x="Agreement Internship", y=as.Date("2024-04-01"), label="2024-04-01"), hjust= -0.7, vjust=1.2, color="#b0c4d0", inherit.aes = FALSE) +
+  ## Step 3
+  geom_label(aes(x="Research Proposal", y =as.Date("2024-04-29"),
+                 label="S4"), hjust= -0.2, vjust= 0.01, color="#b0c4d0", fill="white", inherit.aes = FALSE) +
+  geom_text(aes(x="Research Proposal", y=as.Date("2024-04-29"), label="2024-04-29"), hjust= -0.1, vjust=1.2, color="#b0c4d0", inherit.aes = FALSE) +
+  ## Step 4
+  geom_label(aes(x="Learning Goals skills", y =as.Date("2024-04-29"),
+                 label="S3"), hjust= -0.2, vjust= 0.01, color="#b0c4d0", fill="white", inherit.aes = FALSE) +
+  geom_text(aes(x="Learning Goals skills", y=as.Date("2024-04-29"), label="2024-04-29"), hjust= -0.1, vjust=1.2, color="#b0c4d0", inherit.aes = FALSE) +
+  ## Step 5
+  geom_label(aes(x="Internship", y =as.Date("2024-08-22"),
+                 label="S5, S6 and S7"), hjust= .5, vjust= 2, color="#ef8a62", fill="white", inherit.aes = FALSE) +
+  geom_text(aes(x="Internship", y=as.Date("2024-08-22"), label="2024-08-22"), hjust= 0.5, vjust=5, color="#ef8a62", inherit.aes = FALSE) +
+  
+    scale_x_discrete(labels=c("Find company"=expression(bold("Find company")),
+                            "Internship"=expression(bold("Internship")), parse=TRUE)) +
+  scale_y_date(date_breaks = "1 month", date_labels ="%b", expand=c(0,15)) +
+  coord_flip() +
+  theme_linedraw() +
+  theme(plot.subtitle =element_text(color="#676767",hjust=.5,size=14),
+        plot.title = element_text(hjust=.5, size=16),
+        legend.position = "none",
+        axis.text.y =element_text(size=10),
+  ) 
+
+
+```
+
+
+
+```{r, echo=FALSE}
+tribble(~Step,~Deliverable,~Time,~Description,
+        "1","Internship Identification Description","Before the internship","The student finds a company and send a research propososal to the Internship Coordinator. After this, the student finds a GIMA internship supervisors expert on its research topic from any of the four universities.",
+        "2","Agreement Internship","week 0-2","Student fills the internship agreement and recopilates signatures.This step should be taken before the start of the internship, otherwise within two weeks after the start of the internship",
+        "3","Personal Learning Goals Internship","week 3-4","Student writes his/her Personal Learning Goals and arrange a kick-off meeting",
+        "4","Extended Internship Proposal","week 3-4","The student writes an extended internship proposal",
+        "4","Internship progress","half-way","The student plans and schedule the internship progress meeting",
+        "5","Internship Report or Article Internship","final weeks","The sudent send the Internship Report and arrange a final internship meeting",
+        "6","Personal Reflection Report","final weeks","The student writes the Personal Reflection Report expressing its academic opinion of the experience",
+        "7","Summary report, Poster, or PowerPoint","final weeks","the Student submits a summary report") %>%
+  kbl(caption ="Table 2: The 7 steps that represent the work breakdown structure of the internship") %>% 
+  kable_styling()
+```
