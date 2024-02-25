@@ -28,12 +28,13 @@ To accommodate organizations and students needs, GIMA offers **three different o
 
 The table 1 summarize these options and Figure Y illustrates them.
 
-```{r, echo=FALSE}
-tribble(~Option,~Organization,~Duration,~Hours,
-        "A","1 organization", "5-6 months", "840 h",
-        "B","2 organizations","2.5-3 months","420 h*2",
-        "C","1 organization and courses","3months","560 h+280 h")
-```
+Here's the information structured in a tabular format:
+
+| Option | Organization               | Duration     | Hours       |
+|--------|----------------------------|--------------|-------------|
+| A      | 1 organization             | 5-6 months   | 840 h       |
+| B      | 2 organizations            | 2.5-3 months | 420 h\*2    |
+| C      | 1 organization and courses | 3 months     | 560 h+280 h |
 
 ```{r, echo =FALSE}
 fig <- plot_ly(
@@ -64,10 +65,8 @@ fig |> layout(
 
 The internship aims to:
 
-> * To apply your gained theoretical and practical skills in a GIS working environment
-> * Increase your technical skills, gain insight into
-business/research, grow in social and professional
-attitude
+> -   To apply your gained theoretical and practical skills in a GIS working environment
+> -   Increase your technical skills, gain insight into business/research, grow in social and professional attitude
 
 The general objective is:
 
@@ -78,7 +77,6 @@ The main **benefits** for the organization are new solutions for their clients n
 # Work Breakdown Structure & Time
 
 The following Gantt chart and table explain in detail the 7 steps or work packages of this project.
-
 
 ```{r, echo=FALSE, warning=FALSE, out.width="85%"}
 # Import
@@ -146,16 +144,13 @@ ggplot() +
 
 ```
 
-
-
-```{r, echo=FALSE}
-tribble(~Step,~Deliverable,~Time,~Description,
-        "1","Internship Identification Description","Before the internship","The student finds a company and send a research propososal to the Internship Coordinator. After this, the student finds a GIMA internship supervisors expert on its research topic from any of the four universities.",
-        "2","Agreement Internship","week 0-2","Student fills the internship agreement and recopilates signatures.This step should be taken before the start of the internship, otherwise within two weeks after the start of the internship",
-        "3","Personal Learning Goals Internship","week 3-4","Student writes his/her Personal Learning Goals and arrange a kick-off meeting",
-        "4","Extended Internship Proposal","week 3-4","The student writes an extended internship proposal",
-        "4","Internship progress","half-way","The student plans and schedule the internship progress meeting",
-        "5","Internship Report or Article Internship","final weeks","The sudent send the Internship Report and arrange a final internship meeting",
-        "6","Personal Reflection Report","final weeks","The student writes the Personal Reflection Report expressing its academic opinion of the experience",
-        "7","Summary report, Poster, or PowerPoint","final weeks","the Student submits a summary report")
-```
+| Step | Deliverable                             | Time                  | Description                                                                                                                                                                                                         |
+|------|-----------------------------------------|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1    | Internship Identification Description   | Before the internship | The student finds a company and sends a research proposal to the Internship Coordinator. After this, the student finds a GIMA internship supervisor expert on its research topic from any of the four universities. |
+| 2    | Agreement Internship                    | week 0-2              | Student fills the internship agreement and collects signatures. This step should be taken before the start of the internship, otherwise within two weeks after the start of the internship.                         |
+| 3    | Personal Learning Goals Internship      | week 3-4              | Student writes his/her Personal Learning Goals and arranges a kick-off meeting.                                                                                                                                     |
+| 4    | Extended Internship Proposal            | week 3-4              | The student writes an extended internship proposal.                                                                                                                                                                 |
+| 4    | Internship progress                     | half-way              | The student plans and schedules the internship progress meeting.                                                                                                                                                    |
+| 5    | Internship Report or Article Internship | final weeks           | The student sends the Internship Report and arranges a final internship meeting.                                                                                                                                    |
+| 6    | Personal Reflection Report              | final weeks           | The student writes the Personal Reflection Report expressing its academic opinion of the experience.                                                                                                                |
+| 7    | Summary report, Poster, or PowerPoint   | final weeks           | The student submits a summary report.                                                                                                                                                                               |

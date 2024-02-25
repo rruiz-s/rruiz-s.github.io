@@ -62,9 +62,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-
-<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
 <script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
 <script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
@@ -178,46 +175,19 @@ ul.task-list li input[type="checkbox"] {
 <p>To accommodate organizations and students needs, GIMA offers <strong>three different options</strong> to arrange an Internship. The option A is focused on one company, while option B lasts the half and includes two companies. Lastly, option C is an intermediate with 540 hours as internship and 280 h to do 10 ECTs in courses. In all cases, 60% of the duration is spent to research a topic and 40% to gain professional skills, for example helping with existing projects.</p>
 <p>The table 1 summarize these options and Figure Y illustrates them.</p>
 <div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table 1: Options to arrange an Internship within GIMA MSc</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Option</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Organization</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Duration</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Hours</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">A</td>
-<td style="text-align: left;">1 organization</td>
-<td style="text-align: left;">5-6 months</td>
-<td style="text-align: left;">840 h</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">B</td>
-<td style="text-align: left;">2 organizations</td>
-<td style="text-align: left;">2.5-3 months</td>
-<td style="text-align: left;">420 h*2</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">C</td>
-<td style="text-align: left;">1 organization and courses</td>
-<td style="text-align: left;">3months</td>
-<td style="text-align: left;">560 h+280 h</td>
-</tr>
-</tbody>
-</table>
-
-
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  Option Organization               Duration     Hours      
+  &lt;chr&gt;  &lt;chr&gt;                      &lt;chr&gt;        &lt;chr&gt;      
+1 A      1 organization             5-6 months   840 h      
+2 B      2 organizations            2.5-3 months 420 h*2    
+3 C      1 organization and courses 3months      560 h+280 h</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-f680ada3b5f21a408218" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-f680ada3b5f21a408218">{"x":{"visdat":{"109083d69559":["function () ","plotlyVisDat"]},"cur_data":"109083d69559","attrs":{"109083d69559":{"orientation":"h","node":{"label":["Option A","Option B","Option C","Internship 1/1","Internship 1/2","Internship 2/2","Internship 1/1","Course 10 ECTS","Research","Work"],"color":["#179498","#80b1d3","#ad7237","#179498","#80b1d3","#80b1d3","#ad7237","#ad7237","#fb8072","#9ad236"],"pad":15,"thickness":15,"line":{"color":"black","width":0.5}},"link":{"source":[0,1,1,2,2,3,3,4,4,5,5,6,6,7],"target":[3,4,5,6,7,8,9,8,9,8,9,8,9,8],"value":[840,420,420,560,280,504,336,252,168,252,168,336,184,280]},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sankey"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"The three options to arrange an Internship","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"orientation":"h","node":{"label":["Option A","Option B","Option C","Internship 1/1","Internship 1/2","Internship 2/2","Internship 1/1","Course 10 ECTS","Research","Work"],"color":["#179498","#80b1d3","#ad7237","#179498","#80b1d3","#80b1d3","#ad7237","#ad7237","#fb8072","#9ad236"],"pad":15,"thickness":15,"line":{"color":"black","width":0.5}},"link":{"source":[0,1,1,2,2,3,3,4,4,5,5,6,6,7],"target":[3,4,5,6,7,8,9,8,9,8,9,8,9,8],"value":[840,420,420,560,280,504,336,252,168,252,168,336,184,280]},"type":"sankey","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-c05219120a908b8c4693" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-c05219120a908b8c4693">{"x":{"visdat":{"1332a4ec86258":["function () ","plotlyVisDat"]},"cur_data":"1332a4ec86258","attrs":{"1332a4ec86258":{"orientation":"h","node":{"label":["Option A","Option B","Option C","Internship 1/1","Internship 1/2","Internship 2/2","Internship 1/1","Course 10 ECTS","Research","Work"],"color":["#179498","#80b1d3","#ad7237","#179498","#80b1d3","#80b1d3","#ad7237","#ad7237","#fb8072","#9ad236"],"pad":15,"thickness":15,"line":{"color":"black","width":0.5}},"link":{"source":[0,1,1,2,2,3,3,4,4,5,5,6,6,7],"target":[3,4,5,6,7,8,9,8,9,8,9,8,9,8],"value":[840,420,420,560,280,504,336,252,168,252,168,336,184,280]},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sankey"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"The three options to arrange an Internship","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"orientation":"h","node":{"label":["Option A","Option B","Option C","Internship 1/1","Internship 1/2","Internship 2/2","Internship 1/1","Course 10 ECTS","Research","Work"],"color":["#179498","#80b1d3","#ad7237","#179498","#80b1d3","#80b1d3","#ad7237","#ad7237","#fb8072","#9ad236"],"pad":15,"thickness":15,"line":{"color":"black","width":0.5}},"link":{"source":[0,1,1,2,2,3,3,4,4,5,5,6,6,7],"target":[3,4,5,6,7,8,9,8,9,8,9,8,9,8],"value":[840,420,420,560,280,504,336,252,168,252,168,336,184,280]},"type":"sankey","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -245,70 +215,18 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="cell">
-<div class="cell-output-display">
-<table class="table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>Table 2: The 7 steps that represent the work breakdown structure of the internship</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Step</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Deliverable</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Time</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">1</td>
-<td style="text-align: left;">Internship Identification Description</td>
-<td style="text-align: left;">Before the internship</td>
-<td style="text-align: left;">The student finds a company and send a research propososal to the Internship Coordinator. After this, the student finds a GIMA internship supervisors expert on its research topic from any of the four universities.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">2</td>
-<td style="text-align: left;">Agreement Internship</td>
-<td style="text-align: left;">week 0-2</td>
-<td style="text-align: left;">Student fills the internship agreement and recopilates signatures.This step should be taken before the start of the internship, otherwise within two weeks after the start of the internship</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">3</td>
-<td style="text-align: left;">Personal Learning Goals Internship</td>
-<td style="text-align: left;">week 3-4</td>
-<td style="text-align: left;">Student writes his/her Personal Learning Goals and arrange a kick-off meeting</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">Extended Internship Proposal</td>
-<td style="text-align: left;">week 3-4</td>
-<td style="text-align: left;">The student writes an extended internship proposal</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">4</td>
-<td style="text-align: left;">Internship progress</td>
-<td style="text-align: left;">half-way</td>
-<td style="text-align: left;">The student plans and schedule the internship progress meeting</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">5</td>
-<td style="text-align: left;">Internship Report or Article Internship</td>
-<td style="text-align: left;">final weeks</td>
-<td style="text-align: left;">The sudent send the Internship Report and arrange a final internship meeting</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">6</td>
-<td style="text-align: left;">Personal Reflection Report</td>
-<td style="text-align: left;">final weeks</td>
-<td style="text-align: left;">The student writes the Personal Reflection Report expressing its academic opinion of the experience</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">7</td>
-<td style="text-align: left;">Summary report, Poster, or PowerPoint</td>
-<td style="text-align: left;">final weeks</td>
-<td style="text-align: left;">the Student submits a summary report</td>
-</tr>
-</tbody>
-</table>
-
-
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 4
+  Step  Deliverable                             Time                 Description
+  &lt;chr&gt; &lt;chr&gt;                                   &lt;chr&gt;                &lt;chr&gt;      
+1 1     Internship Identification Description   Before the internsh… The studen…
+2 2     Agreement Internship                    week 0-2             Student fi…
+3 3     Personal Learning Goals Internship      week 3-4             Student wr…
+4 4     Extended Internship Proposal            week 3-4             The studen…
+5 4     Internship progress                     half-way             The studen…
+6 5     Internship Report or Article Internship final weeks          The sudent…
+7 6     Personal Reflection Report              final weeks          The studen…
+8 7     Summary report, Poster, or PowerPoint   final weeks          the Studen…</code></pre>
 </div>
 </div>
 
