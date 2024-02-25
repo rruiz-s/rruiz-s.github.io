@@ -36,7 +36,7 @@ Here's the information structured in a tabular format:
 | C      | 1 organization and courses | 3 months     | 560 h+280 h |
 
 ```{r, echo =FALSE}
-fig <- plot_ly(
+fig <- plotly::plot_ly(
     type = "sankey",
     orientation = "h",
 
