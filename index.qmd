@@ -32,8 +32,7 @@ The table 1 summarize these options and Figure Y illustrates them.
 tribble(~Option,~Organization,~Duration,~Hours,
         "A","1 organization", "5-6 months", "840 h",
         "B","2 organizations","2.5-3 months","420 h*2",
-        "C","1 organization and courses","3months","560 h+280 h") |>
-  gt()
+        "C","1 organization and courses","3months","560 h+280 h")
 ```
 
 ```{r, echo =FALSE}
@@ -158,6 +157,5 @@ tribble(~Step,~Deliverable,~Time,~Description,
         "4","Internship progress","half-way","The student plans and schedule the internship progress meeting",
         "5","Internship Report or Article Internship","final weeks","The sudent send the Internship Report and arrange a final internship meeting",
         "6","Personal Reflection Report","final weeks","The student writes the Personal Reflection Report expressing its academic opinion of the experience",
-        "7","Summary report, Poster, or PowerPoint","final weeks","the Student submits a summary report") |>
-  gt()
+        "7","Summary report, Poster, or PowerPoint","final weeks","the Student submits a summary report")
 ```
