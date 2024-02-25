@@ -32,7 +32,8 @@ The table 1 summarize these options and Figure Y illustrates them.
 tribble(~Option,~Organization,~Duration,~Hours,
         "A","1 organization", "5-6 months", "840 h",
         "B","2 organizations","2.5-3 months","420 h*2",
-        "C","1 organization and courses","3months","560 h+280 h") %>% kbl(caption ="Table 1: Options to arrange an Internship within GIMA MSc") %>% 
+        "C","1 organization and courses","3months","560 h+280 h") |>
+  kbl(caption ="Table 1: Options to arrange an Internship within GIMA MSc") |>
   kable_styling()
 ```
 
@@ -56,7 +57,7 @@ fig <- plot_ly(
     target = c(3,4,5,6,7,8,9,8,9,8,9,8,9,8),  # Targets for the flows
     value = c(840,420, 420,560,280,504,336,252,168,252,168,336,184,280 ))
 )
-fig %>% layout(
+fig |> layout(
   title="The three options to arrange an Internship"
 )
 ```
@@ -86,8 +87,8 @@ The following Gantt chart and table explain in detail the 7 steps or work packag
 df_internship_raw <- readODS::read_ods("../rruiz-s.github.io/data/thesis_gantt.ods",
                   sheet= 5)
 # Tidy & Transform
-df_tidy <- df_internship_raw %>%
-  gather(key = date_type, value = date, -task, -activity) %>%
+df_tidy <- df_internship_raw |>
+  gather(key = date_type, value = date, -task, -activity) |>
   mutate(task = as.factor(task))
 
 df_tidy <- df_tidy %>% mutate(activity= recode(activity,
@@ -158,7 +159,7 @@ tribble(~Step,~Deliverable,~Time,~Description,
         "4","Internship progress","half-way","The student plans and schedule the internship progress meeting",
         "5","Internship Report or Article Internship","final weeks","The sudent send the Internship Report and arrange a final internship meeting",
         "6","Personal Reflection Report","final weeks","The student writes the Personal Reflection Report expressing its academic opinion of the experience",
-        "7","Summary report, Poster, or PowerPoint","final weeks","the Student submits a summary report") %>%
-  kbl(caption ="Table 2: The 7 steps that represent the work breakdown structure of the internship") %>% 
+        "7","Summary report, Poster, or PowerPoint","final weeks","the Student submits a summary report") |>
+  kbl(caption ="Table 2: The 7 steps that represent the work breakdown structure of the internship") |>
   kable_styling()
 ```
