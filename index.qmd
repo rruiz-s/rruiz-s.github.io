@@ -17,7 +17,7 @@ lapply(c("knitr","dplyr","ggplot2","tidyverse","gt","lubridate","readODS","plotl
 
 # Introduction
 
-I am excited about the opportunity to intern in a Geo-Information workplace to apply my practical and theoretical skills from the master GIMA, Geographical Information Management and Applications. Coming from a background as a laboratory technician, I have always been familiar with measurements and data. This emphasis on data proved to be valuable during my internship in Air Europa, ensuring ISO 14001 and 9001 compliance in the Information Management System department based on evidence. GIMA studies deepened my interest in resolving challenges through spatial analysis, specially those related to climate change, given my environment sciences background. Please do get in touch if you are interested in discussing potential internships opportunities...
+I am excited about the opportunity to intern in a Geo-Information workplace to apply my practical and theoretical skills from the master GIMA, Geographical Information Management and Applications. Coming from a background as a laboratory technician, I have always been familiar with measurements and data. This emphasis on data proved to be valuable during my internship in Air Europa, ensuring ISO 14001 and 9001 compliance in the Information Management System department based on evidence. GIMA studies deepened my interest in resolving challenges through spatial analysis, specially those related to climate change, given my environment sciences background. Please do get in touch if you are interested in discussing potential internships opportunities..
 
 ![Four universities in the Netherlands take part in the GIMA Master, which stands for Geographical Information Management and Applications](media/gima_all.png){width="50%" fig-align="center"}
 
@@ -82,8 +82,8 @@ The following Gantt chart and table explain in detail the 7 steps or work packag
 df_internship_raw <- readODS::read_ods("../rruiz-s.github.io/data/thesis_gantt.ods",
                   sheet= 5)
 # Tidy & Transform
-df_tidy <- df_internship_raw |>
-  gather(key = date_type, value = date, -task, -activity) |>
+df_tidy <- df_internship_raw %>%
+  pivot_longer(cols = -c(task, activity), names_to = "date_type", values_to = "date") %>%
   mutate(task = as.factor(task))
 
 df_tidy <- df_tidy %>% mutate(activity= recode(activity,
@@ -144,7 +144,7 @@ ggplot() +
 ```
 
 | Step | Deliverable                             | Time                  | Description                                                                                                                                                                                                         |
-|-------------|-------------|-------------|-----------------------------------|
+|----------|----------|----------|-------------------------------------------|
 | 1    | Internship Identification Description   | Before the internship | The student finds a company and sends a research proposal to the Internship Coordinator. After this, the student finds a GIMA internship supervisor expert on its research topic from any of the four universities. |
 | 2    | Agreement Internship                    | week 0-2              | Student fills the internship agreement and collects signatures. This step should be taken before the start of the internship, otherwise within two weeks after the start of the internship.                         |
 | 3    | Personal Learning Goals Internship      | week 3-4              | Student writes his/her Personal Learning Goals and arranges a kick-off meeting.                                                                                                                                     |
