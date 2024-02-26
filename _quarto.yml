@@ -14,7 +14,6 @@ website:
         text: Internship
       - href: Curriculum.qmd
         text: Curriculum
-      - Thesis.qmd
   page-footer:
     background: light
     left:
