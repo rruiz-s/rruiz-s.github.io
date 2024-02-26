@@ -37,7 +37,6 @@ tribble(~Option,~Organization,~Duration,~Hours,
   kable()
 ```
 
-
 ```{r, echo =FALSE}
 fig <- plotly::plot_ly(
     type = "sankey",
@@ -80,15 +79,15 @@ The main **benefits** for the organization are new solutions for their clients n
 
 The following Gantt chart and table explain in detail the 7 steps or work packages of this project.
 
+read_csv("../data/df_tidy.csv")
+
 ```{r, echo=FALSE, warning=FALSE, out.width="85%"}
 # Import
 df_internship_raw <- readODS::read_ods("../rruiz-s.github.io/data/thesis_gantt.ods",
                   sheet= 5)
 # Tidy & Transform
-df_tidy <- df_internship_raw %>%
-  pivot_longer(cols = -c(task, activity), names_to = "date_type", values_to = "date") %>%
-  mutate(task = as.factor(task))
-
+read_csv("../data/df_tidy.csv")
+dft_tidy <- read_csv("../rruiz-s.github.io/data/df_tidy.csv")
 df_tidy <- df_tidy %>% mutate(activity= recode(activity,
                                     "Internship provider"="Find company" ))
 
@@ -146,7 +145,6 @@ ggplot() +
 
 ```
 
-
 ```{r}
 tribble(~Step,~Deliverable,~Time,~Description,
         "1","Internship Identification Description","Before the internship","The student finds a company and send a research propososal to the Internship Coordinator. After this, the student finds a GIMA internship supervisors expert on its research topic from any of the four universities.",
@@ -159,4 +157,3 @@ tribble(~Step,~Deliverable,~Time,~Description,
         "7","Summary report, Poster, or PowerPoint","final weeks","the Student submits a summary report") |>
   kable()
 ```
-

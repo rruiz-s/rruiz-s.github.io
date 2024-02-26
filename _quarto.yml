@@ -2,21 +2,31 @@ project:
   type: website
 
 website:
-  title: "Ricardo RS"
+  favicon: media/country-icon.png
+  title: "Ricardo Ruiz Sánchez"
   navbar:
     background: primary
     search: true
-    left:
+    right:
       - href: blog.qmd
-        text: "Home"
-      - index.qmd
+        text: Home
+      - href: index.qmd
+        text: Internship
       - href: Curriculum.qmd
-        text: "Curriculum"
-
+        text: Curriculum
+      - Thesis.qmd
+  page-footer:
+    background: light
+    left:
+      - "Environmental Scientist specialised on GIS"
+    right:
+      - icon: envelope
+        href: mailto:r.ruizsanchez@students.uu.nl
+      - icon: github
+        href: https://github.com/rruiz-rs
 format:
   html:
     theme: [cosmo, ./css/custom.scss]
+    mainfont: Joan
+    css: styles.css
     toc: true
-
-
-
