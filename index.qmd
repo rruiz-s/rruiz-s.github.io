@@ -11,6 +11,8 @@ format:
 ```{r}
 #| include: false
 #| fig.align: left
+loadNamespace("lazyeval")
+library("R.utils")
 library("lazyeval")
 lapply(c("knitr","dplyr","kableExtra","forcats","ggplot2","tidyverse","gt","lubridate","readODS","plotly"), require, character.only=TRUE)
 ```
