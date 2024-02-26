@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ricardo Ruiz Sánchez">
+<meta name="dcterms.date" content="2024-02-26">
 
-<title>Ricardo RS - My Portofolio</title>
+<title>Ricardo RS - Internship</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,6 +68,14 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.10.4/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -92,18 +102,8 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Curriculum.html"> 
-<span class="menu-text">Curriculum.html</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./Thesis.html"> 
-<span class="menu-text">Thesis</span></a>
-  </li>  
+  <li class="dropdown-header">
+ <span class="menu-text">about.qmd</span></li>
 </ul>
           </div> <!-- /navcollapse -->
           <div class="quarto-navbar-tools">
@@ -112,25 +112,45 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#purpose-objectives" id="toc-purpose-objectives" class="nav-link" data-scroll-target="#purpose-objectives">Purpose &amp; Objectives</a></li>
+  <li><a href="#work-breakdown-structure-time" id="toc-work-breakdown-structure-time" class="nav-link" data-scroll-target="#work-breakdown-structure-time">Work Breakdown Structure &amp; Time</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My Portofolio</h1>
+<h1 class="title">Internship</h1>
 </div>
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ricardo Ruiz Sánchez </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 26, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -140,9 +160,143 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Content</p>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>I am excited about the opportunity to intern in a Geo-Information workplace to apply my practical and theoretical skills from the master GIMA, Geographical Information Management and Applications. Coming from a background as a laboratory technician, I have always been familiar with measurements and data. This emphasis on data proved to be valuable during my internship in Air Europa, ensuring ISO 14001 and 9001 compliance in the Information Management System department based on evidence. GIMA studies deepened my interest in resolving challenges through spatial analysis, specially those related to climate change, given my environment sciences background. Please do get in touch if you are interested in discussing potential internships opportunities..</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="media/gima_all.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+<figcaption>Four universities in the Netherlands take part in the GIMA Master, which stands for Geographical Information Management and Applications</figcaption>
+</figure>
+</div>
+<p>The next sections give more information about this internship.</p>
+<p>To accommodate organizations and students needs, GIMA offers <strong>three different options</strong> to arrange an Internship. The option A is focused on one company, while option B lasts the half and includes two companies. Lastly, option C is an intermediate with 540 hours as internship and 280 h to do 10 ECTs in courses. In all cases, 60% of the duration is spent to research a topic and 40% to gain professional skills, for example helping with existing projects.</p>
+<p>The table 1 summarize these options and Figure Y illustrates them.</p>
+<p>Here’s the information structured in a tabular format:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>Organization</th>
+<th>Duration</th>
+<th>Hours</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>A</td>
+<td>1 organization</td>
+<td>5-6 months</td>
+<td>840 h</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>2 organizations</td>
+<td>2.5-3 months</td>
+<td>420 h*2</td>
+</tr>
+<tr class="odd">
+<td>C</td>
+<td>1 organization and courses</td>
+<td>3 months</td>
+<td>560 h+280 h</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="cell-output-display">
+<div class="plotly html-widget html-fill-item" id="htmlwidget-88c38969955834421214" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-88c38969955834421214">{"x":{"visdat":{"238919e34f44":["function () ","plotlyVisDat"]},"cur_data":"238919e34f44","attrs":{"238919e34f44":{"orientation":"h","node":{"label":["Option A","Option B","Option C","Internship 1/1","Internship 1/2","Internship 2/2","Internship 1/1","Course 10 ECTS","Research","Work"],"color":["#179498","#80b1d3","#ad7237","#179498","#80b1d3","#80b1d3","#ad7237","#ad7237","#fb8072","#9ad236"],"pad":15,"thickness":15,"line":{"color":"black","width":0.5}},"link":{"source":[0,1,1,2,2,3,3,4,4,5,5,6,6,7],"target":[3,4,5,6,7,8,9,8,9,8,9,8,9,8],"value":[840,420,420,560,280,504,336,252,168,252,168,336,184,280]},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sankey"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"The three options to arrange an Internship","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"orientation":"h","node":{"label":["Option A","Option B","Option C","Internship 1/1","Internship 1/2","Internship 2/2","Internship 1/1","Course 10 ECTS","Research","Work"],"color":["#179498","#80b1d3","#ad7237","#179498","#80b1d3","#80b1d3","#ad7237","#ad7237","#fb8072","#9ad236"],"pad":15,"thickness":15,"line":{"color":"black","width":0.5}},"link":{"source":[0,1,1,2,2,3,3,4,4,5,5,6,6,7],"target":[3,4,5,6,7,8,9,8,9,8,9,8,9,8],"value":[840,420,420,560,280,504,336,252,168,252,168,336,184,280]},"type":"sankey","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="purpose-objectives" class="level1">
+<h1>Purpose &amp; Objectives</h1>
+<p>The internship aims to:</p>
+<blockquote class="blockquote">
+<ul>
+<li>To apply your gained theoretical and practical skills in a GIS working environment</li>
+<li>Increase your technical skills, gain insight into business/research, grow in social and professional attitude</li>
+</ul>
+</blockquote>
+<p>The general objective is:</p>
+<blockquote class="blockquote">
+<p>To become familiar with the professional Geo-Information working environment</p>
+</blockquote>
+<p>The main <strong>benefits</strong> for the organization are new solutions for their clients needs through a research project and support for the current needs and problems. This GIMA internship is academic in terms of having a research component where results are created and reflected upon. That is why the supervisor in the company must have a MSc degree and GI experience. Apart from that, any geo-information public, private organization or research institute is eligible to take part.</p>
+</section>
+<section id="work-breakdown-structure-time" class="level1">
+<h1>Work Breakdown Structure &amp; Time</h1>
+<p>The following Gantt chart and table explain in detail the 7 steps or work packages of this project.</p>
+<table class="table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 58%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Step</th>
+<th>Deliverable</th>
+<th>Time</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Internship Identification Description</td>
+<td>Before the internship</td>
+<td>The student finds a company and sends a research proposal to the Internship Coordinator. After this, the student finds a GIMA internship supervisor expert on its research topic from any of the four universities.</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Agreement Internship</td>
+<td>week 0-2</td>
+<td>Student fills the internship agreement and collects signatures. This step should be taken before the start of the internship, otherwise within two weeks after the start of the internship.</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Personal Learning Goals Internship</td>
+<td>week 3-4</td>
+<td>Student writes his/her Personal Learning Goals and arranges a kick-off meeting.</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Extended Internship Proposal</td>
+<td>week 3-4</td>
+<td>The student writes an extended internship proposal.</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>Internship progress</td>
+<td>half-way</td>
+<td>The student plans and schedules the internship progress meeting.</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>Internship Report or Article Internship</td>
+<td>final weeks</td>
+<td>The student sends the Internship Report and arranges a final internship meeting.</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>Personal Reflection Report</td>
+<td>final weeks</td>
+<td>The student writes the Personal Reflection Report expressing its academic opinion of the experience.</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>Summary report, Poster, or PowerPoint</td>
+<td>final weeks</td>
+<td>The student submits a summary report.</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
