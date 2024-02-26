@@ -86,8 +86,8 @@ read_csv("../data/df_tidy.csv")
 df_internship_raw <- readODS::read_ods("../rruiz-s.github.io/data/thesis_gantt.ods",
                   sheet= 5)
 # Tidy & Transform
-read_csv("../data/df_tidy.csv")
-dft_tidy <- read_csv("../rruiz-s.github.io/data/df_tidy.csv")
+
+dft_tidy <- read.csv("../rruiz-s.github.io/data/df_tidy.csv")
 df_tidy <- df_tidy %>% mutate(activity= recode(activity,
                                     "Internship provider"="Find company" ))
 
