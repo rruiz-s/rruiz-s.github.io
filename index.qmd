@@ -17,7 +17,7 @@ lapply(c("knitr","dplyr","ggplot2","tidyverse","gt","lubridate","readODS","plotl
 
 # Introduction
 
-I am excited about the opportunity to intern in a Geo-Information workplace to apply my practical and theoretical skills from the master GIMA, Geographical Information Management and Applications. Coming from a background as a laboratory technician, I have always been familiar with measurements and data. This emphasis on data proved to be valuable during my internship in Air Europa, ensuring ISO 14001 and 9001 compliance in the Information Management System department based on evidence. GIMA studies deepened my interest in resolving challenges through spatial analysis, specially those related to climate change, given my environment sciences background. Please do get in touch if you are interested in discussing potential internships opportunities...
+I am excited about the opportunity to intern in a Geo-Information workplace to apply my practical and theoretical skills from the master GIMA, Geographical Information Management and Applications. Coming from a background as a laboratory technician, I have always been familiar with measurements and data. This emphasis on data proved to be valuable during my internship in Air Europa, ensuring ISO 14001 and 9001 compliance in the Information Management System department based on evidence. GIMA studies deepened my interest in resolving challenges through spatial analysis, specially those related to climate change, given my environment sciences background. Please do get in touch if you are interested in discussing potential internships opportunities..
 
 ![Four universities in the Netherlands take part in the GIMA Master, which stands for Geographical Information Management and Applications](media/gima_all.png){width="50%" fig-align="center"}
 
@@ -67,7 +67,7 @@ The internship aims to:
 > -   To apply your gained theoretical and practical skills in a GIS working environment
 > -   Increase your technical skills, gain insight into business/research, grow in social and professional attitude
 
-The. general objective is:
+The general objective is:
 
 > To become familiar with the professional Geo-Information working environment
 
@@ -77,74 +77,9 @@ The main **benefits** for the organization are new solutions for their clients n
 
 The following Gantt chart and table explain in detail the 7 steps or work packages of this project.
 
-```{r, echo=FALSE, warning=FALSE, out.width="85%"}
-# Import
-df_internship_raw <- readODS::read_ods("../rruiz-s.github.io/data/thesis_gantt.ods",
-                  sheet= 5)
-# Tidy & Transform
-df_tidy <- df_internship_raw |>
-  gather(key = date_type, value = date, -task, -activity) |>
-  mutate(task = as.factor(task))
-
-df_tidy <- df_tidy %>% mutate(activity= recode(activity,
-                                    "Internship provider"="Find company" ))
-
-## Visualize
-ggplot() +
-  geom_line(data=df_tidy, mapping=aes(x=fct_rev(fct_inorder(activity)), y=date, color=activity), size=12) +
-  labs(
-    title ="MSc GIMA Internship",
-    subtitle = "Geographical Information Management and Applications",
-    x = "Work packages",
-    y = "Date",
-  ) +
-  scale_colour_manual(values =c(
-    "Find company" = "#67a9cf",
-    "Agreement Internship" = "#b0c4d0",
-    "Research Proposal" = "#b0c4d0",
-    "Learning Goals skills" = "#b0c4d0",
-    "Internship" ="#ef8a62",
-    "Research (60%)" ="#f2bea9",
-    "Professional skills (40%)" ="#f2bea9"
-  )) +
-  ## Step 1
-  geom_hline(yintercept = as.Date("2024-03-15"), colour ="#67a9cf", linetype="dashed") +
-  geom_label(aes(x="Find company", y =as.Date("2024-03-15"),
-                 label="S1"), hjust= -2, vjust= 0.01, color="#67a9cf", fill="white", inherit.aes = FALSE) +
-  geom_text(aes(x="Find company", y=as.Date("2024-03-15"), label="2024-03-15"), hjust= -0.7, vjust=1.2, color="#67a9cf", inherit.aes = FALSE) +
-  ## Step 2
-  geom_label(aes(x="Agreement Internship", y =as.Date("2024-04-01"),
-                 label="S2"), hjust= -2, vjust= 0.01, color="#b0c4d0", fill="white", inherit.aes = FALSE) +
-  geom_text(aes(x="Agreement Internship", y=as.Date("2024-04-01"), label="2024-04-01"), hjust= -0.7, vjust=1.2, color="#b0c4d0", inherit.aes = FALSE) +
-  ## Step 3
-  geom_label(aes(x="Research Proposal", y =as.Date("2024-04-29"),
-                 label="S4"), hjust= -0.2, vjust= 0.01, color="#b0c4d0", fill="white", inherit.aes = FALSE) +
-  geom_text(aes(x="Research Proposal", y=as.Date("2024-04-29"), label="2024-04-29"), hjust= -0.1, vjust=1.2, color="#b0c4d0", inherit.aes = FALSE) +
-  ## Step 4
-  geom_label(aes(x="Learning Goals skills", y =as.Date("2024-04-29"),
-                 label="S3"), hjust= -0.2, vjust= 0.01, color="#b0c4d0", fill="white", inherit.aes = FALSE) +
-  geom_text(aes(x="Learning Goals skills", y=as.Date("2024-04-29"), label="2024-04-29"), hjust= -0.1, vjust=1.2, color="#b0c4d0", inherit.aes = FALSE) +
-  ## Step 5
-  geom_label(aes(x="Internship", y =as.Date("2024-08-22"),
-                 label="S5, S6 and S7"), hjust= .5, vjust= 2, color="#ef8a62", fill="white", inherit.aes = FALSE) +
-  geom_text(aes(x="Internship", y=as.Date("2024-08-22"), label="2024-08-22"), hjust= 0.5, vjust=5, color="#ef8a62", inherit.aes = FALSE) +
-  
-    scale_x_discrete(labels=c("Find company"=expression(bold("Find company")),
-                            "Internship"=expression(bold("Internship")), parse=TRUE)) +
-  scale_y_date(date_breaks = "1 month", date_labels ="%b", expand=c(0,15)) +
-  coord_flip() +
-  theme_linedraw() +
-  theme(plot.subtitle =element_text(color="#676767",hjust=.5,size=14),
-        plot.title = element_text(hjust=.5, size=16),
-        legend.position = "none",
-        axis.text.y =element_text(size=10),
-  ) 
-
-
-```
 
 | Step | Deliverable                             | Time                  | Description                                                                                                                                                                                                         |
-|---------------|---------------|---------------|-----------------------------|
+|----------|----------|----------|-------------------------------------------|
 | 1    | Internship Identification Description   | Before the internship | The student finds a company and sends a research proposal to the Internship Coordinator. After this, the student finds a GIMA internship supervisor expert on its research topic from any of the four universities. |
 | 2    | Agreement Internship                    | week 0-2              | Student fills the internship agreement and collects signatures. This step should be taken before the start of the internship, otherwise within two weeks after the start of the internship.                         |
 | 3    | Personal Learning Goals Internship      | week 3-4              | Student writes his/her Personal Learning Goals and arranges a kick-off meeting.                                                                                                                                     |
