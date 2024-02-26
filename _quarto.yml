@@ -5,6 +5,7 @@ website:
   favicon: media/country-icon.png
   title: "Ricardo Ruiz Sánchez"
   navbar:
+    text: "Environmental scientist and GIS specialist"
     background: primary
     search: true
     right:
@@ -21,8 +22,6 @@ website:
     right:
       - icon: envelope
         href: mailto:r.ruizsanchez@students.uu.nl
-      - icon: github
-        href: https://github.com/rruiz-rs
 format:
   html:
     theme: [cosmo, ./css/custom.scss]
