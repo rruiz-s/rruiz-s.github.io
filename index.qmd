@@ -12,7 +12,7 @@ format:
 #| include: false
 #| fig.align: left
 library("lazyeval")
-lapply(c("knitr","dplyr","ggplot2","tidyverse","gt","lubridate","readODS","plotly"), require, character.only=TRUE)
+lapply(c("knitr","dplyr","kableExtra","ggplot2","tidyverse","gt","lubridate","readODS","plotly"), require, character.only=TRUE)
 ```
 
 # Introduction
