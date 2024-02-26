@@ -39,6 +39,7 @@ tribble(~Option,~Organization,~Duration,~Hours,
   kable()
 ```
 
+
 ```{r, echo =FALSE}
 fig <- plotly::plot_ly(
     type = "sankey",
@@ -81,71 +82,9 @@ The main **benefits** for the organization are new solutions for their clients n
 
 The following Gantt chart and table explain in detail the 7 steps or work packages of this project.
 
-```{r, echo=FALSE}
-# Import
-df_internship_raw <- readODS::read_ods("../rruiz-s.github.io/data/thesis_gantt.ods",
-                  sheet= 5)
-# Tidy & Transform
-
-df_tidy <- read.csv("../rruiz-s.github.io/data/df_tidy.csv")
-df_tidy <- df_tidy |> mutate(activity= recode(activity,
-                                    "Internship provider"="Find company" ),
-date=as.Date(date))
-
-## Visualize
-ggplot() +
-  geom_line(data=df_tidy, mapping=aes(x=fct_rev(fct_inorder(activity)), y=date, color=activity), size=12) +
-  labs(
-    title ="MSc GIMA Internship",
-    subtitle = "Geographical Information Management and Applications",
-    x = "Work packages",
-    y = "Date",
-  ) +
-  scale_colour_manual(values =c(
-    "Find company" = "#67a9cf",
-    "Agreement Internship" = "#b0c4d0",
-    "Research Proposal" = "#b0c4d0",
-    "Learning Goals skills" = "#b0c4d0",
-    "Internship" ="#ef8a62",
-    "Research (60%)" ="#f2bea9",
-    "Professional skills (40%)" ="#f2bea9"
-  )) +
-  ## Step 1
-  geom_hline(yintercept = as.Date("2024-03-15"), colour ="#67a9cf", linetype="dashed") +
-  geom_label(aes(x="Find company", y =as.Date("2024-03-15"),
-                 label="S1"), hjust= -2, vjust= 0.01, color="#67a9cf", fill="white", inherit.aes = FALSE) +
-  geom_text(aes(x="Find company", y=as.Date("2024-03-15"), label="2024-03-15"), hjust= -0.7, vjust=1.2, color="#67a9cf", inherit.aes = FALSE) +
-  ## Step 2
-  geom_label(aes(x="Agreement Internship", y =as.Date("2024-04-01"),
-                 label="S2"), hjust= -2, vjust= 0.01, color="#b0c4d0", fill="white", inherit.aes = FALSE) +
-  geom_text(aes(x="Agreement Internship", y=as.Date("2024-04-01"), label="2024-04-01"), hjust= -0.7, vjust=1.2, color="#b0c4d0", inherit.aes = FALSE) +
-  ## Step 3
-  geom_label(aes(x="Research Proposal", y =as.Date("2024-04-29"),
-                 label="S4"), hjust= -0.2, vjust= 0.01, color="#b0c4d0", fill="white", inherit.aes = FALSE) +
-  geom_text(aes(x="Research Proposal", y=as.Date("2024-04-29"), label="2024-04-29"), hjust= -0.1, vjust=1.2, color="#b0c4d0", inherit.aes = FALSE) +
-  ## Step 4
-  geom_label(aes(x="Learning Goals skills", y =as.Date("2024-04-29"),
-                 label="S3"), hjust= -0.2, vjust= 0.01, color="#b0c4d0", fill="white", inherit.aes = FALSE) +
-  geom_text(aes(x="Learning Goals skills", y=as.Date("2024-04-29"), label="2024-04-29"), hjust= -0.1, vjust=1.2, color="#b0c4d0", inherit.aes = FALSE) +
-  ## Step 5
-  geom_label(aes(x="Internship", y =as.Date("2024-08-22"),
-                 label="S5, S6 and S7"), hjust= .5, vjust= 2, color="#ef8a62", fill="white", inherit.aes = FALSE) +
-  geom_text(aes(x="Internship", y=as.Date("2024-08-22"), label="2024-08-22"), hjust= 0.5, vjust=5, color="#ef8a62", inherit.aes = FALSE) +
-  
-    scale_x_discrete(labels=c("Find company"=expression(bold("Find company")),
-                            "Internship"=expression(bold("Internship")), parse=TRUE)) +
-  scale_y_date(date_breaks = "1 month", date_labels ="%b", expand=c(0,15)) +
-  coord_flip() +
-  theme_linedraw() +
-  theme(plot.subtitle =element_text(color="#676767",hjust=.5,size=14),
-        plot.title = element_text(hjust=.5, size=16),
-        legend.position = "none",
-        axis.text.y =element_text(size=10),
-  ) 
-
-```
 
 ![](media/gantt.png){fig-align="center"}
+
 
 ```{r, echo=FALSE}
 tribble(~Step,~Deliverable,~Time,~Description,
