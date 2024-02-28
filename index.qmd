@@ -5,7 +5,7 @@ date: today
 Institute: GIMA
 format:
   html:
-    page-layout: full
+    page-layout: article
 ---
 
 ```{r}
