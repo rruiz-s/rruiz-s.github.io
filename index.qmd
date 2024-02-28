@@ -6,6 +6,7 @@ Institute: GIMA
 format:
   html:
     page-layout: article
+    backgroundcolor: white
 ---
 
 ```{r}

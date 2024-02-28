@@ -24,7 +24,7 @@ website:
         href: mailto:r.ruizsanchez@students.uu.nl
 format:
   html:
-    theme: [cosmo, ./css/custom.scss]
+    theme: [./css/custom.scss]
     mainfont: Joan
     css: styles.css
     toc: true
