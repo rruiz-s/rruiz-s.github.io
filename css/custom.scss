@@ -17,15 +17,16 @@ $dark-green: #858E79;
 $light-green: #D1D9CE;
 $cream: #FDFBF7;
 $gray: #64605f;
+$gray-light: #9f9d9d;
 $purple: #9158A2;
 $orange: #ad7237;
 // Base document colors
 $navbar-bg: $turquoise-cv; // navbar
 $navbar-fg: white; // navbar foreground elements
 $navbar-hl: $turqoise-cv-very-light; // highlight color when hovering over navbar links
-$body-bg: white; // page background
+$body-bg: white; // page background 
 $footer-bg: $turquoise-cv; // footer 
-$link-color: $turquoise-cv; // hyperlinks
+$link-color: $turquoise-cv; // hyperlinks 
 // Import fonts
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
@@ -36,17 +37,20 @@ $link-color: $turquoise-cv; // hyperlinks
 // Inline code
 $code-bg: $cream; // inline code background color
 $code-color: $purple; // inline code text color
-.body{
-  background-color: white;}
-$body-bg: white;
+
 // Code blocks
 $code-block-bg: $cream; // code block background color
 
 /*-- scss:rules --*/
 h1,h2{
-  letter-spacing: 5px;
+  letter-spacing: 3px;
   color:$gray;
 }
+
+.subtitle{
+  color:$gray-light;
+}
+
 p  {
 	text-align: justify;
 	text-indent: 2rem;

@@ -1,0 +1,39 @@
+---
+title: Ricardo Ruiz Sánchez
+subtitle: 2nd year GIMA student | Environmental Scientist | Laboratory technician
+image: media/github_avatar.png
+about:
+  template: trestles
+  links:
+    - icon: bi-envelope-at
+      text: Email
+      href: mailto:r.ruizsanchez@email.com
+    - icon: bi-linkedin
+      text: Linkedin
+      href: https://www.linkedin.com/in/ricardo-r-s
+toc: false # remove "On this page" table of contents
+---
+
+Data-driven environmental scientist with a passion for geographical information data. Started collecting data from the laboratory as a technician, I graduated in Environmental Sciences understanding the value of making informed-decisions towards a sustainable future. Along this journey I lived in Scotland and Germany. 
+
+
+Drafted by the interest on geospatial data I am in my second year of a master in Geographical Information Management and Applications (**GIMA**).
+
+## Education
+[{{< iconify zondicons education >}}]{style="color: #179498;"} Msc in Geographical Information Management and Applications
+
+
+[{{< iconify zondicons education >}}]{style="color: #179498;"} Bsc in Environmental Sciences 
+
+
+[{{< iconify zondicons education >}}]{style="color: #179498;"} Higher vocational training as Laboratory technician in quality control
+
+## Languages
+
+{{< iconify circle-flags uk >}} English (C1, advance)
+
+
+{{< iconify emojione flag-for-germany >}} German (B1, intermediate)
+
+
+{{< iconify emojione flag-for-spain >}} Spanish (Native)

@@ -9,7 +9,7 @@ website:
     background: primary
     search: true
     right:
-      - href: blog.qmd
+      - href: about.qmd
         text: Home
       - href: index.qmd
         text: Internship
@@ -24,7 +24,7 @@ website:
         href: mailto:r.ruizsanchez@students.uu.nl
 format:
   html:
-    theme: [./css/custom.scss]
+    theme: [cosmo, ./css/custom.scss]
     mainfont: Joan
     css: styles.css
     toc: true

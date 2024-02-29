@@ -5,8 +5,7 @@ date: today
 Institute: GIMA
 format:
   html:
-    page-layout: article
-    backgroundcolor: white
+    page-layout: full
 ---
 
 ```{r}
@@ -20,7 +19,7 @@ lapply(c("knitr","dplyr","kableExtra","forcats","ggplot2","tidyverse","gt","lubr
 
 # Introduction
 
-I am excited about the opportunity to intern in a Geo-Information workplace to apply my practical and theoretical skills from the master GIMA, Geographical Information Management and Applications[^1]. Coming from a background as a laboratory technician, I have always been familiar with measurements and data. This emphasis on data proved to be valuable during my internship in Air Europa, ensuring ISO 14001 and 9001 compliance in the Information Management System department based on evidence. GIMA studies deepened my interest in resolving challenges through spatial analysis, specially those related to climate change, given my environment sciences background. Please do get in touch if you are interested in discussing potential internships opportunities.
+I am excited about the opportunity to intern in a Geo-Information workplace to apply my practical and theoretical skills from the master GIMA, Geographical Information Management and Applications[^1]. Coming from a background as a laboratory technician, I have always been familiar with measurements and data. This emphasis on data proved to be valuable during my internship in Air Europa, ensuring ISO 14001 and 9001 compliance in the Information Management System department based on evidence. GIMA studies deepened my interest in resolving challenges through spatial analysis, specially those related to climate change, given my environment sciences background.
 
 [^1]: <https://www.uu.nl/en/masters/geographical-information-management-and-applications-gima>
 
@@ -44,7 +43,7 @@ tribble(~Option,~Organization,~Duration,~Hours,
         "A","1 organization", "5-6 months", "840 h",
         "B","2 organizations","2.5-3 months","420 h*2",
         "C","1 organization and courses","3months","560 h+280 h") |>
-  kable()
+  kable(caption="Table 1: The duration and number of organizations varies between the different options of internship")
 ```
 
 ```{r, echo =FALSE}
@@ -90,9 +89,10 @@ The main **benefits** for the organization are new solutions for their clients n
 
 # Work Breakdown Structure & Time
 
-The following Gantt chart and table explain in detail the 7 steps or work packages of this project.
+The following Gantt chart and the table 2 explain in detail the 7 steps or work packages of this project. The blue colour indicates a planning phase that consists on finding a company and define the research proposal and learning goals skills. The orange colour shows the implementation phase by carrying out the internship.
 
 ![](media/gantt.png){fig-align="center"}
+
 
 ```{r, echo=FALSE}
 tribble(~Step,~Deliverable,~Time,~Description,
@@ -104,5 +104,8 @@ tribble(~Step,~Deliverable,~Time,~Description,
         "5","Internship Report or Article Internship","final weeks","The sudent send the Internship Report and arrange a final internship meeting",
         "6","Personal Reflection Report","final weeks","The student writes the Personal Reflection Report expressing its academic opinion of the experience",
         "7","Summary report, Poster, or PowerPoint","final weeks","the Student submits a summary report") |>
-  kable()
+  kable(caption = "Table 2:  An example of time planning for a GIMA internship")
 ```
+
+
+If you are interested to have a chat, feel free to reach out. It would be great to connect with you
