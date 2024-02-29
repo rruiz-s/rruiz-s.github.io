@@ -1,8 +1,0 @@
----
-title: "GIS"
-listing:
-  contents: posts
-  type: table
-  categories: true
-  fields: [image, category, question, title, date]
----
