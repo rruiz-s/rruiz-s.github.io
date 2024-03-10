@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Ricardo Ruiz Sánchez",
-    "section": "",
-    "text": "{css, echo=FALSE} .title {   font-size: 100px;   font-style: italic;   color: blue;   font-family: Arial;   font-variant: small-caps; }\nData-driven environmental scientist with a passion for geographical information data. Started collecting data from the laboratory as a technician, I graduated in Environmental Sciences understanding the value of making informed-decisions towards a sustainable future. Along this journey I lived in Scotland and Germany. Drafted by the interest on geospatial data from the GIMA1 master, I am enthusiastic to land an internship in a GIS working environment."
-  },
-  {
-    "objectID": "blog.html#education",
-    "href": "blog.html#education",
-    "title": "Ricardo Ruiz Sánchez",
-    "section": "Education",
-    "text": "Education\n Msc in Geographical Information Management and Applications\n Bsc in Environmental Sciences\n Higher vocational training as Laboratory technician in quality control"
-  },
-  {
-    "objectID": "blog.html#languages",
-    "href": "blog.html#languages",
-    "title": "Ricardo Ruiz Sánchez",
-    "section": "Languages",
-    "text": "Languages\n English (C1, advance)\n German (B1, intermediate)\n Spanish (Native)"
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "Ricardo Ruiz Sánchez",
@@ -54,5 +33,26 @@
     "title": "Internship",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nhttps://www.uu.nl/en/masters/geographical-information-management-and-applications-gima↩︎"
+  },
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Ricardo Ruiz Sánchez",
+    "section": "",
+    "text": "{css, echo=FALSE} .title {   font-size: 100px;   font-style: italic;   color: blue;   font-family: Arial;   font-variant: small-caps; }\nData-driven environmental scientist with a passion for geographical information data. Started collecting data from the laboratory as a technician, I graduated in Environmental Sciences understanding the value of making informed-decisions towards a sustainable future. Along this journey I lived in Scotland and Germany. Drafted by the interest on geospatial data from the GIMA1 master, I am enthusiastic to land an internship in a GIS working environment."
+  },
+  {
+    "objectID": "blog.html#education",
+    "href": "blog.html#education",
+    "title": "Ricardo Ruiz Sánchez",
+    "section": "Education",
+    "text": "Education\n Msc in Geographical Information Management and Applications\n Bsc in Environmental Sciences\n Higher vocational training as Laboratory technician in quality control"
+  },
+  {
+    "objectID": "blog.html#languages",
+    "href": "blog.html#languages",
+    "title": "Ricardo Ruiz Sánchez",
+    "section": "Languages",
+    "text": "Languages\n English (C1, advance)\n German (B1, intermediate)\n Spanish (Native)"
   }
 ]
