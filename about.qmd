@@ -7,7 +7,7 @@ about:
   links:
     - icon: bi-envelope-at
       text: Email
-      href: mailto:r.ruizsanchez@email.com
+      href: mailto:r.ruizsanchez@students.uu.nl
     - icon: bi-linkedin
       text: Linkedin
       href: https://www.linkedin.com/in/ricardo-r-s
