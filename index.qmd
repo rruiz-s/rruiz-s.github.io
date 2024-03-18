@@ -117,7 +117,7 @@ If you are interested to have a chat, feel free to reach out. It would be great 
 
 The following table contains some of the potential supervisors from the different universities that take part in GIMA.
 
-```{r, echo = FALSE, eval=FALSE}
+```{r, echo = FALSE, eval=TRUE}
 staff <- read.csv("gima_catalogue.csv")
 staff |>
   select(c(1,2,3)) |> 
