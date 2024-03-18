@@ -113,9 +113,9 @@ If you are interested to have a chat, feel free to reach out. It would be great 
 
 The following table contains some of the potential supervisors from the different universities that take part in GIMA.
 
-```{r, echo = FALSE, eval= TRUE}
+```{r, echo = FALSE, eval= FALSE}
 staff <- read.csv("gima_catalogue.csv")
 staff |>
   select(c(1,2,3)) |> 
-reactable(filterable = TRUE, minRows =  5)
+kable()
 ```
