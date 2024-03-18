@@ -90,9 +90,7 @@ The general objective is:
 
 The main **benefits** for the organization are new solutions for their clients needs through a research project and support for the current needs and problems. This GIMA internship is academic in terms of having a research component where results are created and reflected upon. That is why the supervisor in the company must have a MSc degree and GI experience. Apart from that, any geo-information public, private organization or research institute is eligible to take part.
 
-This is the [official Internship Agreement](https://www.universiteitenvannederland.nl/files/publications/Stageovereenkomst_EN_def.pdf) and other documentation such as a explanatory note regarding the agreement can be found [found](https://www.universiteitenvannederland.nl/onderwerpen/onderwijs/gemeenschappelijke-stageovereenkomst-universiteiten).
-
-As an official
+This is the [official Internship Agreement](https://www.universiteitenvannederland.nl/files/publications/Stageovereenkomst_EN_def.pdf) and other documentation such as a explanatory note regarding the agreement can be [found](https://www.universiteitenvannederland.nl/onderwerpen/onderwijs/gemeenschappelijke-stageovereenkomst-universiteiten).
 
 # Work Breakdown Structure & Time
 
@@ -117,7 +115,7 @@ If you are interested to have a chat, feel free to reach out. It would be great 
 
 The following table contains some of the potential supervisors from the different universities that take part in GIMA.
 
-```{r, echo = FALSE, eval=TRUE}
+```{r, echo = FALSE, eval= FALSE}
 staff <- read.csv("gima_catalogue.csv")
 staff |>
   select(c(1,2,3)) |> 
