@@ -14,7 +14,7 @@ format:
 loadNamespace("lazyeval")
 library("R.utils")
 library("lazyeval")
-lapply(c("knitr","dplyr","reactable","kableExtra","forcats","ggplot2","tidyverse","gt","lubridate","readODS","plotly"), require, character.only=TRUE)
+lapply(c("knitr","dplyr","rjson","reactable","kableExtra","forcats","ggplot2","tidyverse","gt","lubridate","readODS","plotly"), require, character.only=TRUE)
 ```
 
 # Introduction
@@ -117,8 +117,8 @@ If you are interested to have a chat, feel free to reach out. It would be great 
 
 The following table contains some of the potential supervisors from the different universities that take part in GIMA.
 
-```{r}
-staff = read.csv("~/quarto_github_rruiz_s/rruiz-s.github.io/data/gima_catalogue.csv")
+```{r, echo = FALSE, eval=FALSE}
+staff <- read.csv("gima_catalogue.csv")
 staff |>
   select(c(1,2,3)) |> 
 reactable(filterable = TRUE, minRows =  5)
