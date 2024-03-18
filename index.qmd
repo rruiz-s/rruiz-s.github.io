@@ -92,7 +92,7 @@ This is the [official Internship Agreement](https://www.universiteitenvannederla
 
 # Work Breakdown Structure & Time
 
-The following Gantt chart and the table 2 explain in detail the 7 steps or work packages of this project. The blue colour indicates a planning phase that consists on finding a company and define the research proposal and learning goals skills. The orange colour shows the implementation phase by carrying out the internship.
+The following Gantt chart and the table 2 explain in detail the 7 steps or work packages of an internship following the option A. The dates are flexible and this is just an example. The blue colour indicates a planning phase that consists on finding a company and define the research proposal and learning goals skills. The orange colour shows the implementation phase by carrying out the internship.
 
 ![](media/gantt.png){fig-align="center"}
 

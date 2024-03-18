@@ -1,0 +1,35 @@
+---
+title: "Ricardo Ruiz Sánchez" # if using a built-in template, this title appears under your photo
+image: media/gima_all.png # great spot for your professional headshot :) 
+toc: false # remove "On this page" table of contents
+format:
+  html:
+    page-layout: custom
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+::: grid
+::: g-col-2
+This column serves as the left margin
+:::
+
+::: g-col-9
+::: grid
+::: g-col-6
+![](/media/gima_all.png)
+:::
+
+Data-driven environmental scientist with a passion for geographical
+information data. Started collecting data from the laboratory as a
+technician, I graduated in Environmental Sciences understanding the
+value of making informed-decisions towards a sustainable future. Along
+this journey I lived in Scotland and Germany. Drafted by the interest on
+geospatial data from the GIMA¹ master, I am enthusiastic to land an
+internship in a GIS working environment.
+
+This column serves as the right margin
+:::
+:::
+:::
