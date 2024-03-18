@@ -36,7 +36,7 @@ If you are interested, he next sections give more information about this interns
 
 To accommodate organizations and students needs, GIMA offers **three different options** to arrange an Internship. The option A is focused on one company, while option B lasts the half and includes two companies. Lastly, option C is an intermediate with 540 hours as internship and 280 h to do 10 ECTs in courses. In all cases, 60% of the duration is spent to research a topic and 40% to gain professional skills, for example helping with existing projects.
 
-The table 1 summarize these options and Figure Y illustrates them.
+The table 1 summarize these options and Figure 1 illustrates them.
 
 ```{r,echo=FALSE}
 tribble(~Option,~Organization,~Duration,~Hours,
@@ -71,7 +71,7 @@ fig <- plotly::plot_ly(
     source = c(0,1,1,2,2,3,3,4,4,5,5,6,6,7),  # Sources for the flows
     target = c(3,4,5,6,7,8,9,8,9,8,9,8,9,8),  # Targets for the flows
     value = c(840,420, 420,560,280,504,336,252,168,252,168,336,184,280 ))
-) |> plotly::layout(title=paste0("<br>","Three options to arrange a GIMA internship"))
+) |> plotly::layout(title=paste0("<br>","Figure 1: Three options to arrange a GIMA internship"))
 fig
 ```
 
