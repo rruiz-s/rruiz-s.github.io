@@ -1,0 +1,47 @@
+Institution,Name,Field of work,Mod
+WUR,"Athanasiadis, Ioannis","data science, big data, environmental informatics, decision support systems, metadata and ontologies and machine learning.","7,8"
+UT-ITC,"Augustijn, Ellen­Wien","Simulation models, Data structures and analysis","1,7,8"
+UT-ITC,"Chang, Ling","Radar remote sensing, Time series modeling, InSAR","7,8"
+WUR,"Clevers, Jan","Remote sensing: Crop monitoring, Vegetation Indices, Vegetation monitoring, Imaging spectroscopy","1,7,8"
+HAS,"de Bakker, Marien","GIS in organisations, Project management",4
+UT-ITC,"de By, Rolf","Space‐time data, Storage and computation Social networks, Databases","7,8"
+WUR,"Bruin, Sytze de","uncertainty analysis to assess fitness‐for‐purpose, data acquisition, including spatial and temporal sampling and sensing, spatio‐temporal interpolation and other quantitative methods used in spatial and temporal analysis (e.g. time series analysis).",7
+UT-ITC,"de Jong, Steven","Geohazards, Land degradation and remote sensing, Earth observation and Geocomputation",7
+UT-ITC,"De Oto, Lucas","GIS, Spatial analysis, Digital cartography, Remote sensing for natural resources management",1
+TUD,"Diaz Mercadoa, Vitali","Hydrology, spatio‐temporal modelling, point cloud data","7,8"
+WUR,"Grus, Łukasz","Spatial Data Infrastructures, Open data, Data science, Basic registrations","3,7,8"
+UU,"Helbich, Marco","Spatial analysis, Spatial statistics, Human geography and planning, Urban geography","5,7"
+UT-ITC,"Jager­Ringoir, Katinka",_,1
+TUD,"Kara, Abdullah","Valuation information, land administration","7,8"
+UU,"Karssenberg, Derek",Computational Geography,"5,6,7,8"
+WUR,"Klippel, Alexander","XR, embodiment, virtual field trips, spatial cognition, wayfinding, geographic event conceptualization, formal characterizations of dynamic spatial processes, location‐ based services, landscapes and land cover concepts, crowd‐science and crowd‐ sourcing, and featured prominently in recent projects, Virtual Reality, and 3D modeling.","0,7"
+UT-ITC,"Knippers, Richard","GI Education, Mapping and Geovisualization, Spatial Referencing","1,2,7,8"
+UT-ITC,"Köbben, Barend","Data visualisation & mapping, Distributed geo‐services, Webcartography, Web applications",7
+WUR,"Kooistra, Lammert","Unmanned aerial systems, Remote sensing, Imaging spectroscopy, Precision agriculture, Multi‐variate statistics",7
+UT-ITC,"Kraak, Menno­Jan",Geovisualization,"0,7"
+UT-ITC,"Kuffer, Monika",_,7
+WUR,"Lau Sarmiento, Alvaro","Forest ecology, GIS, Remote sensing, Terrestrial laser scanning","1,7"
+UT-ITC,"Lemmens, Rob","Open GIS and internet GIS, Mobile GIS and Interoperability, Semantic modelling crowdsourcing, VGI","5,6,7,8"
+WUR,"Ligtenberg, Arend","GIS modelling for land use planning, Information management, Spatial models, Mobile applications, 3D Visualization","6,7,8"
+TUD,"Maat, Kees","Travel behaviour and the built environment, Spatial statistics, Statistical choice modelling",7
+TUD,"Meijers, Martijn","Map generalization, Vario‐ scale maps, 5D modelling, Python programming","5,7,8"
+UT-ITC,"Morales, Javier","Design of geo‐information services, Architectures for distributed (geo‐information) systems, Spatial Data Infrastructures, Web technology, Business process management","7,8"
+UT-ITC,"Ostermann, Frank","Crowdsourced and volunteered geographic information, Citizen Science, Reproducible Research",7
+TUD,"Ploeger, Hendrik","Land administration, Land use planning, Open data",8
+TUD,"Quak, Wilko",Spatial DBMS Geography Markup Language (GML) Information modelling (UML) Semantic modelling,"5,7"
+TUD,"Rafiee­Voermans, Azarakhsh","Remote sensing, Laser scanning, BIM‐GIS, Geo‐ games, Machine learning","7,8"
+UT-ITC,"Raposo, Paulo","Cartography, map generalization, geovisualization, GIS programming",4
+WUR,"Reiche, Johannes",Radar remote sensing of forests,"7,8"
+UU,"Scheider, Simon","Conceptual modeling, Geographic data analysis and knowledge extraction","5,7,8"
+WUR,"Sjoukema, Jaap Willem","volunteered geographic information (VGI) key registry systems like large‐scale topography (BGT) and cadastral (BRK), crowdsourced feedback systems, abm, and spatial data infra structure",0
+WUR,"Speelman, Erika","Spatial models, Agent‐based modelling, Companion modelling, Participatory gaming and simulation",8
+WUR,"Tsendbazar, Nandika","satellite remote sensing based land monitoring: in particular (e.g., global) land cover and land cover change monitoring, including monitoring wetland and croplands. Earth Observation based SDG monitoring with a focus on land degradation and urban sustainability.","7,8"
+UU,"van der Zee, Egbert","Web 2.0, User generated content, Social network analysis, Cluster/Hot Spot analysis, Spatial behaviour, Sharing economy, Ttourism","2,7,8"
+TUD,"van Loenen, Bastiaan","Information Policies, Open data, Spatial Data Infrastructures (SDI), Location privacy, Land registration","3,7,8"
+TUD,"van Oosterom, Peter","Spatial databases, Map generalization (vario‐scale), Land administration","0,7"
+TUD,"Verbree, Edward",(Indoor) positioning 3D,"6,7,8"
+WUR,"Vreugdenhil, Corné","(Open) geodata, Spatial analysis, Modelling & visualization","6,7,8"
+TUD,"Welle Donker, Frederika","Information Policies, Open data, Spatial Data Infrastructures (SDI), (Open data) business models economic aspects of information, Societal cost‐ benefit analysis","3,7,8"
+UT-ITC,"Zevenbergen, Jaap",Land Administration and Management,"7,8"
+UU,"Zeylmans van Emmichoven, Maarten",Geodata ArcGIS ERDAS/Imagine Remote Sensing,"0,1,2,6,7,8"
+UT-ITC,"Zurita­Milla, Raul",Spatio‐temporal analytics Geocomputation Remote Sensing GIS and VGI Data integration Big data and Open Science,7
