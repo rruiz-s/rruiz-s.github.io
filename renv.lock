@@ -1283,6 +1283,23 @@
       "Repository": "RSPM",
       "Hash": "3a1be13d68d47a8cd0bfd74739ca1555"
     },
+    "terra": {
+      "Package": "terra",
+      "Version": "1.7-74",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "terra",
+      "RemoteUsername": "rspatial",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "ba0a5a05e36ddc29d18818343aab8e139e29ee64",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "methods"
+      ],
+      "Hash": "0b9b3bfa9fa617a776fc2da08e7ce705"
+    },
     "tibble": {
       "Package": "tibble",
       "Version": "3.2.1",
