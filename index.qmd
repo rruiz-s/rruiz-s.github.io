@@ -27,8 +27,6 @@ I am excited about the opportunity to intern in a Geo-Information workplace to a
 
 Your organization can incorporate a research component from geo-information experts of these universities. Additionally, the internship also allocates time for the intern to gain professional skills helping you with existing projects, working on programming skills or project management tasks.The These are the focus of the Universities in GIMA:
 
-[{{< iconify zondicons education >}}]{style="color: #179498;"}
-
 -   **Utrecht University**: Geography and planning.
 -   **Delft University of Technology**: Legal, organisational and technical aspects of geo-information handling.
 -   **Wageningen University**: Agricultural and rural applications.
