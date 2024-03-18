@@ -19,13 +19,13 @@ lapply(c("knitr","dplyr","kableExtra","forcats","ggplot2","tidyverse","gt","lubr
 
 # Introduction
 
-I am excited about the opportunity to intern in a Geo-Information workplace to apply my practical and theoretical skills from the master GIMA, Geographical Information Management and Applications[^1]. Coming from a background as a laboratory technician, I have always been familiar with measurements and data. This emphasis on data proved to be valuable during my internship in Air Europa, ensuring ISO 14001 and 9001 compliance in the Information Management System department based on evidence. GIMA studies deepened my interest in resolving challenges through spatial analysis, specially those related to climate change, given my environment sciences background.
+I am excited about the opportunity to intern in a Geo-Information workplace to apply my practical and theoretical skills from the master GIMA, Geographical Information Management and Applications[^1].This internship is also an opportunity for the organizations interested. The four different universities that co-operates in this GIMA master offer a diversity in fields and their own traditions, so you can choose which one better suit your needs to carry out a research during the internship.
 
 [^1]: <https://www.uu.nl/en/masters/geographical-information-management-and-applications-gima>
 
 ![Four universities in the Netherlands take part in the GIMA Master, which stands for Geographical Information Management and Applications](media/gima_all.png){width="50%" fig-align="center"}
 
-This internship is also an opportunity for the organizations interested. The four different universities that co-operates in this GIMA master offer a diversity in fields and their own traditions, so you can choose which one better suit your needs to carry out a research during the internship. Your organization can incorporate a research component from geo-information experts of these universities. Additionally, the internship also allocates time for the intern to gain professional skills helping you with existing projects, working on programming skills or project management. These are the focus of the Universities in GIMA:
+Your organization can incorporate a research component from geo-information experts of these universities. Additionally, the internship also allocates time for the intern to gain professional skills helping you with existing projects, working on programming skills or project management. These are the focus of the Universities in GIMA:
 
 -   **Utrecht University**: Geography and planning.
 -   **Delft University of Technology**: Legal, organisational and technical aspects of geo-information handling.
@@ -59,6 +59,7 @@ fig <- plotly::plot_ly(
     node = list(
       label = c("Option A", "Option B", "Option C", "Internship 1/1", "Internship 1/2", "Internship 2/2","Internship 1/1","Course 10 ECTS","Research","Work"),
       color = c("#179498", "#80b1d3", "#ad7237", "#179498", "#80b1d3", "#80b1d3","#ad7237","#ad7237","#fb8072","#9ad236"),
+      text="Figure 1: Alluvial diagram shows how the 820 hours from the internship is distribuited across the different options",
       pad = 15,
       thickness = 15,
       line = list(
