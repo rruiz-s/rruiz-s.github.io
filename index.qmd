@@ -122,11 +122,10 @@ tribble(~Step,~Deliverable,~Time,~Description,
   kable(caption = "Table 2:  An example of time planning for a GIMA internship")
 ```
 
-If you are interested to have a chat, feel free to reach out. It would be great to connect with you.
-
-The following table contains some of the potential supervisors from the different universities that take part in GIMA.
 
 # GIMA supervisors
+
+The following table contains some of the potential supervisors from the different universities that take part in GIMA.
 
 ```{r, echo = FALSE, eval= TRUE}
 library(DT)
@@ -135,3 +134,4 @@ staff <- read.csv("gima_catalogue.csv") |>
 DT::datatable(staff, filter = "top")
 ```
 
+If you are interested to have a chat, feel free to reach out. It would be great to connect with you.
