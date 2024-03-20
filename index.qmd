@@ -117,7 +117,8 @@ The following table contains some of the potential supervisors from the differen
 
 ```{r, echo = FALSE, eval= TRUE}
 library(DT)
-staff <- read.csv("gima_catalogue.csv")
+staff <- read.csv("gima_catalogue.csv") |>
+  select(c(-4))
 DT::datatable(staff, filter = "top")
 ```
 
