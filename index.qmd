@@ -75,6 +75,17 @@ fig <- plotly::plot_ly(
 fig
 ```
 
+This GIMA internship is academic, which means that there is a research topic. Therefore, the requirements regarding the hours allocation are:
+
+> - Time spent on *research* topic to be at least 60% of internship duration
+> - Time spent on *"work"* is used to gain professional skills, e.g.:
+>   - internal courses
+>   - project management
+>   - programming skills
+>   - extra help with existing projects
+
+More information about the GIMA internship can be found on page 44 of 82 in the [GIMA Course Catalogue 2023-2024](https://www.msc-gima.nl/wp-content/uploads/2023/12/GIMA-Course-Catalogue-2023-2024-website-v2.pdf).
+
 # Purpose & Objectives
 
 The internship aims to:
@@ -96,9 +107,11 @@ The following Gantt chart and the table 2 explain in detail the 7 steps or work 
 
 ![](media/gantt.png){fig-align="center"}
 
+
+
 ```{r, echo=FALSE}
 tribble(~Step,~Deliverable,~Time,~Description,
-        "1","Internship Identification Description","Before the internship","The student finds a company and send a research propososal to the Internship Coordinator. After this, the student finds a GIMA internship supervisors expert on its research topic from any of the four universities.",
+        "1","Internship Identification Description","Before the internship","The student finds a company and send a research propososal to the Internship Coordinator. After this, the student finds a GIMA internship supervisors expert on its internship research topic from any of the four universities.",
         "2","Agreement Internship","week 0-2","Student fills the internship agreement and recopilates signatures.This step should be taken before the start of the internship, otherwise within two weeks after the start of the internship",
         "3","Personal Learning Goals Internship","week 3-4","Student writes his/her Personal Learning Goals and arrange a kick-off meeting",
         "4","Extended Internship Proposal","week 3-4","The student writes an extended internship proposal",
@@ -121,7 +134,4 @@ staff <- read.csv("gima_catalogue.csv") |>
   select(c(-4))
 DT::datatable(staff, filter = "top")
 ```
-
-
-
 
