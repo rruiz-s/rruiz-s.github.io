@@ -8,10 +8,7 @@ categories:
   - PostGIS
   - Marta
 ---
-# Introduction
 
-
-## Goal
 
 ```{r}
 #| echo: false
