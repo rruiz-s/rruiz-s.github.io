@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rruiz-s.github.io/blog.html</loc>
-    <lastmod>2024-03-20T23:36:41.643Z</lastmod>
+    <loc>https://rruiz-s.github.io/posts/post_1.html</loc>
+    <lastmod>2024-09-03T15:14:14.878Z</lastmod>
   </url>
   <url>
-    <loc>https://rruiz-s.github.io/index.html</loc>
-    <lastmod>2024-03-20T23:36:41.643Z</lastmod>
+    <loc>https://rruiz-s.github.io/posts.html</loc>
+    <lastmod>2024-09-03T15:14:14.878Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rruiz-s.github.io/blog.html</loc>
+    <lastmod>2024-09-03T15:14:14.878Z</lastmod>
   </url>
   <url>
     <loc>https://rruiz-s.github.io/about.html</loc>
-    <lastmod>2024-03-20T23:36:41.643Z</lastmod>
+    <lastmod>2024-09-03T15:14:14.878Z</lastmod>
   </url>
   <url>
     <loc>https://rruiz-s.github.io/Curriculum.html</loc>
-    <lastmod>2024-03-20T23:36:41.591Z</lastmod>
+    <lastmod>2024-09-03T15:14:14.794Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rruiz-s.github.io/index.html</loc>
+    <lastmod>2024-09-03T15:14:14.878Z</lastmod>
   </url>
 </urlset>

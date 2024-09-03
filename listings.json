@@ -1,6 +1,8 @@
 [
   {
-    "listing": "/gis.html",
-    "items": []
+    "listing": "/posts.html",
+    "items": [
+      "/posts/post_1.html"
+    ]
   }
 ]
