@@ -2,5 +2,17 @@
   {
     "listing": "/gis.html",
     "items": []
+  },
+  {
+    "listing": "/blog.html",
+    "items": [
+      "/posts/post_1.html"
+    ]
+  },
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/post_1.html"
+    ]
   }
 ]
