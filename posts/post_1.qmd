@@ -14,7 +14,7 @@ categories:
 #| echo: false
 #| message: false
 #| output: false
-#| eva: false
+#| eval: false
 lapply(c("DBI","sf","RPostgreSQL","prqlr"),require, character.only = T )
 con <- DBI::dbConnect(RPostgres::Postgres(),
                         host = 'localhost',
