@@ -15,7 +15,7 @@ categories:
 #| message: false
 #| output: false
 lapply(c("DBI","sf","RPostgreSQL","prqlr"),require, character.only = T )
-con <- dbConnect(RPostgres::Postgres(),
+con <- DBI::dbConnect(RPostgres::Postgres(),
                         host = 'localhost',
                         port = 25432,
                         dbname = 'gis',
