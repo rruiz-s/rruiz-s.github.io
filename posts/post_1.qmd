@@ -67,6 +67,7 @@ Instead of typing everything, copy the content and ask ChatGPT "create a postgre
 
 ```{sql}
 #| connection: con
+#| eval: false
 
 CREATE FOREIGN TABLE pgrouting_book.specchi_acqua_ita(
     fid BIGINT, -- Field for the unique identifier
@@ -94,6 +95,7 @@ WHERE table_name = 'id_acquefisiche_specchi_acqua';
 
 ```{sql}
 #| connection: con
+#| eval: false
 WITH area AS (
   SELECT 
     fid,
