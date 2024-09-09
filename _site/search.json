@@ -86,9 +86,9 @@
   {
     "objectID": "posts.html",
     "href": "posts.html",
-    "title": "My Blog",
+    "title": "Posts: Notes and use cases",
     "section": "",
-    "text": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions\n\n\n\n\n\n\n\nTransform\n\n\nPostGIS-QGIS\n\n\nTYC GIS-IMFE\n\n\n\n\nExercise 3: JOINS\n\n\n\n\n\n\nRicardo Ruiz Sánchez\n\n\n\n\n\n\n  \n\n\n\n\nJoining and dissolving in PostgreSQL: Castellon’s population by regions\n\n\n\n\n\n\n\nTransform\n\n\nPostGIS-QGIS\n\n\nTYC GIS-IMFE\n\n\n\n\nExercise 2: JOINS\n\n\n\n\n\n\nRicardo Ruiz Sánchez\n\n\n\n\n\n\n  \n\n\n\n\nK-Nearest Neighbor: Where is the closest pharmacy?\n\n\n\n\n\n\n\nTransform\n\n\nPostGIS-QGIS\n\n\nTYC GIS-IMFE\n\n\n\n\nExercise 4: K1N\n\n\n\n\n\n\nRicardo Ruiz Sánchez\n\n\n\n\n\n\n  \n\n\n\n\nSIOSE\n\n\n\n\n\n\n\nTransform\n\n\nPostGIS-QGIS\n\n\nTYC GIS-IMFE\n\n\n\n\nExercise 1: JOINS\n\n\n\n\n\n\nRicardo Ruiz Sánchez\n\n\n\n\n\n\n  \n\n\n\n\nWFS into PostgreSQL: Lakes in Italy\n\n\n\n\n\n\n\nImport\n\n\nPostGIS\n\n\nMarta\n\n\n\n\nImporting WFS into PostgreSQL\n\n\n\n\n\n\nRicardo Ruiz Sánchez\n\n\n\n\n\n\nNo matching items"
+    "text": "A) Rarely, but it happens:\n\nOn occasions I am asked to do similar things that I have already done before.\n\nB) Very frequently, it happens for sure:\n\nI forget how I did what I have already done before.\n\nThese two relevant facts in my life motivated me to create this blog. Of course, it is also a way to show that I can do some stuff and share my limited knowledge to others."
   },
   {
     "objectID": "posts/post_1.html",
