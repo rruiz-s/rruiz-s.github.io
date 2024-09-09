@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Ricardo Ruiz Sánchez">
+<meta name="description" content="Exercise 2: JOINS">
+
+<title>Ricardo Ruiz Sánchez - Joining and dissolving in PostgreSQL: Castellon’s districts</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../media/country-icon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Ricardo Ruiz Sánchez</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html" rel="" target="">
+ <span class="menu-text">Internship</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../posts.html" rel="" target="">
+ <span class="menu-text">Posts</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Curriculum.html" rel="" target="">
+ <span class="menu-text">Curriculum</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link active" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#postgis" id="toc-postgis" class="nav-link" data-scroll-target="#postgis">PostGIs</a>
+  <ul class="collapse">
+  <li><a href="#joins-adding-regions-data-using-joins" id="toc-joins-adding-regions-data-using-joins" class="nav-link" data-scroll-target="#joins-adding-regions-data-using-joins">Joins: Adding regions data using joins</a></li>
+  <li><a href="#groupping-summarising-data-by-regions" id="toc-groupping-summarising-data-by-regions" class="nav-link" data-scroll-target="#groupping-summarising-data-by-regions">Groupping: Summarising data by regions</a></li>
+  </ul></li>
+  <li><a href="#qgis" id="toc-qgis" class="nav-link" data-scroll-target="#qgis">QGIS</a>
+  <ul class="collapse">
+  <li><a href="#joining-data-to-the-municipalities-from-regions" id="toc-joining-data-to-the-municipalities-from-regions" class="nav-link" data-scroll-target="#joining-data-to-the-municipalities-from-regions">Joining data to the municipalities from regions</a></li>
+  <li><a href="#uniting-the-municipalities-geometry-by-regions" id="toc-uniting-the-municipalities-geometry-by-regions" class="nav-link" data-scroll-target="#uniting-the-municipalities-geometry-by-regions">Uniting the municipalities geometry by regions</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
+  <ul class="collapse">
+  <li><a href="#municipalities-choropleth-map" id="toc-municipalities-choropleth-map" class="nav-link" data-scroll-target="#municipalities-choropleth-map">Municipalities choropleth map</a></li>
+  <li><a href="#region-choropleth-map" id="toc-region-choropleth-map" class="nav-link" data-scroll-target="#region-choropleth-map">Region choropleth map</a></li>
+  <li><a href="#region-proportional-map" id="toc-region-proportional-map" class="nav-link" data-scroll-target="#region-proportional-map">Region proportional map</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#for-imfe" id="toc-for-imfe" class="nav-link" data-scroll-target="#for-imfe">For IMFE</a>
+  <ul class="collapse">
+  <li><a href="#joins-adding-district-data-using-joins" id="toc-joins-adding-district-data-using-joins" class="nav-link" data-scroll-target="#joins-adding-district-data-using-joins">Joins: Adding district data using joins</a></li>
+  <li><a href="#groupping-summarising-data" id="toc-groupping-summarising-data" class="nav-link" data-scroll-target="#groupping-summarising-data">Groupping: Summarising data</a></li>
+  <li><a href="#results-1" id="toc-results-1" class="nav-link" data-scroll-target="#results-1">Results</a>
+  <ul class="collapse">
+  <li><a href="#proportional-map-choropleth" id="toc-proportional-map-choropleth" class="nav-link" data-scroll-target="#proportional-map-choropleth">Proportional map &amp; Choropleth</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Joining and dissolving in PostgreSQL: Castellon’s districts</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Transform</div>
+    <div class="quarto-category">PostGIS-QGIS</div>
+    <div class="quarto-category">TYC GIS-IMFE</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Exercise 2: JOINS
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ricardo Ruiz Sánchez </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="exercise-2" class="level1">
+<h1>Exercise 2</h1>
+<p>Complete the information from the MUNICIPIOS.shp layer with the information contained in the tables COMARAS_CASTELLON and POBLACION_CASTELLON. Represent the regions from the province of Castellon and the population grouped in 5 categories according to the natural Jenk breaks.</p>
+<p>Layers to use:</p>
+<ul>
+<li>MUNICIPIOS.shp (municipalities)</li>
+<li>COMARCAS_CASTELLON (regions)</li>
+<li>POBLACION_CASTELLON (population)</li>
+</ul>
+<p>PostGIS is the CLI approach, while QGIS is the GUI approach.</p>
+</section>
+<section id="postgis" class="level1">
+<h1>PostGIs</h1>
+<section id="joins-adding-regions-data-using-joins" class="level2">
+<h2 class="anchored" data-anchor-id="joins-adding-regions-data-using-joins">Joins: Adding regions data using joins</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>CREATE TABLE join_castellon_comarca_pop AS</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>SELECT </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    m.<span class="st">"CODIGO_INE"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    m.<span class="st">"ETIQUETA"</span> as poblacion,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    c.<span class="st">"Comarca"</span> as comarca,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    p.<span class="st">"2017_1"</span> as pop_2017,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    m.geom as geom,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_centroid</span>(m.geom) as pt_geom</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>FROM </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    municipios AS m</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>LEFT JOIN</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    comarcas_castellon AS c ON c.<span class="st">"CODIGO_INE"</span> <span class="ot">=</span> m.<span class="st">"CODIGO_INE"</span><span class="sc">::</span>integer</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>LEFT JOIN </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    poblacion_castellon AS p ON p.<span class="st">"INE"</span> <span class="ot">=</span> m.<span class="st">"CODIGO_INE"</span><span class="sc">::</span>integer;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="groupping-summarising-data-by-regions" class="level2">
+<h2 class="anchored" data-anchor-id="groupping-summarising-data-by-regions">Groupping: Summarising data by regions</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>CREATE TABLE castellon_comarcas_pop_2017 AS</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>SELECT</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="fu">st_union</span>(a.geom) as geom,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">st_centroid</span>(<span class="fu">st_union</span>(a.geom)) as pt_geom,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sum</span>(pop_2017) as pop_comarca,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        comarca</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>FROM join_castellon_comarca_pop  AS a</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>GROUP BY comarca;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="qgis" class="level1">
+<h1>QGIS</h1>
+<section id="joining-data-to-the-municipalities-from-regions" class="level2">
+<h2 class="anchored" data-anchor-id="joining-data-to-the-municipalities-from-regions">Joining data to the municipalities from regions</h2>
+</section>
+<section id="uniting-the-municipalities-geometry-by-regions" class="level2">
+<h2 class="anchored" data-anchor-id="uniting-the-municipalities-geometry-by-regions">Uniting the municipalities geometry by regions</h2>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<section id="municipalities-choropleth-map" class="level3">
+<h3 class="anchored" data-anchor-id="municipalities-choropleth-map">Municipalities choropleth map</h3>
+<p><img src="../media/choropleth_map_non_agg.png" class="img-fluid"></p>
+</section>
+<section id="region-choropleth-map" class="level3">
+<h3 class="anchored" data-anchor-id="region-choropleth-map">Region choropleth map</h3>
+<p><img src="../media/choropleth_map.png" class="img-fluid"></p>
+</section>
+<section id="region-proportional-map" class="level3">
+<h3 class="anchored" data-anchor-id="region-proportional-map">Region proportional map</h3>
+<p><img src="../media/proportional_map.png" class="img-fluid" alt="Choropleth based on the population of provinces"></p>
+</section>
+</section>
+</section>
+<section id="for-imfe" class="level1">
+<h1>For IMFE</h1>
+<p>The provinces, NUTS 3, are obtained from <a href="https://idemap.es/sitmap/visor.html">Malaga Province Geoportal</a>. Instead of the population, the amount of solid waste is chosen. As I was taught during my studies as laboratory technician, in the context of microbiology the population is determined by the amount of waste that is produced. Probably this is not applicable to a human urban context, since there may be influenced from other factors such as industries or other socioeconomic variables. The amount of waste is obtained through the <a href="https://www.malaga.es/gobiernoabierto/datosabiertos/catalogodatos/com1_md1_cd-198087/cnl-592/datos-sobre-recogida-de-residuos-solidos-urbanos-2010-2013-por-municipio-y-tipo-de-residuos">Open Data Portal from Málaga</a></p>
+<p>These are the layers:</p>
+<ul>
+<li>sitmap_municipios_view.shp (municipalities)</li>
+<li>sitmap_comarcas.shp (regions)</li>
+<li>resumen-anual-de-datos-residuos_v2.csv (waste)</li>
+</ul>
+<section id="joins-adding-district-data-using-joins" class="level2">
+<h2 class="anchored" data-anchor-id="joins-adding-district-data-using-joins">Joins: Adding district data using joins</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>CREATE TABLE join_agp_comarca_waste AS</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>SELECT </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    m.<span class="st">"codigo"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    m.nombre as municipality,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    m.padron as population,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    c.nombre as region,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    c.codigo as region_cod,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    w.<span class="st">"RSU Toneladas Año"</span> as waste_2012,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    m.geom as geom,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_centroid</span>(m.geom) as pt_geom</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>FROM </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    agp_municipalities AS m</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>LEFT JOIN</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    agp_comarcas AS c ON m.cod_comarc <span class="ot">=</span> c.codigo</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>LEFT JOIN </span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    agp_waste AS w ON w.<span class="st">"ID_Municipio"</span><span class="sc">::</span>integer <span class="ot">=</span> m.<span class="st">"codigo"</span><span class="sc">::</span>integer;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="groupping-summarising-data" class="level2">
+<h2 class="anchored" data-anchor-id="groupping-summarising-data">Groupping: Summarising data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>CREATE TABLE agp_comarcas_waste_2012 AS </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>SELECT </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    region,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_union</span>(geom) as geom,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_centroid</span>(<span class="fu">st_union</span>(geom)) as pt_geom,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">SUM</span>(waste_2012<span class="sc">::</span>float) AS waste_2012,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">SUM</span>(population<span class="sc">::</span>float) AS padron_2012,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    region_cod<span class="sc">::</span>integer</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>FROM join_agp_comarca_waste</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>GROUP BY region_cod, region;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="results-1" class="level2">
+<h2 class="anchored" data-anchor-id="results-1">Results</h2>
+<section id="proportional-map-choropleth" class="level3">
+<h3 class="anchored" data-anchor-id="proportional-map-choropleth">Proportional map &amp; Choropleth</h3>
+<p>There is a positive correlation between the wastage and the population. As waste increases, there is an increase in population. In fact, sorting the data by the waste or the population returned the same relative position, except for Sierra de las Nieves and Guadalteba.</p>
+<p>An anomaly is the lack of data for two of the most populated regions, Málaga (the city center) and the “Costa del sol Occidental (the most touristic area) with known municipalities such as Marbella or Fuengirola. An unexpected finding was Axarquía as the region with most population, this could be explained by the misinterpretation of”padron” as population.</p>
+<p>Overall, the wastage was a good proxy of population in relative terms.</p>
+<p><img src="../media/agp_waste.png" class="img-fluid" alt="The Axarquia is the city with the largest number of urban waste and population, while Malaga and Costa del Sol Occidental lack of data for urban waste"></p>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Environmental Scientist specialised on GIS
+  </li>  
+</ul>
+    </div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:r.ruizsanchez@students.uu.nl">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

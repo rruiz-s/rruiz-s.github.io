@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ricardo Ruiz Sánchez">
-<meta name="description" content="Importing WFS into PostgreSQL">
+<meta name="description" content="Exercise 4: K1N">
 
-<title>WFS into PostgreSQL: Lakes in Italy – Ricardo Ruiz Sánchez</title>
+<title>K-Nearest Neighbor: Where is the closest pharmacy? – Ricardo Ruiz Sánchez</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -157,11 +157,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem">Problem</a></li>
-  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
+  <li><a href="#postgis" id="toc-postgis" class="nav-link active" data-scroll-target="#postgis">PostGIS</a>
   <ul class="collapse">
-  <li><a href="#install-ogr_fdw" id="toc-install-ogr_fdw" class="nav-link" data-scroll-target="#install-ogr_fdw">Install ogr_fdw</a></li>
-  <li><a href="#create-the-table" id="toc-create-the-table" class="nav-link" data-scroll-target="#create-the-table">Create the table</a></li>
+  <li><a href="#import-importing-shp-to-postgresql-using-shp2pgsql" id="toc-import-importing-shp-to-postgresql-using-shp2pgsql" class="nav-link" data-scroll-target="#import-importing-shp-to-postgresql-using-shp2pgsql">Import: Importing shp to PostgreSQL using SHP2PGSQL</a></li>
+  <li><a href="#transform-obtaining-the-closest-pharmacy-using-lateral" id="toc-transform-obtaining-the-closest-pharmacy-using-lateral" class="nav-link" data-scroll-target="#transform-obtaining-the-closest-pharmacy-using-lateral">Transform: Obtaining the closest pharmacy using LATERAL</a></li>
+  </ul></li>
+  <li><a href="#qgis" id="toc-qgis" class="nav-link" data-scroll-target="#qgis">QGIS</a>
+  <ul class="collapse">
+  <li><a href="#import-plugin" id="toc-import-plugin" class="nav-link" data-scroll-target="#import-plugin">Import plugin</a></li>
+  <li><a href="#apply-parameters" id="toc-apply-parameters" class="nav-link" data-scroll-target="#apply-parameters">Apply parameters</a></li>
+  </ul></li>
+  <li><a href="#for-imfe-málaga-case" id="toc-for-imfe-málaga-case" class="nav-link" data-scroll-target="#for-imfe-málaga-case">For IMFE: Málaga case</a>
+  <ul class="collapse">
+  <li><a href="#import-data" id="toc-import-data" class="nav-link" data-scroll-target="#import-data">Import data</a></li>
+  <li><a href="#query" id="toc-query" class="nav-link" data-scroll-target="#query">Query</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -171,17 +180,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">WFS into PostgreSQL: Lakes in Italy</h1>
+<h1 class="title">K-Nearest Neighbor: Where is the closest pharmacy?</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Import</div>
-    <div class="quarto-category">PostGIS</div>
-    <div class="quarto-category">Marta</div>
+    <div class="quarto-category">Transform</div>
+    <div class="quarto-category">PostGIS-QGIS</div>
+    <div class="quarto-category">TYC GIS-IMFE</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    Importing WFS into PostgreSQL
+    Exercise 4: K1N
   </div>
 </div>
 
@@ -204,73 +213,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="problem" class="level2">
-<h2 class="anchored" data-anchor-id="problem">Problem</h2>
+<section id="postgis" class="level1">
+<h1>PostGIS</h1>
+<p>The exercise is the following:</p>
+<p>Exercise 4 - Determine which is the closest pharmacy to each school in Castellón de la plana.</p>
+<p>Layers to be used:</p>
+<ul>
+<li>COLEGIOS_CASTELLON.shp</li>
+<li>farmacias castellon.shp</li>
+</ul>
+<p><img src="../media/tyc_imfe_exercise_4_1.png" class="img-fluid"></p>
+<section id="import-importing-shp-to-postgresql-using-shp2pgsql" class="level2">
+<h2 class="anchored" data-anchor-id="import-importing-shp-to-postgresql-using-shp2pgsql">Import: Importing shp to PostgreSQL using SHP2PGSQL</h2>
+<p>Firstly, The geographic system of reference (parameter -s) for each .shp file is checked before finding out that it was 25830. Secondly, a terminal is opened in the directory where the shp file is located.</p>
+<p>For schools:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>shp2pgsql <span class="sc">-</span>D <span class="sc">-</span>I <span class="sc">-</span>s <span class="dv">25830</span> <span class="st">'farmacias castellon.shp'</span> farmacias_castellon <span class="sc">|</span> psql <span class="sc">-</span>p <span class="dv">25432</span> <span class="sc">-</span>U docker <span class="sc">-</span>d gis <span class="sc">-</span>h localhost</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For pharmacies:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a> shp2pgsql <span class="sc">-</span>D <span class="sc">-</span>I <span class="sc">-</span>s <span class="dv">25830</span> <span class="sc">-</span>W <span class="st">"LATIN1"</span> COLEGIOS_CASTELLON.shp colegios_castellon <span class="sc">|</span> psql <span class="sc">-</span>U docker <span class="sc">-</span>d gis <span class="sc">-</span>h localhost <span class="sc">-</span>p <span class="dv">25432</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As a reminder, -D and -I indicates to <em>d</em>ump the data instead of copying, and apply spatial <em>I</em>ndeces to speed up queries. In the last case, -W indicate the font encoding, which was “LATIN1”. In other ocassion, for spanish speaker countries, ‘WINDOWS1252’ or ‘CP1252’ can be an option of the <a href="https://www.postgresql.org/docs/current/multibyte.html">possible formats</a>.</p>
 </section>
-<section id="methodology" class="level1">
-<h1>Methodology</h1>
-<section id="install-ogr_fdw" class="level2">
-<h2 class="anchored" data-anchor-id="install-ogr_fdw">Install ogr_fdw</h2>
-<p>The tool <a href="https://github.com/robe2/pgsql-ogr-fdw">ogr_fdw</a></p>
+<section id="transform-obtaining-the-closest-pharmacy-using-lateral" class="level2">
+<h2 class="anchored" data-anchor-id="transform-obtaining-the-closest-pharmacy-using-lateral">Transform: Obtaining the closest pharmacy using LATERAL</h2>
+<p>The LEFT JOIN LATERAL allowed to use data from the query next to subquery to for each pharmacy, find the closest school.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> SERVER geoserver_ita</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FOREIGN</span> <span class="kw">DATA</span> WRAPPER ogr_fdw</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    OPTIONS (</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        datasource <span class="st">'WFS:http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/wfs/Specchi_Acqua.map'</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        format <span class="st">'WFS'</span> );</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>CREATE TABLE school_pharmacy_castellon AS </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>SELECT DISTINCT <span class="fu">ON</span> (c.name) </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    c.name as school,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    f.name AS pharmacy,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    f.geom <span class="ot">&lt;-</span><span class="er">&gt;</span> c.geom AS distance,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    f.geom AS geom_pharm,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    c.geom AS geom_school</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>FROM colegios_castellon AS c</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>LEFT JOIN LATERAL</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    (SELECT name,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                geom </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>     FROM </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        farmacias_castellon AS f</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>     ORDER BY</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        f.geom <span class="ot">&lt;-</span><span class="er">&gt;</span> c.geom</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>     LIMIT <span class="dv">1</span>) AS f ON true</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="create-the-table" class="level2">
-<h2 class="anchored" data-anchor-id="create-the-table">Create the table</h2>
-<p>Before filling with any data, PostgreSQL needed the columns names from the WFS and their data type. How do we know the name of the columns and their type if we don’t know yet even the name of the table. What does that WFS really contains? <strong>ogrinfo knows</strong> , type in your local terminal:</p>
+</section>
+<section id="qgis" class="level1">
+<h1>QGIS</h1>
+<section id="import-plugin" class="level2">
+<h2 class="anchored" data-anchor-id="import-plugin">Import plugin</h2>
+</section>
+<section id="apply-parameters" class="level2">
+<h2 class="anchored" data-anchor-id="apply-parameters">Apply parameters</h2>
+</section>
+</section>
+<section id="for-imfe-málaga-case" class="level1">
+<h1>For IMFE: Málaga case</h1>
+<section id="import-data" class="level2">
+<h2 class="anchored" data-anchor-id="import-data">Import data</h2>
+<p>The exercise is slightly changed: Exercise 4 - Determine which is the closest bus stop to each cave in Málaga</p>
+<ul>
+<li>Bus stops (from the <a href="https://www.ideandalucia.es/services/DERA_g9_transport_com/wfs?service=wfs&amp;request=getcapabilities">andalucian transport and communication’s WFS</a> more WFS available at <a href="https://www.juntadeandalucia.es/datosabiertos/portal/dataset/datos-espaciales-de-referencia-andalucia-dera">DERA</a> )</li>
+<li>Caves</li>
+</ul>
+</section>
+<section id="query" class="level2">
+<h2 class="anchored" data-anchor-id="query">Query</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ogrinfo WFS:<span class="ot">"http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/wfs/Specchi_Acqua.map"</span> <span class="op">-</span><span class="kw">summary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>CREATE TABLE cueva_stop AS</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>WITH agp_cuevas <span class="fu">AS</span> (</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                    SELECT </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                     nombre AS cueva,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                     municipio,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                     geom</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>                    FROM </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>                        ja_cavidad</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                    WHERE </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                        provincia ILIKE <span class="st">'%Laga'</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>                    AND</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                        <span class="at">tipo =</span> <span class="st">'Cueva'</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                    AND <span class="at">acceso =</span> <span class="st">'Horizontal'</span>),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>                    agp_bus <span class="fu">AS</span> (</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>                    SELECT</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>                        id_parada,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>                        geom  </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>                    FROM </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"JA_bus"</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>                    WHERE </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>                        provincia ILIKE <span class="st">'%laga'</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>SELECT DISTINCT <span class="fu">ON</span> (cueva)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    agp_cuevas.geom AS geom_cueva,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    cueva,</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    c.geom AS geom_bus,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    agp_cuevas.municipio,</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    c.id_parada AS bus,</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    agp_cuevas.geom <span class="ot">&lt;-</span><span class="er">&gt;</span> c.geom AS distance</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>FROM</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    agp_cuevas</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>LEFT JOIN LATERAL</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    (SELECT id_parada,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>            geom </span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    FROM agp_bus</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    ORDER BY</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        agp_bus.geom <span class="ot">&lt;-</span><span class="er">&gt;</span> agp_cuevas.geom </span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    LIMIT <span class="dv">1</span>) AS c ON true;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Focus on ‘1: ID.ACQUEFISICHE.SPECCHI.ACQUA’ . This is the name of the only table this WFS has. Now that we know the name of the table, let’s see the ogrinfo of that tables. There are 2 options: a) Use “-so” to observe only the column names, otherwise it will read all the data, which in this case takes a while.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ogrinfo <span class="op">-</span>so WFS:<span class="ot">"http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/wfs/Specchi_Acqua.map"</span> <span class="kw">ID</span>.ACQUEFISICHE.SPECCHI.ACQUA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Instead of typing everything, copy the content and ask ChatGPT “create a postgresql using the following information”&lt;paste the summary from the code 1&gt;“. <em>To use the data from the WFS, include SERVER and OPTION.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">FOREIGN</span> <span class="kw">TABLE</span> pgrouting_book.specchi_acqua_ita(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    fid BIGINT, <span class="co">-- Field for the unique identifier</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    boundary GEOMETRY, <span class="co">-- Assumed to be a spatial data type, change as necessary</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    gml_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>), <span class="co">-- GML identifier</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    nome <span class="dt">VARCHAR</span>(<span class="dv">255</span>), <span class="co">-- Name of the water body</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    origine <span class="dt">VARCHAR</span>(<span class="dv">255</span>), <span class="co">-- Origin of the data</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    descrizione_origine <span class="dt">VARCHAR</span>(<span class="dv">255</span>), <span class="co">-- Description of the origin</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    nasp <span class="dt">VARCHAR</span>(<span class="dv">255</span>), <span class="co">-- Additional information</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    natura_specchio_acqua <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="co">-- Nature of the water body</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>SERVER <span class="ot">"geoserver_ita"</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    OPTIONS (<span class="kw">layer</span> <span class="st">'ID.ACQUEFISICHE.SPECCHI.ACQUA'</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>To validate the data, execute the following code that will return the column and the data type that they contain.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span>  column_name, data_type</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> information_schema.<span class="kw">columns</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> table_name <span class="op">=</span> <span class="st">'id_acquefisiche_specchi_acqua'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span> area <span class="kw">AS</span> (</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">SELECT</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    fid,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    st_area(ST_CurveToLine(boundary):<span class="ch">:geography</span>)<span class="op">/</span><span class="dv">10000</span> <span class="kw">as</span> area_hm2</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    pgrouting_book.specchi_acqua_ita</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  acqua_ita.<span class="op">*</span>, </span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  area.area_hm2</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  pgrouting_book.specchi_acqua_ita <span class="kw">AS</span> acqua_ita</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  area <span class="kw">ON</span> acqua_ita.fid <span class="op">=</span> area.fid </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> </span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  acqua_ita.natura_specchio_acqua <span class="kw">IN</span> (<span class="st">'Lago'</span>, <span class="st">'Bacino artificiale'</span>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">AND</span> area.area_hm2 <span class="op">&gt;</span> <span class="fl">0.2</span> </span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p><img src="../media/tyc_imfe_exercise_4_2.png" class="img-fluid"></p>
 
 
 </section>
