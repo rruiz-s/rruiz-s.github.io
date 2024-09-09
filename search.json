@@ -161,6 +161,13 @@
     "text": "Closest POI for each urban center.\n\nCREATE TABLE library_bus_agp AS\nWITH agp_geom_bus AS\n(SELECT \n    *,\n     st_transform(\n        st_setsrid(\n            st_point(lon::double precision, lat::double precision),4326),25830) AS geom\n    FROM  agp_city_bus) \nSELECT DISTINCT ON (l.\"NOMBRE\")\n    bs.\"nombreParada\" AS bus_stop,\n    l.\"NOMBRE\" AS library,\n    round(l.geom &lt;-&gt; bs.geom) AS distance,\n    l.geom AS library_geom,\n    bs.geom AS bus_geom\nFROM agp_city_library AS l\nLEFT JOIN LATERAL\n(SELECT \n    *\n    FROM  agp_geom_bus AS b\n    ORDER BY b.geom &lt;-&gt; l.geom\n    LIMIT 1) AS bs ON true;"
   },
   {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Posts: Notes and use cases",
+    "section": "",
+    "text": "A) Rarely, but it happens:\n\nOn occasions I am asked to do similar things that I have already done before.\n\nB) Very frequently, it happens for sure:\n\nI forget how I did what I have already done before.\n\nThese two relevant facts in my life motivated me to create this blog. Of course, it is also a way to show that I can do some stuff and share my limited knowledge to others.\n\nAudience: Sometimes I do tasks for"
+  },
+  {
     "objectID": "posts.html#data-science",
     "href": "posts.html#data-science",
     "title": "Posts: Notes and use cases",
