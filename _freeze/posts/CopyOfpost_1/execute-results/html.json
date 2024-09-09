@@ -1,0 +1,14 @@
+{
+  "hash": "202b5ab73fe601156e8f2b8ff2a21400",
+  "result": {
+    "markdown": "---\ntitle: \"WFS into PostgreSQL: Lakes in Italy\"\ndescription: \"Importing WFS into PostgreSQL\"\nauthor:\n  - name: Ricardo Ruiz Sánchez\ncategories:\n  - Import\n  - PostGIS\n  - Marta\n---\n\n::: {.cell}\n\n:::\n\n\n# PostGIS\n## Joins: Adding district data using\n\n\n::: {.cell}\n\n```{.sql .cell-code}\nCREATE TABLE join_castellon_comarca_pop AS\nSELECT \n\tm.\"CODIGO_INE\",\n\tm.\"ETIQUETA\" as poblacion,\n\tc.\"Comarca\" as comarca,\n\tp.\"2017_1\" as pop_2017,\n\tm.geom as geom,\n\tst_centroid(m.geom) as pt_geom\nFROM \n\tmunicipios AS m\nLEFT JOIN\n\tcomarcas_castellon AS c ON c.\"CODIGO_INE\" = m.\"CODIGO_INE\"::integer\nLEFT JOIN \n\tpoblacion_castellon AS p ON p.\"INE\" = m.\"CODIGO_INE\"::integer;\n```\n:::\n\n\n## Groupping: Summarising data \n\n\n::: {.cell}\n\n```{.sql .cell-code}\nCREATE TABLE castellon_comarcas_pop_2017 AS\nSELECT\n\t\tst_union(a.geom) as geom,\n\t\tst_centroid(st_union(a.geom)) as pt_geom,\n\t\tsum(pop_2017) as pop_comarca,\n\t\tcomarca\nFROM join_castellon_comarca_pop  AS a\nGROUP BY comarca;\n```\n:::\n\n\n# QGIS\n\n## Province choropleth map\n\n![](~/Blog_2024/rruiz-s.github.io/media/choropleth_map_non_agg.png)\n## District choropleth map\n\n![](~/Blog_2024/rruiz-s.github.io/media/choropleth_map.png)\n## Proportional map\n\n![](~/Blog_2024/rruiz-s.github.io/media/proportional_map.png){fig-alt=\"Choropleth based on the population of provinces\"}\n\n![](media/choropleth_map.png){fig-alt=\"Choropleth based on the population of provinces\"}\n\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

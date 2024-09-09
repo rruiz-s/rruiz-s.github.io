@@ -38,7 +38,7 @@ The tool [ogr_fdw](https://github.com/robe2/pgsql-ogr-fdw)
 CREATE SERVER geoserver_ita
 	FOREIGN DATA WRAPPER ogr_fdw
 	OPTIONS (
-		datasource 'WFS:http://www.ideandalucia.es/services/DERA_g11_patrimonio/wfs',
+		datasource 'WFS:http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/wfs/Specchi_Acqua.map',
 		format 'WFS' );
 ```
 
@@ -49,7 +49,7 @@ What does that WFS really contains? **ogrinfo knows** , type in your local termi
 
 ```{sql}
 #| eval: false
-ogrinfo WFS:"http://www.ideandalucia.es/services/DERA_g11_patrimonio/wfs" -summary
+ogrinfo WFS:"http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/wfs/Specchi_Acqua.map" -summary
 ```
 
 Focus on '1: ID.ACQUEFISICHE.SPECCHI.ACQUA' . This is the name of the only table this WFS has. Now that we know the name of the table, let's see the ogrinfo of that tables. 
@@ -58,7 +58,7 @@ a) Use "-so" to observe only the column names, otherwise it will read all the da
 
 ```{sql}
 #| eval: false
-ogrinfo -so WFS:"http://www.ideandalucia.es/services/DERA_g11_patrimonio/wfs" ID.ACQUEFISICHE.SPECCHI.ACQUA
+ogrinfo -so WFS:"http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/wfs/Specchi_Acqua.map" ID.ACQUEFISICHE.SPECCHI.ACQUA
 ```
 
 

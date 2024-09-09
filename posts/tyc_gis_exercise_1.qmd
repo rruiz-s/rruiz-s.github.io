@@ -1,0 +1,44 @@
+---
+title: "SIOSE"
+description: "Exercise 1: JOINS"
+author:
+  - name: Ricardo Ruiz Sánchez
+categories:
+  - Transform
+  - PostGIS-QGIS
+  - TYC GIS-IMFE 
+---
+
+Completa la capa del SIOSE de la provincia de Castellón con la descripción del tipo de cobertura, para ello debemos relacionar la capa SIOSE_CASTELLON.shp con su leyenda. La leyenda se encuentra desglosada en 2 tablas T_VALORES y TC_SIOSE_COBERTURAS. Estudia las tablas, para establecer las relaciones necesarias entre ellas y así lograr incorporar la información de cobertura a la capa SIOSE. Nota: La capa SIOSE_CASTELLON.shp ha sido tomada en el S.C. ETRS89 UTM 30N. Finalmente representa la capa a través del campo cobertura con un tipo de simbología adecuado.
+
+
+
+Capas a utilizar: 
+
+- SIOSE_CASTELLON.shp
+- T_VALORES
+- T_COBERTURAS
+
+![](/media/tyc_imfe_exercise_1_1_table.png)
+
+# PostGIS
+
+```{r}
+#| eval: false
+
+CREATE TABLE siose AS 
+SELECT
+	s.geom,
+	v."ID_COBERTURAS" AS cobertura_id,
+	c."DESCRIPCION_COBERTURAS" AS description
+FROM
+	siose_shape AS s
+JOIN siose_valores AS v ON  v."ID_POLYGON" = s."ID_POLYGON" 
+JOIN siose_coberturas AS c ON c."ID_COBERTURAS" = v."ID_COBERTURAS" 
+```
+
+# QGIS
+
+![](/media/tyc_imfe_exercise_1_2_table.png)
+
+# For Imfe

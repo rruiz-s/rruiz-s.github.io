@@ -1,6 +1,17 @@
 ---
-title: "My Blog"
+title: "Posts: Notes and use cases"
 listing:
   contents: posts
   categories: true
 ---
+
+# Introduction
+
+
+# Tags
+
+The different t
+
+## Data Science
+
+## ESRI

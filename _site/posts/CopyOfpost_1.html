@@ -149,11 +149,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#problem" id="toc-problem" class="nav-link active" data-scroll-target="#problem">Problem</a></li>
-  <li><a href="#methodology" id="toc-methodology" class="nav-link" data-scroll-target="#methodology">Methodology</a>
+  <li><a href="#postgis" id="toc-postgis" class="nav-link active" data-scroll-target="#postgis">PostGIS</a>
   <ul class="collapse">
-  <li><a href="#install-ogr_fdw" id="toc-install-ogr_fdw" class="nav-link" data-scroll-target="#install-ogr_fdw">Install ogr_fdw</a></li>
-  <li><a href="#create-the-table" id="toc-create-the-table" class="nav-link" data-scroll-target="#create-the-table">Create the table</a></li>
+  <li><a href="#joins-adding-district-data-using" id="toc-joins-adding-district-data-using" class="nav-link" data-scroll-target="#joins-adding-district-data-using">Joins: Adding district data using</a></li>
+  <li><a href="#groupping-summarising-data" id="toc-groupping-summarising-data" class="nav-link" data-scroll-target="#groupping-summarising-data">Groupping: Summarising data</a></li>
+  </ul></li>
+  <li><a href="#qgis" id="toc-qgis" class="nav-link" data-scroll-target="#qgis">QGIS</a>
+  <ul class="collapse">
+  <li><a href="#province-choropleth-map" id="toc-province-choropleth-map" class="nav-link" data-scroll-target="#province-choropleth-map">Province choropleth map</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -194,73 +197,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="problem" class="level2">
-<h2 class="anchored" data-anchor-id="problem">Problem</h2>
-</section>
-<section id="methodology" class="level1">
-<h1>Methodology</h1>
-<section id="install-ogr_fdw" class="level2">
-<h2 class="anchored" data-anchor-id="install-ogr_fdw">Install ogr_fdw</h2>
-<p>The tool <a href="https://github.com/robe2/pgsql-ogr-fdw">ogr_fdw</a></p>
+<section id="postgis" class="level1">
+<h1>PostGIS</h1>
+<section id="joins-adding-district-data-using" class="level2">
+<h2 class="anchored" data-anchor-id="joins-adding-district-data-using">Joins: Adding district data using</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> SERVER geoserver_ita</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FOREIGN</span> <span class="kw">DATA</span> WRAPPER ogr_fdw</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    OPTIONS (</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        datasource <span class="st">'WFS:http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/wfs/Specchi_Acqua.map'</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        format <span class="st">'WFS'</span> );</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> join_castellon_comarca_pop <span class="kw">AS</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    m.<span class="ot">"CODIGO_INE"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    m.<span class="ot">"ETIQUETA"</span> <span class="kw">as</span> poblacion,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    c.<span class="ot">"Comarca"</span> <span class="kw">as</span> comarca,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    p.<span class="ot">"2017_1"</span> <span class="kw">as</span> pop_2017,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    m.geom <span class="kw">as</span> geom,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    st_centroid(m.geom) <span class="kw">as</span> pt_geom</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    municipios <span class="kw">AS</span> m</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    comarcas_castellon <span class="kw">AS</span> c <span class="kw">ON</span> c.<span class="ot">"CODIGO_INE"</span> <span class="op">=</span> m.<span class="ot">"CODIGO_INE"</span>:<span class="ch">:integer</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    poblacion_castellon <span class="kw">AS</span> p <span class="kw">ON</span> p.<span class="ot">"INE"</span> <span class="op">=</span> m.<span class="ot">"CODIGO_INE"</span>:<span class="ch">:integer</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="create-the-table" class="level2">
-<h2 class="anchored" data-anchor-id="create-the-table">Create the table</h2>
-<p>Before filling with any data, PostgreSQL needed the columns names from the WFS and their data type. How do we know the name of the columns and their type if we don’t know yet even the name of the table. What does that WFS really contains? <strong>ogrinfo knows</strong> , type in your local terminal:</p>
+<section id="groupping-summarising-data" class="level2">
+<h2 class="anchored" data-anchor-id="groupping-summarising-data">Groupping: Summarising data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ogrinfo WFS:<span class="ot">"http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/wfs/Specchi_Acqua.map"</span> <span class="op">-</span><span class="kw">summary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> castellon_comarcas_pop_2017 <span class="kw">AS</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        st_union(a.geom) <span class="kw">as</span> geom,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        st_centroid(st_union(a.geom)) <span class="kw">as</span> pt_geom,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">sum</span>(pop_2017) <span class="kw">as</span> pop_comarca,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        comarca</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> join_castellon_comarca_pop  <span class="kw">AS</span> a</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> comarca;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Focus on ‘1: ID.ACQUEFISICHE.SPECCHI.ACQUA’ . This is the name of the only table this WFS has. Now that we know the name of the table, let’s see the ogrinfo of that tables. There are 2 options: a) Use “-so” to observe only the column names, otherwise it will read all the data, which in this case takes a while.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ogrinfo <span class="op">-</span>so WFS:<span class="ot">"http://wms.pcn.minambiente.it/ogc?map=/ms_ogc/wfs/Specchi_Acqua.map"</span> <span class="kw">ID</span>.ACQUEFISICHE.SPECCHI.ACQUA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Instead of typing everything, copy the content and ask ChatGPT “create a postgresql using the following information”&lt;paste the summary from the code 1&gt;“. <em>To use the data from the WFS, include SERVER and OPTION.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">FOREIGN</span> <span class="kw">TABLE</span> pgrouting_book.specchi_acqua_ita(</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    fid BIGINT, <span class="co">-- Field for the unique identifier</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    boundary GEOMETRY, <span class="co">-- Assumed to be a spatial data type, change as necessary</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    gml_id <span class="dt">VARCHAR</span>(<span class="dv">255</span>), <span class="co">-- GML identifier</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    nome <span class="dt">VARCHAR</span>(<span class="dv">255</span>), <span class="co">-- Name of the water body</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    origine <span class="dt">VARCHAR</span>(<span class="dv">255</span>), <span class="co">-- Origin of the data</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    descrizione_origine <span class="dt">VARCHAR</span>(<span class="dv">255</span>), <span class="co">-- Description of the origin</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    nasp <span class="dt">VARCHAR</span>(<span class="dv">255</span>), <span class="co">-- Additional information</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    natura_specchio_acqua <span class="dt">VARCHAR</span>(<span class="dv">255</span>) <span class="co">-- Nature of the water body</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>SERVER <span class="ot">"geoserver_ita"</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    OPTIONS (<span class="kw">layer</span> <span class="st">'ID.ACQUEFISICHE.SPECCHI.ACQUA'</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>To validate the data, execute the following code that will return the column and the data type that they contain.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span>  column_name, data_type</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> information_schema.<span class="kw">columns</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> table_name <span class="op">=</span> <span class="st">'id_acquefisiche_specchi_acqua'</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span> area <span class="kw">AS</span> (</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">SELECT</span> </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    fid,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    st_area(ST_CurveToLine(boundary):<span class="ch">:geography</span>)<span class="op">/</span><span class="dv">10000</span> <span class="kw">as</span> area_hm2</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> </span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    pgrouting_book.specchi_acqua_ita</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  acqua_ita.<span class="op">*</span>, </span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  area.area_hm2</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> </span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  pgrouting_book.specchi_acqua_ita <span class="kw">AS</span> acqua_ita</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> </span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  area <span class="kw">ON</span> acqua_ita.fid <span class="op">=</span> area.fid </span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> </span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  acqua_ita.natura_specchio_acqua <span class="kw">IN</span> (<span class="st">'Lago'</span>, <span class="st">'Bacino artificiale'</span>)</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">AND</span> area.area_hm2 <span class="op">&gt;</span> <span class="fl">0.2</span> </span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">5</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</section>
+</section>
+<section id="qgis" class="level1">
+<h1>QGIS</h1>
+<section id="province-choropleth-map" class="level2">
+<h2 class="anchored" data-anchor-id="province-choropleth-map">Province choropleth map</h2>
+<p><img src="~/Blog_2024/rruiz-s.github.io/media/choropleth_map_non_agg.png" class="img-fluid"> ## District choropleth map</p>
+<p><img src="~/Blog_2024/rruiz-s.github.io/media/choropleth_map.png" class="img-fluid"> ## Proportional map</p>
+<p><img src="~/Blog_2024/rruiz-s.github.io/media/proportional_map.png" class="img-fluid" alt="Choropleth based on the population of provinces"></p>
+<p><img src="media/choropleth_map.png" class="img-fluid" alt="Choropleth based on the population of provinces"></p>
 
 
 </section>
