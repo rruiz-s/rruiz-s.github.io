@@ -5,7 +5,8 @@ author:
   - name: Ricardo Ruiz Sánchez
 categories:
   - Transform
-  - PostGIS-QGIS
+  - PostGIS
+  - QGIS
   - TYC GIS-IMFE 
 ---
 

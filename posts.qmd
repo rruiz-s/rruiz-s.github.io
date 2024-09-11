@@ -9,19 +9,23 @@ listing:
 
 **A) Rarely, but it happens:**
 
->  On occasions I am asked to do similar things that I have already done before.
+>  I am asked to do similar things that I have already done before.
 
 **B) Very frequently, it happens for sure:**
 
 >  I forget how I did what I have already done before.
 
-These two relevant facts in my life motivated me to create this blog. Of course, it is also a way to show that I can do some stuff and share my limited knowledge to others.   
+**C) Always, it happens**
 
-- **Audience**: Sometimes I do tasks for
+> I find interesting things other did and I want to do it after.
+
+These three relevant facts motivated me to create this blog. Of course, it is also a way to show that I can do some stuff and share what I know to others.   
 
 # Tags
 
-There are three types of tags:
+There are three types of tags used in the categories that are on the right pannel:
+
+## Data Science Project
 
 -  **1 Data Science tools** from [R for Data Science](https://r4ds.hadley.nz/) by Hadley Wickham & Garret Grolemund that defines these 5 type of tools in a Data Science Project.
     - Import
@@ -33,14 +37,34 @@ There are three types of tags:
   
 ![](/media/data_science_tools.png)
 
+## Programming Language
 
-- **Languages** used dealing mainly with geospatial data.
+- **Programming Languages** used dealing mainly with geospatial data.
   - PostGIS
   - R
   - Python
 
-![](/media/language_log.png)
+## ESRI Language
 
-## Data Science
+- **ESRI language of spatial analysis** from  [ESRI spatial analysis books](https://www.esri.com/content/dam/esrisites/sitecore-archive/Files/Pdfs/library/books/the-language-of-spatial-analysis.pdf?srsltid=AfmBOopEqnAVDDn-qZCXtkRJkeEZAR5cQHDQM1PF8I2rZFHwT5DS2Kpm) that classify this analysis into 6 categories:
+  - Understanding where
+  - Measuring size, shape, and distribution
+  - Determining how places are related
+  - Finding the best locations and paths
+  - Detecting and quantifying patterns
+  - Making predictions
 
-## ESRI
+These are then broke down into 26 different questions.
+
+:::{#fig-graphs layout-ncol=2}
+
+![Programming Languages](/media/language_log.png){#fig-language width=200}
+
+![ESRI classified spatial analysis into this 6 categories](/media/esri_language.jpg){#fig-esri width=382}
+
+Figure
+:::
+
+## Colleagues, friends, courses or books
+
+These posts are specifically tailored to questions from colleagues and friends or from questions written in courses and books. 

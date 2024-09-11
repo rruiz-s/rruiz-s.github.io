@@ -88,7 +88,7 @@
     "href": "posts.html",
     "title": "Posts: Notes and use cases",
     "section": "",
-    "text": "A) Rarely, but it happens:\n\nOn occasions I am asked to do similar things that I have already done before.\n\nB) Very frequently, it happens for sure:\n\nI forget how I did what I have already done before.\n\nThese two relevant facts in my life motivated me to create this blog. Of course, it is also a way to show that I can do some stuff and share my limited knowledge to others."
+    "text": "A) Rarely, but it happens:\n\nI am asked to do similar things that I have already done before.\n\nB) Very frequently, it happens for sure:\n\nI forget how I did what I have already done before.\n\nC) Always, it happens\n\nI find interesting things other did and I want to do it after.\n\nThese three relevant facts motivated me to create this blog. Of course, it is also a way to show that I can do some stuff and share what I know to others."
   },
   {
     "objectID": "posts/post_1.html",
@@ -474,5 +474,33 @@
     "title": "Posts: Notes and use cases",
     "section": "ESRI",
     "text": "ESRI"
+  },
+  {
+    "objectID": "posts.html#data-science-project",
+    "href": "posts.html#data-science-project",
+    "title": "Posts: Notes and use cases",
+    "section": "Data Science Project",
+    "text": "Data Science Project\n\n1 Data Science tools from R for Data Science by Hadley Wickham & Garret Grolemund that defines these 5 type of tools in a Data Science Project.\n\nImport\nTidy\nTransform\nModel\nCommunicate"
+  },
+  {
+    "objectID": "posts.html#programming-language",
+    "href": "posts.html#programming-language",
+    "title": "Posts: Notes and use cases",
+    "section": "Programming Language",
+    "text": "Programming Language\n\nProgramming Languages used dealing mainly with geospatial data.\n\nPostGIS\nR\nPython"
+  },
+  {
+    "objectID": "posts.html#colleagues-friends-courses-or-books",
+    "href": "posts.html#colleagues-friends-courses-or-books",
+    "title": "Posts: Notes and use cases",
+    "section": "Colleagues, friends, courses or books",
+    "text": "Colleagues, friends, courses or books\nThese posts are specifically tailored to questions from colleagues and friends or from questions written in courses and books."
+  },
+  {
+    "objectID": "posts.html#esri-language",
+    "href": "posts.html#esri-language",
+    "title": "Posts: Notes and use cases",
+    "section": "ESRI Language",
+    "text": "ESRI Language\n\nESRI language of spatial analysis from ESRI spatial analysis books that classify this analysis into 6 categories:\n\nUnderstanding where\nMeasuring size, shape, and distribution\nDetermining how places are related\nFinding the best locations and paths\nDetecting and quantifying patterns\nMaking predictions\n\n\nThese are then broke down into 26 different questions.\n\n\n\n\n\n\n\n(a) Programming Languages\n\n\n\n\n\n\n\n(b) ESRI classified spatial analysis into this 6 categories\n\n\n\n\nFigure 1: Figure"
   }
 ]
