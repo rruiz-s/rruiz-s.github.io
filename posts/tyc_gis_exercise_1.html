@@ -157,9 +157,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#postgis" id="toc-postgis" class="nav-link active" data-scroll-target="#postgis">PostGIS</a></li>
+  <li><a href="#exercise-a" id="toc-exercise-a" class="nav-link active" data-scroll-target="#exercise-a">Exercise A</a>
+  <ul class="collapse">
+  <li><a href="#postgis" id="toc-postgis" class="nav-link" data-scroll-target="#postgis">PostGIS</a></li>
   <li><a href="#qgis" id="toc-qgis" class="nav-link" data-scroll-target="#qgis">QGIS</a></li>
-  <li><a href="#for-imfe" id="toc-for-imfe" class="nav-link" data-scroll-target="#for-imfe">For Imfe</a></li>
+  </ul></li>
+  <li><a href="#exercise-b" id="toc-exercise-b" class="nav-link" data-scroll-target="#exercise-b">Exercise B</a>
+  <ul class="collapse">
+  <li><a href="#postgis-1" id="toc-postgis-1" class="nav-link" data-scroll-target="#postgis-1">PostGIS</a></li>
+  <li><a href="#qgis-1" id="toc-qgis-1" class="nav-link" data-scroll-target="#qgis-1">QGIS</a></li>
+  </ul></li>
+  <li><a href="#imfe-use-case" id="toc-imfe-use-case" class="nav-link" data-scroll-target="#imfe-use-case">IMFE Use case</a></li>
   </ul>
 </nav>
     </div>
@@ -202,6 +210,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="exercise-a" class="level1">
+<h1>Exercise A</h1>
 <p>Completa la capa del SIOSE de la provincia de Castellón con la descripción del tipo de cobertura, para ello debemos relacionar la capa SIOSE_CASTELLON.shp con su leyenda. La leyenda se encuentra desglosada en 2 tablas T_VALORES y TC_SIOSE_COBERTURAS. Estudia las tablas, para establecer las relaciones necesarias entre ellas y así lograr incorporar la información de cobertura a la capa SIOSE. Nota: La capa SIOSE_CASTELLON.shp ha sido tomada en el S.C. ETRS89 UTM 30N. Finalmente representa la capa a través del campo cobertura con un tipo de simbología adecuado.</p>
 <p>Capas a utilizar:</p>
 <ul>
@@ -210,9 +220,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>T_COBERTURAS</li>
 </ul>
 <p><img src="../media/tyc_imfe_exercise_1_1_table.png" class="img-fluid"></p>
-<section id="postgis" class="level1">
-<h1>PostGIS</h1>
+<section id="postgis" class="level2">
+<h2 class="anchored" data-anchor-id="postgis">PostGIS</h2>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>CREATE TABLE siose AS </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>SELECT</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    s.geom,</span>
@@ -222,14 +234,111 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    siose_shape AS s</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>JOIN siose_valores AS v ON  v.<span class="st">"ID_POLYGON"</span> <span class="ot">=</span> s.<span class="st">"ID_POLYGON"</span> </span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>JOIN siose_coberturas AS c ON c.<span class="st">"ID_COBERTURAS"</span> <span class="ot">=</span> v.<span class="st">"ID_COBERTURAS"</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
-<section id="qgis" class="level1">
-<h1>QGIS</h1>
+<section id="qgis" class="level2">
+<h2 class="anchored" data-anchor-id="qgis">QGIS</h2>
 <p><img src="../media/tyc_imfe_exercise_1_2_table.png" class="img-fluid"></p>
 </section>
-<section id="for-imfe" class="level1">
-<h1>For Imfe</h1>
+</section>
+<section id="exercise-b" class="level1">
+<h1>Exercise B</h1>
+<p>We use the tool “join” to link the Corine Land Over (CLC_ambito.shp) layer to its legend (excel spreadsheet). Name it “CLC_LEGEND.shp” to the resulting joined layer.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>In spanish</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Utilizamos la herramienta join para relacionar la capa del Corine Land Cover (CLC_ambito.shp) con su leyenda (hoja Excel CLC2000legend.xls). Llama 'CLC_LEYEDA.shp' a la capa resultante de la unión </span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="st">Capas a utilizar:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">- CLC_ambito.shp</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">- CLC2000legend.xls"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Utilizamos la herramienta join para relacionar la capa del Corine Land Cover (CLC_ambito.shp) con su leyenda (hoja Excel CLC2000legend.xls). Llama 'CLC_LEYEDA.shp' a la capa resultante de la unión 
+
+Capas a utilizar:
+- CLC_ambito.shp
+- CLC2000legend.xls</code></pre>
+</div>
+</div>
+<section id="postgis-1" class="level2">
+<h2 class="anchored" data-anchor-id="postgis-1">PostGIS</h2>
+<p>Import the data is possible using <a href="https://gdal.org/en/latest/programs/ogr2ogr.html">ogr2ogr</a> or <a href="https://www.bostongis.com/pgsql2shp_shp2pgsql_quickguide.bqg">shp2pgsql</a>. The following ogr2ogr command import the data, since it combines polygon and multipolygon, it is need to add the parameter -nln (<a href="https://trac.osgeo.org/gdal/ticket/4939">post</a>)</p>
+<div class="cell">
+<details class="code-fold">
+<summary>ogr2ogr command to import the shp data</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ogr2ogr <span class="sc">-</span>f PostgreSQL PG<span class="sc">:</span><span class="st">"host=localhost port=25432 user=docker password=docker dbname=gis schemas=tycgis"</span> CLC_ambito.shp <span class="sc">-</span>nln clc_ambito <span class="sc">-</span>lco GEOMETRY_NAME<span class="ot">=</span>geom <span class="sc">-</span>nlt PROMOTE_TO_MULTI</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">--- Explore relevant data, columns used for join &amp; srid of the geometry</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> pg_typeof(code_06) <span class="kw">FROM</span> clc_ambito; <span class="co">---character</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> pg_typeof(<span class="ot">"CLC_CODE"</span>) <span class="kw">FROM</span> clc2000legend; <span class="co">---integer</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> st_srid(geom) <span class="kw">FROM</span>  clc_ambito ;  <span class="co">--- check srid is imported correctly automatically</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">---- Create table CLC_LEYENDA</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> CLC_LEYENDA <span class="kw">AS</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">replace</span>(xls,<span class="ot">"RGB"</span>, <span class="st">'-'</span>,<span class="st">','</span>)<span class="kw">AS</span> RGB_csv </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    clc_ambito <span class="kw">AS</span> shp</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span>  </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    clc2000legend <span class="kw">AS</span> xls</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="kw">ON</span> shp.code_06:<span class="ch">:int</span> <span class="op">=</span> xls.<span class="ot">"CLC_CODE"</span>; <span class="co">--- the ::int cast the character into integer.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Note: - The column “RGB” stored the colour values and it was used replacing the “-” for “,” as <a href="https://www.reddit.com/r/QGIS/comments/15lcb0l/rgb_color_code_from_attribute_table/">this post</a> indicated. If the RGB values were in three different columns, then <a href="https://gis.stackexchange.com/questions/15135/using-field-to-rgb-mapping-for-symbology-in-qgis">this other post</a> would have applied.</p>
+<p><img src="../media/rgb_csv_exercise_1.png" class="img-fluid"></p>
+</section>
+<section id="qgis-1" class="level2">
+<h2 class="anchored" data-anchor-id="qgis-1">QGIS</h2>
+<p>After clicking on properties of the selected vector data <em>“CLC_ambito_qgis”</em> and join, the following screenshot shows the parameters required to add columns from the spreadsheet <em>“CLC2000legend.xls”</em>.</p>
+<p><img src="../media/join_parameters.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="imfe-use-case" class="level1">
+<h1>IMFE Use case</h1>
+<ul>
+<li><a href="https://idemap.es/sitmap/visor.html">Municipality layer with geometries</a></li>
+<li><a href="https://www.malaga.es/gobiernoabierto/datosabiertos/catalogodatos/com1_md1_cd-198098/cnl-594/malaga-en-cifras">Additional data for Málaga in csv</a></li>
+</ul>
+<p>Importing the file malaga-en-cifras_v2.csv using dbeaver returned errors, since the string contained “..”. Using R to write the table was a workaround to import the data in the spreadsheet to the database.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>importing csv to PostgreSQL DB using R</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>malaga_cifras <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/home/ricardo/cursos-2024-2025/Unidad 1/ejercicio1/malaga-en-cifras_v2.csv"</span>, <span class="at">sep=</span><span class="st">","</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbWriteTable</span>(docker_connection,  <span class="fu">Id</span>(<span class="at">schema =</span> <span class="st">"tycgis"</span>, <span class="at">table =</span> <span class="st">"malaga_cifras"</span>),malaga_cifras)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>For the vector data, the error <em>“ERROR 1: Non UTF-8 content found when writing feature”</em> is solved following <a href="https://stackoverflow.com/questions/1377662/encoding-problems-with-ogr2ogr-and-postgis-postgresql-database">this post</a> where it explains how to use other encoding systems.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>importing vector data to PostgreSQL DB using ogr2ogr</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>PGCLIENTENCODING<span class="ot">=</span>LATIN1 ogr2ogr <span class="sc">-</span>f PostgreSQL PG<span class="sc">:</span><span class="st">"host=localhost port=25432 user=docker password=docker dbname=gis schemas=tycgis"</span> sitmap_municipios_viewPolygon.shp <span class="sc">-</span>nln municipalities_agp <span class="sc">-</span>lco GEOMETRY_NAME<span class="ot">=</span>geom <span class="sc">-</span>nlt PROMOTE_TO_MULTI</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> muncipalities_agp_crop <span class="kw">AS</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    codigo <span class="kw">AS</span> code,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    shape.nombre <span class="kw">AS</span> muncipality,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    csv.<span class="ot">"Principal.cultivo.leñoso.de.regadío..2011"</span> <span class="kw">AS</span> woody_crops_2011,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    shape.geom</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    municipalities_agp <span class="kw">AS</span> shape</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    malaga_cifras <span class="kw">AS</span> csv</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="kw">ON</span> </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="ot">"Id_Municipio"</span> <span class="op">=</span> codigo:<span class="ch">:integer</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> <span class="ot">"Principal.cultivo.leñoso.de.regadío..2011"</span> <span class="kw">NOT</span> <span class="kw">IN</span> (<span class="st">'-'</span>,<span class="st">'..'</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p><img src="../media/tyc_imfe_exercise_imfe_2.png" class="img-fluid"></p>
 
 
 </section>
