@@ -1,5 +1,5 @@
 ---
-title: "Posts: Notes and use cases"
+title: "Motivation for posts"
 listing:
   contents: posts
   categories: true
