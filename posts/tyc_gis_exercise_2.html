@@ -157,7 +157,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link active" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#exercise-2-a" id="toc-exercise-2-a" class="nav-link active" data-scroll-target="#exercise-2-a">Exercise 2 A</a>
+  <ul class="collapse">
   <li><a href="#postgis" id="toc-postgis" class="nav-link" data-scroll-target="#postgis">PostGIs</a>
   <ul class="collapse">
   <li><a href="#joins-adding-regions-data-using-joins" id="toc-joins-adding-regions-data-using-joins" class="nav-link" data-scroll-target="#joins-adding-regions-data-using-joins">Joins: Adding regions data using joins</a></li>
@@ -167,11 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#joining-data-to-the-municipalities-from-regions" id="toc-joining-data-to-the-municipalities-from-regions" class="nav-link" data-scroll-target="#joining-data-to-the-municipalities-from-regions">Joining data to the municipalities from regions</a></li>
   <li><a href="#uniting-the-municipalities-geometry-by-region" id="toc-uniting-the-municipalities-geometry-by-region" class="nav-link" data-scroll-target="#uniting-the-municipalities-geometry-by-region">Uniting the municipalities geometry by region</a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a>
-  <ul class="collapse">
-  <li><a href="#municipalities-choropleth-map" id="toc-municipalities-choropleth-map" class="nav-link" data-scroll-target="#municipalities-choropleth-map">Municipalities choropleth map</a></li>
-  <li><a href="#region-choropleth-map" id="toc-region-choropleth-map" class="nav-link" data-scroll-target="#region-choropleth-map">Region choropleth map</a></li>
-  <li><a href="#region-proportional-map" id="toc-region-proportional-map" class="nav-link" data-scroll-target="#region-proportional-map">Region proportional map</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#for-imfe" id="toc-for-imfe" class="nav-link" data-scroll-target="#for-imfe">For IMFE</a>
@@ -225,8 +222,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="exercise-2" class="level1">
-<h1>Exercise 2</h1>
+<section id="exercise-2-a" class="level1">
+<h1>Exercise 2 A</h1>
 <p>Complete the information from the MUNICIPIOS.shp layer with the information contained in the tables COMARAS_CASTELLON and POBLACION_CASTELLON. Represent the regions from the province of Castellon and the population grouped in 5 categories according to the natural Jenk breaks.</p>
 <p>Layers to use:</p>
 <ul>
@@ -237,11 +234,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>PostGIS is the CLI approach, while QGIS is the GUI approach.</p>
 <p><img src="../media/choropleth_map.png" class="img-fluid"></p>
 <p><img src="../media/tyc_imfe_exercise_result_table.png" class="img-fluid"></p>
-</section>
-<section id="postgis" class="level1">
-<h1>PostGIs</h1>
-<section id="joins-adding-regions-data-using-joins" class="level2">
-<h2 class="anchored" data-anchor-id="joins-adding-regions-data-using-joins">Joins: Adding regions data using joins</h2>
+<section id="postgis" class="level2">
+<h2 class="anchored" data-anchor-id="postgis">PostGIs</h2>
+<section id="joins-adding-regions-data-using-joins" class="level3">
+<h3 class="anchored" data-anchor-id="joins-adding-regions-data-using-joins">Joins: Adding regions data using joins</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>CREATE TABLE join_castellon_comarca_pop AS</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>SELECT </span>
@@ -259,8 +255,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    poblacion_castellon AS p ON p.<span class="st">"INE"</span> <span class="ot">=</span> m.<span class="st">"CODIGO_INE"</span><span class="sc">::</span>integer;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="groupping-summarising-data-by-regions" class="level2">
-<h2 class="anchored" data-anchor-id="groupping-summarising-data-by-regions">Groupping: Summarising data by regions</h2>
+<section id="groupping-summarising-data-by-regions" class="level3">
+<h3 class="anchored" data-anchor-id="groupping-summarising-data-by-regions">Groupping: Summarising data by regions</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>CREATE TABLE castellon_comarcas_pop_2017 AS</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>SELECT</span>
@@ -273,29 +269,117 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="qgis" class="level1">
-<h1>QGIS</h1>
-<section id="joining-data-to-the-municipalities-from-regions" class="level2">
-<h2 class="anchored" data-anchor-id="joining-data-to-the-municipalities-from-regions">Joining data to the municipalities from regions</h2>
+<section id="qgis" class="level2">
+<h2 class="anchored" data-anchor-id="qgis">QGIS</h2>
+<section id="joining-data-to-the-municipalities-from-regions" class="level3">
+<h3 class="anchored" data-anchor-id="joining-data-to-the-municipalities-from-regions">Joining data to the municipalities from regions</h3>
 <p><img src="../media/tyc_imfe_exercise_2_1.png" class="img-fluid"></p>
 </section>
-<section id="uniting-the-municipalities-geometry-by-region" class="level2">
-<h2 class="anchored" data-anchor-id="uniting-the-municipalities-geometry-by-region">Uniting the municipalities geometry by region</h2>
+<section id="uniting-the-municipalities-geometry-by-region" class="level3">
+<h3 class="anchored" data-anchor-id="uniting-the-municipalities-geometry-by-region">Uniting the municipalities geometry by region</h3>
 <p><img src="../media/tyc_imfe_exercise_2_2.png" class="img-fluid"></p>
 </section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<section id="municipalities-choropleth-map" class="level3">
-<h3 class="anchored" data-anchor-id="municipalities-choropleth-map">Municipalities choropleth map</h3>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<section id="municipalities-choropleth-map" class="level4">
+<h4 class="anchored" data-anchor-id="municipalities-choropleth-map">Municipalities choropleth map</h4>
 <p><img src="../media/choropleth_map_non_agg.png" class="img-fluid"></p>
 </section>
-<section id="region-choropleth-map" class="level3">
-<h3 class="anchored" data-anchor-id="region-choropleth-map">Region choropleth map</h3>
+<section id="region-choropleth-map" class="level4">
+<h4 class="anchored" data-anchor-id="region-choropleth-map">Region choropleth map</h4>
 <p><img src="../media/choropleth_map.png" class="img-fluid"></p>
 </section>
-<section id="region-proportional-map" class="level3">
-<h3 class="anchored" data-anchor-id="region-proportional-map">Region proportional map</h3>
-<p><img src="../media/proportional_map.png" class="img-fluid" alt="Choropleth based on the population of provinces"></p>
+<section id="region-proportional-map" class="level4">
+<h4 class="anchored" data-anchor-id="region-proportional-map">Region proportional map</h4>
+<p><img src="../media/proportional_map.png" class="img-fluid" alt="Choropleth based on the population of provinces"> # Exercise 2 B</p>
+<p>Obtén una capa llamada AVES.shp, a partir de los datos ornitológicos recogidos en el informe “general.csv”, que fueron obtenidos en el S.C. ETRS89 UTM 30N (EPSG25830) durante los trabajos de campo de octubre de 2013.</p>
+<p>Descargar del IGN el BCN 200 de la comunidad de Madrid y utilizar la capa de núcleos de población BCN200_0501S_NUC_POB.shp. Las capacas facilitadas se encuentran en el S.C. ETRS89 EPGS 4258.</p>
+<p>Obtener cual es el avistamiento más próximo a cada núcleo de población del ámbito de estudio.</p>
+<p>Nota: Para realizar cálculos de distancia es importante que todas las capas se encuentran en un SIstema de Coordenadas Proyecto (UTM). Capas a utilizar:</p>
+<ul>
+<li>Ambiente_Estudio.shp</li>
+<li>BCN200_0501S_NUC_POB.shp</li>
+<li>general.csv</li>
+</ul>
+<p>Importing the data using ogr2ogr. Unlike the QGIS workflow, PostGIS allows to have different SRID from different tables in the same schema.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>PGCLIENTENCODING<span class="ot">=</span>LATIN1 ogr2ogr <span class="sc">-</span>f PostgreSQL PG<span class="sc">:</span><span class="st">"host=localhost port=25432 user=docker password=docker dbname=gis schemas=tycgis"</span> BCN200_0501S_NUC_POB.shp <span class="sc">-</span>nln nucleo_urbano <span class="sc">-</span>lco GEOMETRY_NAME<span class="ot">=</span>geom <span class="sc">-</span>nlt PROMOTE_TO_MULTI</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>PGCLIENTENCODING<span class="ot">=</span>LATIN1 ogr2ogr <span class="sc">-</span>f PostgreSQL PG<span class="sc">:</span><span class="st">"host=localhost port=25432 user=docker password=docker dbname=gis schemas=tycgis"</span> AMBITO_ESTUDIO_25830.shp <span class="sc">-</span>nln ambito_estudio <span class="sc">-</span>lco GEOMETRY_NAME<span class="ot">=</span>geom <span class="sc">-</span>nlt PROMOTE_TO_MULTI</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">--- Rename the General table to its lowercase option, so there is no need to use quotes to call the table.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ALTER</span> <span class="kw">TABLE</span> <span class="ot">"General"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RENAME</span> <span class="kw">TO</span> general;</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">--- Create the table</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> general_postgis <span class="kw">AS</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">id</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    st_setsrid(</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        st_makepoint(<span class="ot">"X_UTM"</span>,<span class="ot">"Y_UTM"</span>), <span class="co">--- create Point</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>            <span class="dv">25830</span>) <span class="kw">AS</span> geom_postgis <span class="co">--- assign SRID</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> general;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> nucleo_aves_ambito <span class="kw">AS</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span> nucleo_urbano_25830 <span class="kw">AS</span> (</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a> nucleo_urbano.<span class="op">*</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a> st_transform(nucleo_urbano.geom,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    st_srid(ambito_estudio.geom)) <span class="kw">AS</span> geom_25830 </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    nucleo_urbano,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    ambito_estudio</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>) <span class="co">---- table that includes the geometry reprojected at 25830</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">DISTINCT</span> <span class="kw">ON</span> (<span class="kw">id</span>) <span class="co">--- very important, otherwise, duplicates</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    nucleo_urbano_25830.<span class="op">*</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    nucleo_urbano_25830,</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    ambito_estudio</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> st_intersects(nucleo_urbano_25830.geom_25830,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                    ambito_estudio.geom);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> aves_closest_postgis <span class="kw">AS</span>    </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span> nucleo_urbano_25830 <span class="kw">AS</span> (</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a> nucleo_urbano.<span class="op">*</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a> st_transform(nucleo_urbano.geom,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    st_srid(ambito_estudio.geom)) <span class="kw">AS</span> geom_25830 </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    nucleo_urbano,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    ambito_estudio</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>),<span class="co">---- table that includes the geometry reprojected at 25830</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>nucleo_ambito <span class="kw">AS</span> (</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">DISTINCT</span> <span class="kw">ON</span> (<span class="kw">id</span>) <span class="co">--- very important, otherwise, duplicates</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    nucleo_urbano_25830.<span class="op">*</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    nucleo_urbano_25830,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    ambito_estudio</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">WHERE</span> st_intersects(nucleo_urbano_25830.geom_25830,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                    ambito_estudio.geom))</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span>  </span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    nucleo_ambito.etiqueta <span class="kw">AS</span> nucleo,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    st_transform(aves.geom,<span class="dv">4326</span>):<span class="ch">:geography</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;-&gt;</span> </span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    st_transform(nucleo_ambito.geom_25830, <span class="dv">4326</span>):<span class="ch">:geography</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">AS</span> distance, <span class="co">--- &lt;-&gt; only works with 4326, it returns m</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    aves.<span class="op">*</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> nucleo_ambito</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> LATERAL</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    (<span class="kw">SELECT</span> <span class="ot">"N_comun"</span>,</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>                <span class="ot">"Hora"</span>,</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>                <span class="ot">"Fecha"</span>,</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>                aves.geom</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>     <span class="kw">FROM</span> </span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>        general_postgis <span class="kw">AS</span> aves</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>     <span class="kw">ORDER</span> <span class="kw">BY</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>        aves.geom <span class="op">&lt;-&gt;</span> nucleo_ambito.geom_25830</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>     <span class="kw">LIMIT</span> <span class="dv">1</span>)   <span class="kw">AS</span> aves <span class="kw">ON</span> <span class="kw">true</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 </section>
 </section>
 </section>
@@ -311,37 +395,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="joins-adding-district-data-using-joins" class="level2">
 <h2 class="anchored" data-anchor-id="joins-adding-district-data-using-joins">Joins: Adding district data using joins</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>CREATE TABLE join_agp_comarca_waste AS</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>SELECT </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    m.<span class="st">"codigo"</span>,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    m.nombre as municipality,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    m.padron as population,</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    c.nombre as region,</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    c.codigo as region_cod,</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    w.<span class="st">"RSU Toneladas Año"</span> as waste_2012,</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    m.geom as geom,</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_centroid</span>(m.geom) as pt_geom</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>FROM </span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    agp_municipalities AS m</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>LEFT JOIN</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    agp_comarcas AS c ON m.cod_comarc <span class="ot">=</span> c.codigo</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>LEFT JOIN </span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    agp_waste AS w ON w.<span class="st">"ID_Municipio"</span><span class="sc">::</span>integer <span class="ot">=</span> m.<span class="st">"codigo"</span><span class="sc">::</span>integer;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> join_agp_comarca_waste <span class="kw">AS</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    m.<span class="ot">"codigo"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    m.nombre <span class="kw">as</span> municipality,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    m.padron <span class="kw">as</span> population,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    c.nombre <span class="kw">as</span> region,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    c.codigo <span class="kw">as</span> region_cod,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    w.<span class="ot">"RSU Toneladas Año"</span> <span class="kw">as</span> waste_2012,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    m.geom <span class="kw">as</span> geom,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    st_centroid(m.geom) <span class="kw">as</span> pt_geom</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    agp_municipalities <span class="kw">AS</span> m</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    agp_comarcas <span class="kw">AS</span> c <span class="kw">ON</span> m.cod_comarc <span class="op">=</span> c.codigo</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> </span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    agp_waste <span class="kw">AS</span> w <span class="kw">ON</span> w.<span class="ot">"ID_Municipio"</span>:<span class="ch">:integer</span> <span class="op">=</span> m.<span class="ot">"codigo"</span>:<span class="ch">:integer</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="groupping-summarising-data" class="level2">
 <h2 class="anchored" data-anchor-id="groupping-summarising-data">Groupping: Summarising data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>CREATE TABLE agp_comarcas_waste_2012 AS </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>SELECT </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    region,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_union</span>(geom) as geom,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_centroid</span>(<span class="fu">st_union</span>(geom)) as pt_geom,</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">SUM</span>(waste_2012<span class="sc">::</span>float) AS waste_2012,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">SUM</span>(population<span class="sc">::</span>float) AS padron_2012,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    region_cod<span class="sc">::</span>integer</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>FROM join_agp_comarca_waste</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>GROUP BY region_cod, region;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> agp_comarcas_waste_2012 <span class="kw">AS</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    region,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    st_union(geom) <span class="kw">as</span> geom,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    st_centroid(st_union(geom)) <span class="kw">as</span> pt_geom,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">SUM</span>(waste_2012:<span class="ch">:float</span>) <span class="kw">AS</span> waste_2012,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">SUM</span>(population:<span class="ch">:float</span>) <span class="kw">AS</span> padron_2012,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    region_cod:<span class="ch">:integer</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> join_agp_comarca_waste</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> region_cod, region;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="results-1" class="level2">

@@ -157,7 +157,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#postgis" id="toc-postgis" class="nav-link active" data-scroll-target="#postgis">PostGIS</a>
+  <li><a href="#exercise-a" id="toc-exercise-a" class="nav-link active" data-scroll-target="#exercise-a">Exercise A</a>
+  <ul class="collapse">
+  <li><a href="#postgis" id="toc-postgis" class="nav-link" data-scroll-target="#postgis">PostGIS</a>
   <ul class="collapse">
   <li><a href="#total-number-of-points-of-interest-poi-per-region" id="toc-total-number-of-points-of-interest-poi-per-region" class="nav-link" data-scroll-target="#total-number-of-points-of-interest-poi-per-region">Total number of points of interest (POI) per region</a></li>
   <li><a href="#closest-poi-for-each-urban-center." id="toc-closest-poi-for-each-urban-center." class="nav-link" data-scroll-target="#closest-poi-for-each-urban-center.">Closest POI for each urban center.</a></li>
@@ -166,6 +168,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#total-number-of-points-of-interest-poi-per-region-1" id="toc-total-number-of-points-of-interest-poi-per-region-1" class="nav-link" data-scroll-target="#total-number-of-points-of-interest-poi-per-region-1">Total number of points of interest (POI) per region</a></li>
   <li><a href="#closest-poi-for-each-urban-center.-1" id="toc-closest-poi-for-each-urban-center.-1" class="nav-link" data-scroll-target="#closest-poi-for-each-urban-center.-1">Closest POI for each urban center.</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#exercise-b" id="toc-exercise-b" class="nav-link" data-scroll-target="#exercise-b">Exercise B</a>
+  <ul class="collapse">
+  <li><a href="#postgis-1" id="toc-postgis-1" class="nav-link" data-scroll-target="#postgis-1">PostGIS</a></li>
   </ul></li>
   <li><a href="#for-imfe" id="toc-for-imfe" class="nav-link" data-scroll-target="#for-imfe">For Imfe</a>
   <ul class="collapse">
@@ -229,10 +236,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Lugares_interes_castellon.shp (POI)</li>
 <li>MUNICIPIOS.shp. (municipalities)</li>
 </ul>
-<section id="postgis" class="level1">
-<h1>PostGIS</h1>
-<section id="total-number-of-points-of-interest-poi-per-region" class="level2">
-<h2 class="anchored" data-anchor-id="total-number-of-points-of-interest-poi-per-region">Total number of points of interest (POI) per region</h2>
+<section id="exercise-a" class="level1">
+<h1>Exercise A</h1>
+<section id="postgis" class="level2">
+<h2 class="anchored" data-anchor-id="postgis">PostGIS</h2>
+<section id="total-number-of-points-of-interest-poi-per-region" class="level3">
+<h3 class="anchored" data-anchor-id="total-number-of-points-of-interest-poi-per-region">Total number of points of interest (POI) per region</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> poi_comarca_count <span class="kw">AS</span> </span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span> poi_comarca <span class="kw">AS</span> (<span class="kw">SELECT</span> </span>
@@ -256,8 +265,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">GROUP</span> <span class="kw">BY</span> comarca,poi_comarca.comarca_geom;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="closest-poi-for-each-urban-center." class="level2">
-<h2 class="anchored" data-anchor-id="closest-poi-for-each-urban-center.">Closest POI for each urban center.</h2>
+<section id="closest-poi-for-each-urban-center." class="level3">
+<h3 class="anchored" data-anchor-id="closest-poi-for-each-urban-center.">Closest POI for each urban center.</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> poi_urban_center <span class="kw">AS</span>  </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span>  <span class="kw">DISTINCT</span> <span class="kw">ON</span> (urban_center)</span>
@@ -278,13 +287,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="qgis" class="level1">
-<h1>QGIS</h1>
-<section id="total-number-of-points-of-interest-poi-per-region-1" class="level2">
-<h2 class="anchored" data-anchor-id="total-number-of-points-of-interest-poi-per-region-1">Total number of points of interest (POI) per region</h2>
+<section id="qgis" class="level2">
+<h2 class="anchored" data-anchor-id="qgis">QGIS</h2>
+<section id="total-number-of-points-of-interest-poi-per-region-1" class="level3">
+<h3 class="anchored" data-anchor-id="total-number-of-points-of-interest-poi-per-region-1">Total number of points of interest (POI) per region</h3>
 </section>
-<section id="closest-poi-for-each-urban-center.-1" class="level2">
-<h2 class="anchored" data-anchor-id="closest-poi-for-each-urban-center.-1">Closest POI for each urban center.</h2>
+<section id="closest-poi-for-each-urban-center.-1" class="level3">
+<h3 class="anchored" data-anchor-id="closest-poi-for-each-urban-center.-1">Closest POI for each urban center.</h3>
+</section>
+</section>
+</section>
+<section id="exercise-b" class="level1">
+<h1>Exercise B</h1>
+<section id="postgis-1" class="level2">
+<h2 class="anchored" data-anchor-id="postgis-1">PostGIS</h2>
+<p>Calculate the total number of bird sightings for each municipality</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> sigthings_municipalities <span class="kw">AS</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    study_area.etiqueta,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(aves.<span class="op">*</span>),</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    study_area.geom </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    general_postgis <span class="kw">AS</span> aves</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    ambito_estudio <span class="kw">AS</span> study_area</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">ON</span> st_intersects(aves.geom, study_area.geom)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    study_area.etiqueta, study_area.geom;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="for-imfe" class="level1">
@@ -299,43 +330,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="total-number-of-points-of-interest-poi-per-region-2" class="level2">
 <h2 class="anchored" data-anchor-id="total-number-of-points-of-interest-poi-per-region-2">Total number of points of interest (POI) per region</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>CREATE TABLE agp_city_libraries AS</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>SELECT </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    n.<span class="st">"NOMBARRIO"</span> AS neighbor,</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(l.id) AS total_library,</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    n.geom AS geom_neighbor</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>FROM agp_city_library AS l</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>JOIN agp_city_neighbor AS n </span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    ON <span class="fu">st_intersects</span>(l.geom, n.geom)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>GROUP BY  <span class="st">"NOMBARRIO"</span>, n.geom</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ORDER BY total_library DESC;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> agp_city_libraries <span class="kw">AS</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    n.<span class="ot">"NOMBARRIO"</span> <span class="kw">AS</span> neighbor,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">count</span>(l.<span class="kw">id</span>) <span class="kw">AS</span> total_library,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    n.geom <span class="kw">AS</span> geom_neighbor</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> agp_city_library <span class="kw">AS</span> l</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> agp_city_neighbor <span class="kw">AS</span> n </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">ON</span> st_intersects(l.geom, n.geom)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span>  <span class="ot">"NOMBARRIO"</span>, n.geom</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> total_library <span class="kw">DESC</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="../media/tyc_imfe_exercise_3_4.png" class="img-fluid"></p>
 </section>
 <section id="closest-poi-for-each-urban-center.-2" class="level2">
 <h2 class="anchored" data-anchor-id="closest-poi-for-each-urban-center.-2">Closest POI for each urban center.</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>CREATE TABLE library_bus_agp AS</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>WITH agp_geom_bus AS</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>(SELECT </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="sc">*</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>     <span class="fu">st_transform</span>(</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">st_setsrid</span>(</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">st_point</span>(lon<span class="sc">::</span>double precision, lat<span class="sc">::</span>double precision),<span class="dv">4326</span>),<span class="dv">25830</span>) AS geom</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    FROM  agp_city_bus) </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>SELECT DISTINCT <span class="fu">ON</span> (l.<span class="st">"NOMBRE"</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    bs.<span class="st">"nombreParada"</span> AS bus_stop,</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    l.<span class="st">"NOMBRE"</span> AS library,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(l.geom <span class="ot">&lt;-</span><span class="er">&gt;</span> bs.geom) AS distance,</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    l.geom AS library_geom,</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    bs.geom AS bus_geom</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>FROM agp_city_library AS l</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>LEFT JOIN LATERAL</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>(SELECT </span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="sc">*</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    FROM  agp_geom_bus AS b</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    ORDER BY b.geom <span class="ot">&lt;-</span><span class="er">&gt;</span> l.geom</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    LIMIT <span class="dv">1</span>) AS bs ON true;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> library_bus_agp <span class="kw">AS</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">WITH</span> agp_geom_bus <span class="kw">AS</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>(<span class="kw">SELECT</span> </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>     st_transform(</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        st_setsrid(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>            st_point(lon:<span class="ch">:double</span> <span class="dt">precision</span>, lat:<span class="ch">:double</span> <span class="dt">precision</span>),<span class="dv">4326</span>),<span class="dv">25830</span>) <span class="kw">AS</span> geom</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span>  agp_city_bus) </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> <span class="kw">ON</span> (l.<span class="ot">"NOMBRE"</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    bs.<span class="ot">"nombreParada"</span> <span class="kw">AS</span> bus_stop,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    l.<span class="ot">"NOMBRE"</span> <span class="kw">AS</span> <span class="kw">library</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>(l.geom <span class="op">&lt;-&gt;</span> bs.geom) <span class="kw">AS</span> distance,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    l.geom <span class="kw">AS</span> library_geom,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    bs.geom <span class="kw">AS</span> bus_geom</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> agp_city_library <span class="kw">AS</span> l</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="kw">LEFT</span> <span class="kw">JOIN</span> LATERAL</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>(<span class="kw">SELECT</span> </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span>  agp_geom_bus <span class="kw">AS</span> b</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">ORDER</span> <span class="kw">BY</span> b.geom <span class="op">&lt;-&gt;</span> l.geom</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">LIMIT</span> <span class="dv">1</span>) <span class="kw">AS</span> bs <span class="kw">ON</span> <span class="kw">true</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="../media/tyc_imfe_exercise_3_3.png" class="img-fluid"></p>
 
