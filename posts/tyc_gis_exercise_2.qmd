@@ -132,32 +132,6 @@ FROM general;
 
 ```{sql}
 #| eval: false
-#| code-summary: "Step 4:"
-
-CREATE TABLE nucleo_aves_ambito AS
-WITH nucleo_urbano_25830 AS (
-SELECT 
- nucleo_urbano.*,
- st_transform(nucleo_urbano.geom,
- 	st_srid(ambito_estudio.geom)) AS geom_25830 
-FROM 
- 	nucleo_urbano,
- 	ambito_estudio
-) ---- table that includes the geometry reprojected at 25830
-SELECT 
-	DISTINCT ON (id) --- very important, otherwise, duplicates
-	nucleo_urbano_25830.*
-FROM 
-	nucleo_urbano_25830,
-	ambito_estudio
-WHERE st_intersects(nucleo_urbano_25830.geom_25830,
-					ambito_estudio.geom);
-```
-
-
-
-```{sql}
-#| eval: false
 #| code-summary: "Step 4 Stimate the closest sighting to each urban center in the study area"
 CREATE TABLE aves_closest_postgis AS	
 WITH nucleo_urbano_25830 AS (
