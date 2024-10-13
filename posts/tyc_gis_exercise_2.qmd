@@ -85,6 +85,7 @@ GROUP BY comarca;
 #### Region proportional map
 
 ![](/media/proportional_map.png){fig-alt="Choropleth based on the population of provinces"}
+
 # Exercise 2 B 
 
 Obtén una capa llamada AVES.shp, a partir de los datos ornitológicos recogidos en el informe "general.csv", que fueron obtenidos en el S.C. ETRS89 UTM 30N  (EPSG25830) durante los trabajos de campo de octubre de 2013.
