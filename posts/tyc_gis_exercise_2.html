@@ -171,6 +171,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#exercise-2-b" id="toc-exercise-2-b" class="nav-link" data-scroll-target="#exercise-2-b">Exercise 2 B</a></li>
   <li><a href="#for-imfe" id="toc-for-imfe" class="nav-link" data-scroll-target="#for-imfe">For IMFE</a>
   <ul class="collapse">
   <li><a href="#joins-adding-district-data-using-joins" id="toc-joins-adding-district-data-using-joins" class="nav-link" data-scroll-target="#joins-adding-district-data-using-joins">Joins: Adding district data using joins</a></li>
@@ -291,7 +292,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="region-proportional-map" class="level4">
 <h4 class="anchored" data-anchor-id="region-proportional-map">Region proportional map</h4>
-<p><img src="../media/proportional_map.png" class="img-fluid" alt="Choropleth based on the population of provinces"> # Exercise 2 B</p>
+<p><img src="../media/proportional_map.png" class="img-fluid" alt="Choropleth based on the population of provinces"></p>
+</section>
+</section>
+</section>
+</section>
+<section id="exercise-2-b" class="level1">
+<h1>Exercise 2 B</h1>
 <p>Obtén una capa llamada AVES.shp, a partir de los datos ornitológicos recogidos en el informe “general.csv”, que fueron obtenidos en el S.C. ETRS89 UTM 30N (EPSG25830) durante los trabajos de campo de octubre de 2013.</p>
 <p>Descargar del IGN el BCN 200 de la comunidad de Madrid y utilizar la capa de núcleos de población BCN200_0501S_NUC_POB.shp. Las capacas facilitadas se encuentran en el S.C. ETRS89 EPGS 4258.</p>
 <p>Obtener cual es el avistamiento más próximo a cada núcleo de población del ámbito de estudio.</p>
@@ -379,9 +386,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>        aves.geom <span class="op">&lt;-&gt;</span> nucleo_ambito.geom_25830</span>
 <span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>     <span class="kw">LIMIT</span> <span class="dv">1</span>)   <span class="kw">AS</span> aves <span class="kw">ON</span> <span class="kw">true</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-</section>
-</section>
 </section>
 <section id="for-imfe" class="level1">
 <h1>For IMFE</h1>
