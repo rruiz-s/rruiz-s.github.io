@@ -41,9 +41,9 @@ Layers to be used:
 - Lugares_interes_castellon.shp  (POI)
 - MUNICIPIOS.shp. (municipalities)
 
-
-# PostGIS
-## Total number of points of interest (POI) per region
+# Exercise A
+## PostGIS
+### Total number of points of interest (POI) per region
 
 ```{sql}
 #| eval: FALSE
@@ -69,7 +69,7 @@ LEFT JOIN
 	GROUP BY comarca,poi_comarca.comarca_geom;
 ```
 
-## Closest POI for each urban center.
+### Closest POI for each urban center.
 
 ```{sql}
 #| eval: FALSE
@@ -91,11 +91,37 @@ LEFT JOIN LATERAL
 	LIMIT 1) AS poi ON true;
 ```
 
-# QGIS
+## QGIS
 
-## Total number of points of interest (POI) per region
+### Total number of points of interest (POI) per region
 
-##  Closest POI for each urban center.
+###  Closest POI for each urban center.
+
+# Exercise B
+
+## PostGIS
+
+Calculate the total number of bird sightings for each municipality
+
+```{sql}
+#| eval: false
+#| code-summary: Exercise 3
+
+CREATE TABLE sigthings_municipalities AS
+SELECT
+	study_area.etiqueta,
+	count(aves.*),
+	study_area.geom 
+FROM 
+	general_postgis AS aves
+JOIN 
+	ambito_estudio AS study_area
+ON st_intersects(aves.geom, study_area.geom)
+GROUP BY 
+	study_area.etiqueta, study_area.geom;
+
+```
+
 
 # For Imfe
 
@@ -109,7 +135,7 @@ The layers used are:
 
 ## Total number of points of interest (POI) per region
 
-```{r}
+```{sql}
 #| eval: false
 CREATE TABLE agp_city_libraries AS
 SELECT 
@@ -128,7 +154,7 @@ ORDER BY total_library DESC;
 
 ## Closest POI for each urban center.
 
-```{r}
+```{sql}
 #| eval: false
 CREATE TABLE library_bus_agp AS
 WITH agp_geom_bus AS

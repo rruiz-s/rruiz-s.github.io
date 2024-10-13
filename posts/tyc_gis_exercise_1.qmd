@@ -68,6 +68,7 @@ We use the tool "join" to link the Corine Land Over (CLC_ambito.shp) layer to it
 
 ```{r}
 #| code-summary: In spanish
+#| eval: false
 
 cat("Utilizamos la herramienta join para relacionar la capa del Corine Land Cover (CLC_ambito.shp) con su leyenda (hoja Excel CLC2000legend.xls). Llama 'CLC_LEYEDA.shp' a la capa resultante de la unión 
 

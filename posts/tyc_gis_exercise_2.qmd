@@ -10,7 +10,7 @@ categories:
   - TYC GIS-IMFE 
 ---
 
-# Exercise 2
+# Exercise 2 A 
 
 Complete the information from the MUNICIPIOS.shp layer with the information contained in the tables COMARAS_CASTELLON and POBLACION_CASTELLON. Represent the regions from the province of Castellon and the population grouped in 5 categories according to the natural Jenk breaks.
 
@@ -26,9 +26,9 @@ PostGIS is the CLI approach, while QGIS is the GUI approach.
 
 ![](/media/tyc_imfe_exercise_result_table.png)
 
-# PostGIs
+## PostGIs
 
-## Joins: Adding regions data using joins
+### Joins: Adding regions data using joins
 
 ```{r}
 #| eval: FALSE
@@ -48,7 +48,7 @@ LEFT JOIN
 	poblacion_castellon AS p ON p."INE" = m."CODIGO_INE"::integer;
 ```
 
-## Groupping: Summarising data by regions
+### Groupping: Summarising data by regions
 
 ```{r}
 #| eval: FALSE
@@ -62,29 +62,140 @@ FROM join_castellon_comarca_pop  AS a
 GROUP BY comarca;
 ```
 
-# QGIS
+## QGIS
 
-## Joining data to the municipalities from regions
+### Joining data to the municipalities from regions
 
 ![](/media/tyc_imfe_exercise_2_1.png)
 
-## Uniting the municipalities geometry by region
+### Uniting the municipalities geometry by region
 
 ![](/media/tyc_imfe_exercise_2_2.png)
 
-## Results
+### Results
 
-### Municipalities choropleth map
+#### Municipalities choropleth map
 
 ![](/media/choropleth_map_non_agg.png)
 
-### Region choropleth map
+#### Region choropleth map
 
 ![](/media/choropleth_map.png)
 
-### Region proportional map
+#### Region proportional map
 
 ![](/media/proportional_map.png){fig-alt="Choropleth based on the population of provinces"}
+# Exercise 2 B 
+
+Obtén una capa llamada AVES.shp, a partir de los datos ornitológicos recogidos en el informe "general.csv", que fueron obtenidos en el S.C. ETRS89 UTM 30N  (EPSG25830) durante los trabajos de campo de octubre de 2013.
+
+Descargar del IGN el BCN 200 de la comunidad de Madrid y utilizar la capa de núcleos de población BCN200_0501S_NUC_POB.shp. Las capacas facilitadas se encuentran en el S.C. ETRS89 EPGS 4258.
+
+Obtener cual es el avistamiento más próximo a cada núcleo de población del ámbito de estudio.
+
+Nota: Para realizar cálculos de distancia es importante que todas las capas se encuentran en un SIstema de Coordenadas Proyecto (UTM).
+Capas a utilizar:
+
+- Ambiente_Estudio.shp
+- BCN200_0501S_NUC_POB.shp
+- general.csv
+
+Importing the data using ogr2ogr. Unlike the QGIS workflow, PostGIS allows to have different SRID from different tables in the same schema.
+
+```{r}
+#| eval: false
+
+PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:"host=localhost port=25432 user=docker password=docker dbname=gis schemas=tycgis" BCN200_0501S_NUC_POB.shp -nln nucleo_urbano -lco GEOMETRY_NAME=geom -nlt PROMOTE_TO_MULTI
+
+PGCLIENTENCODING=LATIN1 ogr2ogr -f PostgreSQL PG:"host=localhost port=25432 user=docker password=docker dbname=gis schemas=tycgis" AMBITO_ESTUDIO_25830.shp -nln ambito_estudio -lco GEOMETRY_NAME=geom -nlt PROMOTE_TO_MULTI
+```
+
+```{sql}
+#| eval: false
+#| code-summary: "Step 3: importing csv and transform into point layer"
+
+--- Rename the General table to its lowercase option, so there is no need to use quotes to call the table.
+ALTER TABLE "General"
+RENAME TO general;
+--- Create the table
+CREATE TABLE general_postgis AS
+SELECT 
+	id,
+	st_setsrid(
+		st_makepoint("X_UTM","Y_UTM"), --- create Point
+			25830) AS geom_postgis --- assign SRID
+FROM general;
+
+```
+
+
+```{sql}
+#| eval: false
+#| code-summary: "Step 4:"
+
+CREATE TABLE nucleo_aves_ambito AS
+WITH nucleo_urbano_25830 AS (
+SELECT 
+ nucleo_urbano.*,
+ st_transform(nucleo_urbano.geom,
+ 	st_srid(ambito_estudio.geom)) AS geom_25830 
+FROM 
+ 	nucleo_urbano,
+ 	ambito_estudio
+) ---- table that includes the geometry reprojected at 25830
+SELECT 
+	DISTINCT ON (id) --- very important, otherwise, duplicates
+	nucleo_urbano_25830.*
+FROM 
+	nucleo_urbano_25830,
+	ambito_estudio
+WHERE st_intersects(nucleo_urbano_25830.geom_25830,
+					ambito_estudio.geom);
+```
+
+
+
+```{sql}
+#| eval: false
+#| code-summary: "Step 4 Stimate the closest sighting to each urban center in the study area"
+CREATE TABLE aves_closest_postgis AS	
+WITH nucleo_urbano_25830 AS (
+SELECT 
+ nucleo_urbano.*,
+ st_transform(nucleo_urbano.geom,
+ 	st_srid(ambito_estudio.geom)) AS geom_25830 
+FROM 
+ 	nucleo_urbano,
+ 	ambito_estudio
+),---- table that includes the geometry reprojected at 25830
+nucleo_ambito AS (
+SELECT 
+	DISTINCT ON (id) --- very important, otherwise, duplicates
+	nucleo_urbano_25830.*
+FROM 
+	nucleo_urbano_25830,
+	ambito_estudio
+  WHERE st_intersects(nucleo_urbano_25830.geom_25830,
+					ambito_estudio.geom))
+SELECT  
+	nucleo_ambito.etiqueta AS nucleo,
+	st_transform(aves.geom,4326)::geography
+	<-> 
+	st_transform(nucleo_ambito.geom_25830, 4326)::geography
+	AS distance, --- <-> only works with 4326, it returns m
+	aves.*
+FROM nucleo_ambito
+LEFT JOIN LATERAL
+    (SELECT "N_comun",
+                "Hora",
+                "Fecha",
+                aves.geom
+     FROM 
+        general_postgis AS aves
+     ORDER BY
+        aves.geom <-> nucleo_ambito.geom_25830
+     LIMIT 1) 	AS aves ON true;
+```
 
 # For IMFE
 
@@ -98,7 +209,7 @@ These are the layers:
 
 ## Joins: Adding district data using joins
 
-```{r}
+```{sql}
 #| eval: FALSE
 CREATE TABLE join_agp_comarca_waste AS
 SELECT 
@@ -120,7 +231,7 @@ LEFT JOIN
 
 ## Groupping: Summarising data 
 
-```{r}
+```{sql}
 #| eval: FALSE
 CREATE TABLE agp_comarcas_waste_2012 AS 
 SELECT 
