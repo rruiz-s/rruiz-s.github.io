@@ -123,6 +123,7 @@ GROUP BY
 ```
 
 ![](/media/aves_sighting.png)
+
 # For Imfe
 
 For this case, it is the council of the city center of Málaga which provides the data. 

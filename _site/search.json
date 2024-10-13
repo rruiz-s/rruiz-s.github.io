@@ -550,7 +550,7 @@
     "href": "posts/tyc_gis_exercise_3.html#postgis-1",
     "title": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions",
     "section": "PostGIS",
-    "text": "PostGIS\nCalculate the total number of bird sightings for each municipality\n\nCREATE TABLE sigthings_municipalities AS\nSELECT\n    study_area.etiqueta,\n    count(aves.*),\n    study_area.geom \nFROM \n    general_postgis AS aves\nJOIN \n    ambito_estudio AS study_area\nON st_intersects(aves.geom, study_area.geom)\nGROUP BY \n    study_area.etiqueta, study_area.geom;\n\n # For Imfe\nFor this case, it is the council of the city center of Málaga which provides the data.\nThe layers used are:\n\nNeighborhoods (link)\nLibraries (link\nBus stosp (link"
+    "text": "PostGIS\nCalculate the total number of bird sightings for each municipality\n\nCREATE TABLE sigthings_municipalities AS\nSELECT\n    study_area.etiqueta,\n    count(aves.*),\n    study_area.geom \nFROM \n    general_postgis AS aves\nJOIN \n    ambito_estudio AS study_area\nON st_intersects(aves.geom, study_area.geom)\nGROUP BY \n    study_area.etiqueta, study_area.geom;"
   },
   {
     "objectID": "posts/tyc_gis_exercise_2.html#postgis",
