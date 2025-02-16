@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Internship",
+    "section": "",
+    "text": "I am excited about the opportunity to intern in a Geo-Information workplace to apply my practical and theoretical skills from the master GIMA, Geographical Information Management and Applications1.This internship is also an opportunity for the organizations interested. The four different universities that co-operates in this GIMA master offer a diversity in fields and their own traditions, so you can choose which one better suit your needs to carry out a research during the internship.\n\n\n\nFour universities in the Netherlands take part in the GIMA Master, which stands for Geographical Information Management and Applications\n\n\nYour organization can incorporate a research component from geo-information experts of these universities. Additionally, the internship also allocates time for the intern to gain professional skills helping you with existing projects, working on programming skills or project management tasks.The These are the focus of the Universities in GIMA:\n\nUtrecht University: Geography and planning.\nDelft University of Technology: Legal, organisational and technical aspects of geo-information handling.\nWageningen University: Agricultural and rural applications.\nUniversity of Twente: Technical and application oriented courses for developing countries.\n\nIf you are interested, he next sections give more information about this internship to better understand the process.\nTo accommodate organizations and students needs, GIMA offers three different options to arrange an Internship. The option A is focused on one company, while option B lasts the half and includes two companies. Lastly, option C is an intermediate with 540 hours as internship and 280 h to do 10 ECTs in courses. In all cases, 60% of the duration is spent to research a topic and 40% to gain professional skills, for example helping with existing projects.\nThe table 1 summarize these options and Figure 1 illustrates them.\n\n\n\nTable 1: The duration and number of organizations varies between the different options of internship\n\n\nOption\nOrganization\nDuration\nHours\n\n\n\n\nA\n1 organization\n5-6 months\n840 h\n\n\nB\n2 organizations\n2.5-3 months\n420 h*2\n\n\nC\n1 organization and courses\n3months\n560 h+280 h\n\n\n\n\n\n\n\n\n\n\n\nThis GIMA internship is academic, which means that there is a research topic. Therefore, the requirements regarding the hours allocation are:\n\n\nTime spent on research topic to be at least 60% of internship duration\nTime spent on “work” is used to gain professional skills, e.g.:\n\ninternal courses\nproject management\nprogramming skills\nextra help with existing projects\n\n\n\nThat is why one of the possible deliverables at the end of the internship is an internship report (or article). This article can be either submitted to a peer reviewed jorunal or a professional GI related magazine.\nMore information about the GIMA internship can be found on page 44 of 82 in the GIMA Course Catalogue 2023-2024."
+  },
+  {
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Internship",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nhttps://www.uu.nl/en/masters/geographical-information-management-and-applications-gima↩︎"
+  },
+  {
     "objectID": "posts/tyc_gis_exercise_2.html",
     "href": "posts/tyc_gis_exercise_2.html",
     "title": "Joining and dissolving in PostgreSQL: Castellon’s population by regions",
@@ -77,41 +91,6 @@
     "text": "Closest POI for each urban center.\n\nCREATE TABLE library_bus_agp AS\nWITH agp_geom_bus AS\n(SELECT \n    *,\n     st_transform(\n        st_setsrid(\n            st_point(lon::double precision, lat::double precision),4326),25830) AS geom\n    FROM  agp_city_bus) \nSELECT DISTINCT ON (l.\"NOMBRE\")\n    bs.\"nombreParada\" AS bus_stop,\n    l.\"NOMBRE\" AS library,\n    round(l.geom &lt;-&gt; bs.geom) AS distance,\n    l.geom AS library_geom,\n    bs.geom AS bus_geom\nFROM agp_city_library AS l\nLEFT JOIN LATERAL\n(SELECT \n    *\n    FROM  agp_geom_bus AS b\n    ORDER BY b.geom &lt;-&gt; l.geom\n    LIMIT 1) AS bs ON true;"
   },
   {
-    "objectID": "posts.html",
-    "href": "posts.html",
-    "title": "Motivation for posts",
-    "section": "",
-    "text": "A) Rarely, but it happens:\n\nI am asked to do similar things that I have already done before.\n\nB) Very frequently, it happens for sure:\n\nI forget how I did what I have already done before.\n\nC) Always, it happens\n\nI find interesting things other did and I want to do it after.\n\nThese three relevant facts motivated me to create this blog. Of course, it is also a way to show that I can do some stuff and share what I know to others."
-  },
-  {
-    "objectID": "posts.html#data-science-project",
-    "href": "posts.html#data-science-project",
-    "title": "Motivation for posts",
-    "section": "Data Science Project",
-    "text": "Data Science Project\n\n1 Data Science tools from R for Data Science by Hadley Wickham & Garret Grolemund that defines these 5 type of tools in a Data Science Project.\n\nImport\nTidy\nTransform\nModel\nCommunicate"
-  },
-  {
-    "objectID": "posts.html#programming-language",
-    "href": "posts.html#programming-language",
-    "title": "Motivation for posts",
-    "section": "Programming Language",
-    "text": "Programming Language\n\nProgramming Languages used dealing mainly with geospatial data.\n\nPostGIS\nR\nPython"
-  },
-  {
-    "objectID": "posts.html#esri-language",
-    "href": "posts.html#esri-language",
-    "title": "Motivation for posts",
-    "section": "ESRI Language",
-    "text": "ESRI Language\n\nESRI language of spatial analysis from ESRI spatial analysis books that classify this analysis into 6 categories:\n\nUnderstanding where\nMeasuring size, shape, and distribution\nDetermining how places are related\nFinding the best locations and paths\nDetecting and quantifying patterns\nMaking predictions\n\n\nThese are then broke down into 26 different questions.\n\n\n\n\n\n\n\n\n\n\n\n(a) Programming Languages\n\n\n\n\n\n\n\n\n\n\n\n(b) ESRI classified spatial analysis into this 6 categories\n\n\n\n\n\n\n\nFigure 1: Figure"
-  },
-  {
-    "objectID": "posts.html#colleagues-friends-courses-or-books",
-    "href": "posts.html#colleagues-friends-courses-or-books",
-    "title": "Motivation for posts",
-    "section": "Colleagues, friends, courses or books",
-    "text": "Colleagues, friends, courses or books\nThese posts are specifically tailored to questions from colleagues and friends or from questions written in courses and books."
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "Ricardo Ruiz Sánchez",
@@ -133,18 +112,32 @@
     "text": "Languages\n English (C1, advance)\n German (B1, intermediate)\n Spanish (Native)"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Internship",
+    "objectID": "posts/tyc_gis_exercise_1.html",
+    "href": "posts/tyc_gis_exercise_1.html",
+    "title": "SIOSE",
     "section": "",
-    "text": "I am excited about the opportunity to intern in a Geo-Information workplace to apply my practical and theoretical skills from the master GIMA, Geographical Information Management and Applications1.This internship is also an opportunity for the organizations interested. The four different universities that co-operates in this GIMA master offer a diversity in fields and their own traditions, so you can choose which one better suit your needs to carry out a research during the internship.\n\n\n\nFour universities in the Netherlands take part in the GIMA Master, which stands for Geographical Information Management and Applications\n\n\nYour organization can incorporate a research component from geo-information experts of these universities. Additionally, the internship also allocates time for the intern to gain professional skills helping you with existing projects, working on programming skills or project management tasks.The These are the focus of the Universities in GIMA:\n\nUtrecht University: Geography and planning.\nDelft University of Technology: Legal, organisational and technical aspects of geo-information handling.\nWageningen University: Agricultural and rural applications.\nUniversity of Twente: Technical and application oriented courses for developing countries.\n\nIf you are interested, he next sections give more information about this internship to better understand the process.\nTo accommodate organizations and students needs, GIMA offers three different options to arrange an Internship. The option A is focused on one company, while option B lasts the half and includes two companies. Lastly, option C is an intermediate with 540 hours as internship and 280 h to do 10 ECTs in courses. In all cases, 60% of the duration is spent to research a topic and 40% to gain professional skills, for example helping with existing projects.\nThe table 1 summarize these options and Figure 1 illustrates them.\n\n\n\nTable 1: The duration and number of organizations varies between the different options of internship\n\n\nOption\nOrganization\nDuration\nHours\n\n\n\n\nA\n1 organization\n5-6 months\n840 h\n\n\nB\n2 organizations\n2.5-3 months\n420 h*2\n\n\nC\n1 organization and courses\n3months\n560 h+280 h\n\n\n\n\n\n\n\n\n\n\n\nThis GIMA internship is academic, which means that there is a research topic. Therefore, the requirements regarding the hours allocation are:\n\n\nTime spent on research topic to be at least 60% of internship duration\nTime spent on “work” is used to gain professional skills, e.g.:\n\ninternal courses\nproject management\nprogramming skills\nextra help with existing projects\n\n\n\nThat is why one of the possible deliverables at the end of the internship is an internship report (or article). This article can be either submitted to a peer reviewed jorunal or a professional GI related magazine.\nMore information about the GIMA internship can be found on page 44 of 82 in the GIMA Course Catalogue 2023-2024."
+    "text": "Completa la capa del SIOSE de la provincia de Castellón con la descripción del tipo de cobertura, para ello debemos relacionar la capa SIOSE_CASTELLON.shp con su leyenda. La leyenda se encuentra desglosada en 2 tablas T_VALORES y TC_SIOSE_COBERTURAS. Estudia las tablas, para establecer las relaciones necesarias entre ellas y así lograr incorporar la información de cobertura a la capa SIOSE. Nota: La capa SIOSE_CASTELLON.shp ha sido tomada en el S.C. ETRS89 UTM 30N. Finalmente representa la capa a través del campo cobertura con un tipo de simbología adecuado.\nCapas a utilizar:\n\nSIOSE_CASTELLON.shp\nT_VALORES\nT_COBERTURAS\n\n\n\n\n\n\nCode\nCREATE TABLE siose AS \nSELECT\n    s.geom,\n    v.\"ID_COBERTURAS\" AS cobertura_id,\n    c.\"DESCRIPCION_COBERTURAS\" AS description\nFROM\n    siose_shape AS s\nJOIN siose_valores AS v ON  v.\"ID_POLYGON\" = s.\"ID_POLYGON\" \nJOIN siose_coberturas AS c ON c.\"ID_COBERTURAS\" = v.\"ID_COBERTURAS\""
   },
   {
-    "objectID": "index.html#footnotes",
-    "href": "index.html#footnotes",
-    "title": "Internship",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nhttps://www.uu.nl/en/masters/geographical-information-management-and-applications-gima↩︎"
+    "objectID": "posts/tyc_gis_exercise_1.html#postgis",
+    "href": "posts/tyc_gis_exercise_1.html#postgis",
+    "title": "SIOSE",
+    "section": "",
+    "text": "Code\nCREATE TABLE siose AS \nSELECT\n    s.geom,\n    v.\"ID_COBERTURAS\" AS cobertura_id,\n    c.\"DESCRIPCION_COBERTURAS\" AS description\nFROM\n    siose_shape AS s\nJOIN siose_valores AS v ON  v.\"ID_POLYGON\" = s.\"ID_POLYGON\" \nJOIN siose_coberturas AS c ON c.\"ID_COBERTURAS\" = v.\"ID_COBERTURAS\""
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_1.html#postgis-1",
+    "href": "posts/tyc_gis_exercise_1.html#postgis-1",
+    "title": "SIOSE",
+    "section": "PostGIS",
+    "text": "PostGIS\nImport the data is possible using ogr2ogr or shp2pgsql. The following ogr2ogr command import the data, since it combines polygon and multipolygon, it is need to add the parameter -nln (post)\n\n\nogr2ogr command to import the shp data\nogr2ogr -f PostgreSQL PG:\"host=localhost port=25432 user=docker password=docker dbname=gis schemas=tycgis\" CLC_ambito.shp -nln clc_ambito -lco GEOMETRY_NAME=geom -nlt PROMOTE_TO_MULTI\n\n\n\n\nCode\n--- Explore relevant data, columns used for join & srid of the geometry\nSELECT pg_typeof(code_06) FROM clc_ambito; ---character\nSELECT pg_typeof(\"CLC_CODE\") FROM clc2000legend; ---integer\nSELECT st_srid(geom) FROM  clc_ambito ;  --- check srid is imported correctly automatically\n---- Create table CLC_LEYENDA\nCREATE TABLE CLC_LEYENDA AS\nSELECT \n    *,\n    replace(xls,\"RGB\", '-',',')AS RGB_csv \nFROM \n    clc_ambito AS shp\nLEFT JOIN  \n    clc2000legend AS xls\nON shp.code_06::int = xls.\"CLC_CODE\"; --- the ::int cast the character into integer.\n\n\nNote: - The column “RGB” stored the colour values and it was used replacing the “-” for “,” as this post indicated. If the RGB values were in three different columns, then this other post would have applied."
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_1.html#qgis-1",
+    "href": "posts/tyc_gis_exercise_1.html#qgis-1",
+    "title": "SIOSE",
+    "section": "QGIS",
+    "text": "QGIS\nAfter clicking on properties of the selected vector data “CLC_ambito_qgis” and join, the following screenshot shows the parameters required to add columns from the spreadsheet “CLC2000legend.xls”."
   },
   {
     "objectID": "posts/tyc_gis_exercise_ud_2_1.html",
@@ -196,34 +189,6 @@
     "text": "QGIS"
   },
   {
-    "objectID": "posts/tyc_gis_exercise_1.html",
-    "href": "posts/tyc_gis_exercise_1.html",
-    "title": "SIOSE",
-    "section": "",
-    "text": "Completa la capa del SIOSE de la provincia de Castellón con la descripción del tipo de cobertura, para ello debemos relacionar la capa SIOSE_CASTELLON.shp con su leyenda. La leyenda se encuentra desglosada en 2 tablas T_VALORES y TC_SIOSE_COBERTURAS. Estudia las tablas, para establecer las relaciones necesarias entre ellas y así lograr incorporar la información de cobertura a la capa SIOSE. Nota: La capa SIOSE_CASTELLON.shp ha sido tomada en el S.C. ETRS89 UTM 30N. Finalmente representa la capa a través del campo cobertura con un tipo de simbología adecuado.\nCapas a utilizar:\n\nSIOSE_CASTELLON.shp\nT_VALORES\nT_COBERTURAS\n\n\n\n\n\n\nCode\nCREATE TABLE siose AS \nSELECT\n    s.geom,\n    v.\"ID_COBERTURAS\" AS cobertura_id,\n    c.\"DESCRIPCION_COBERTURAS\" AS description\nFROM\n    siose_shape AS s\nJOIN siose_valores AS v ON  v.\"ID_POLYGON\" = s.\"ID_POLYGON\" \nJOIN siose_coberturas AS c ON c.\"ID_COBERTURAS\" = v.\"ID_COBERTURAS\""
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_1.html#postgis",
-    "href": "posts/tyc_gis_exercise_1.html#postgis",
-    "title": "SIOSE",
-    "section": "",
-    "text": "Code\nCREATE TABLE siose AS \nSELECT\n    s.geom,\n    v.\"ID_COBERTURAS\" AS cobertura_id,\n    c.\"DESCRIPCION_COBERTURAS\" AS description\nFROM\n    siose_shape AS s\nJOIN siose_valores AS v ON  v.\"ID_POLYGON\" = s.\"ID_POLYGON\" \nJOIN siose_coberturas AS c ON c.\"ID_COBERTURAS\" = v.\"ID_COBERTURAS\""
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_1.html#postgis-1",
-    "href": "posts/tyc_gis_exercise_1.html#postgis-1",
-    "title": "SIOSE",
-    "section": "PostGIS",
-    "text": "PostGIS\nImport the data is possible using ogr2ogr or shp2pgsql. The following ogr2ogr command import the data, since it combines polygon and multipolygon, it is need to add the parameter -nln (post)\n\n\nogr2ogr command to import the shp data\nogr2ogr -f PostgreSQL PG:\"host=localhost port=25432 user=docker password=docker dbname=gis schemas=tycgis\" CLC_ambito.shp -nln clc_ambito -lco GEOMETRY_NAME=geom -nlt PROMOTE_TO_MULTI\n\n\n\n\nCode\n--- Explore relevant data, columns used for join & srid of the geometry\nSELECT pg_typeof(code_06) FROM clc_ambito; ---character\nSELECT pg_typeof(\"CLC_CODE\") FROM clc2000legend; ---integer\nSELECT st_srid(geom) FROM  clc_ambito ;  --- check srid is imported correctly automatically\n---- Create table CLC_LEYENDA\nCREATE TABLE CLC_LEYENDA AS\nSELECT \n    *,\n    replace(xls,\"RGB\", '-',',')AS RGB_csv \nFROM \n    clc_ambito AS shp\nLEFT JOIN  \n    clc2000legend AS xls\nON shp.code_06::int = xls.\"CLC_CODE\"; --- the ::int cast the character into integer.\n\n\nNote: - The column “RGB” stored the colour values and it was used replacing the “-” for “,” as this post indicated. If the RGB values were in three different columns, then this other post would have applied."
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_1.html#qgis-1",
-    "href": "posts/tyc_gis_exercise_1.html#qgis-1",
-    "title": "SIOSE",
-    "section": "QGIS",
-    "text": "QGIS\nAfter clicking on properties of the selected vector data “CLC_ambito_qgis” and join, the following screenshot shows the parameters required to add columns from the spreadsheet “CLC2000legend.xls”."
-  },
-  {
     "objectID": "posts/tyc_gis_exercise_4.html",
     "href": "posts/tyc_gis_exercise_4.html",
     "title": "K-Nearest Neighbor: Where is the closest pharmacy?",
@@ -271,5 +236,40 @@
     "title": "K-Nearest Neighbor: Where is the closest pharmacy?",
     "section": "Query",
     "text": "Query\n\nCREATE TABLE cueva_stop AS\nWITH agp_cuevas AS (\n                    SELECT \n                     nombre AS cueva,\n                     municipio,\n                     geom\n                    FROM \n                        ja_cavidad\n                    WHERE \n                        provincia ILIKE '%Laga'\n                    AND\n                        tipo = 'Cueva'\n                    AND acceso = 'Horizontal'),\n                    agp_bus AS (\n                    SELECT\n                        id_parada,\n                        geom  \n                    FROM \n                        \"JA_bus\"\n                    WHERE \n                        provincia ILIKE '%laga')\nSELECT DISTINCT ON (cueva)\n    agp_cuevas.geom AS geom_cueva,\n    cueva,\n    c.geom AS geom_bus,\n    agp_cuevas.municipio,\n    c.id_parada AS bus,\n    agp_cuevas.geom &lt;-&gt; c.geom AS distance\nFROM\n    agp_cuevas\nLEFT JOIN LATERAL\n    (SELECT id_parada,\n            geom \n    FROM agp_bus\n    ORDER BY\n        agp_bus.geom &lt;-&gt; agp_cuevas.geom \n    LIMIT 1) AS c ON true;"
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Motivation for posts",
+    "section": "",
+    "text": "A) Rarely, but it happens:\n\nI am asked to do similar things that I have already done before.\n\nB) Very frequently, it happens for sure:\n\nI forget how I did what I have already done before.\n\nC) Always, it happens\n\nI find interesting things other did and I want to do it after.\n\nThese three relevant facts motivated me to create this blog. Of course, it is also a way to show that I can do some stuff and share what I know to others."
+  },
+  {
+    "objectID": "posts.html#data-science-project",
+    "href": "posts.html#data-science-project",
+    "title": "Motivation for posts",
+    "section": "Data Science Project",
+    "text": "Data Science Project\n\n1 Data Science tools from R for Data Science by Hadley Wickham & Garret Grolemund that defines these 5 type of tools in a Data Science Project.\n\nImport\nTidy\nTransform\nModel\nCommunicate"
+  },
+  {
+    "objectID": "posts.html#programming-language",
+    "href": "posts.html#programming-language",
+    "title": "Motivation for posts",
+    "section": "Programming Language",
+    "text": "Programming Language\n\nProgramming Languages used dealing mainly with geospatial data.\n\nPostGIS\nR\nPython"
+  },
+  {
+    "objectID": "posts.html#esri-language",
+    "href": "posts.html#esri-language",
+    "title": "Motivation for posts",
+    "section": "ESRI Language",
+    "text": "ESRI Language\n\nESRI language of spatial analysis from ESRI spatial analysis books that classify this analysis into 6 categories:\n\nUnderstanding where\nMeasuring size, shape, and distribution\nDetermining how places are related\nFinding the best locations and paths\nDetecting and quantifying patterns\nMaking predictions\n\n\nThese are then broke down into 26 different questions.\n\n\n\n\n\n\n\n\n\n\n\n(a) Programming Languages\n\n\n\n\n\n\n\n\n\n\n\n(b) ESRI classified spatial analysis into this 6 categories\n\n\n\n\n\n\n\nFigure 1: Figure"
+  },
+  {
+    "objectID": "posts.html#colleagues-friends-courses-or-books",
+    "href": "posts.html#colleagues-friends-courses-or-books",
+    "title": "Motivation for posts",
+    "section": "Colleagues, friends, courses or books",
+    "text": "Colleagues, friends, courses or books\nThese posts are specifically tailored to questions from colleagues and friends or from questions written in courses and books."
   }
 ]
