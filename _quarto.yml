@@ -11,8 +11,6 @@ website:
     right:
       - href: about.qmd
         text: Home
-      - href: index.qmd
-        text: Internship
       - href: posts.qmd
         text: Posts
       - href: Curriculum.qmd
