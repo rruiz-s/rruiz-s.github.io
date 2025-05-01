@@ -35,97 +35,6 @@
     "text": "Colleagues, friends, courses or books\nThese posts are specifically tailored to questions from colleagues and friends or from questions written in courses and books."
   },
   {
-    "objectID": "posts/tyc_gis_exercise_ud_2_1.html",
-    "href": "posts/tyc_gis_exercise_ud_2_1.html",
-    "title": "Unit2: Vector processings",
-    "section": "",
-    "text": "Incorpora a la capa del ámbito de estudio la información de los usos del suelo presentes en cada término municipal.\nUsos del suelo según Corine Land Cover (Nivel 1) – El Escorial\nCapas a utilizar:\n\nAmbito_Estudio.shp\nCLC_LEYENDA.shp\n\n\n\nPostGIS code fixed the geometry, calculated the area and aggregated that area by municipalities\n\n---- Fix geometry\nWITH clc_leyenda AS (\nSELECT \n    code_06,\n    \"CLC_CODE\",\n    \"LABEL1\",\n    \"LABEL2\",\n    \"LABEL3\",\n    st_makevalid(geom, 'method=structure') AS geom \nFROM clc_leyenda_un2),\n---- Intersection\nintersection AS (\nSELECT\n    \"ETIQUETA\",\n    \"CODIGO_INE\",\n    \"LABEL1\",\n    \"CLC_CODE\",\n    st_intersection(aoi.geom,clc.geom) AS geom\nFROM \n    ambito_estudio_un2 AS aoi,\n    clc_leyenda AS clc),\n--- Calculate area of each intersection\narea_ha AS (\nSELECT \n    *,\n    st_area(st_transform(geom,4326)::geography) / 10000 AS ha\nFROM \n    intersection \nWHERE NOT st_isempty(geom))\n--- Group by municipalities\nSELECT \n    \"ETIQUETA\",\n    \"LABEL1\",\n    sum(ha) AS sum_ha\nFROM  \n    area_ha\nGROUP BY\n    \"ETIQUETA\",\"LABEL1\";\n\n\nElaborar un gráfico circular que muestre el porcentaje de tipo de suelo por municipio como el que sigue:\n\n\nR code to create the pie chart\nsts_clc_aoi_postgis &lt;- DBI::dbReadTable(docker_connection,\n                                        Id(schema=\"tycgis\",\n                                           table=\"clc_aoi_postgis\"))\n\nfilter(sts_clc_aoi_postgis, ETIQUETA == sts_clc_aoi_postgis$ETIQUETA[1]) |&gt;\n  mutate(sum_ha_per = sum_ha/sum(sum_ha)*100) |&gt; \n  ggplot(aes(x=\"\", y=sum_ha_per, fill=LABEL1)) +\n  labs(title=\"Land use (PostGIS)\",\n       subtitle= paste(sts_clc_aoi_postgis$ETIQUETA[1],\" municipality\")) +\n  ggplot2::theme_minimal() +\n  geom_col() +\n  geom_label(aes(label= paste(round(sum_ha_per),\"%\")),\n             position = position_stack(vjust=.5),\n             show.legend =FALSE, \n             color=\"white\",\n             size=6) +\n  coord_polar(theta=\"y\") + \n  scale_fill_manual(values=c(\"#bd6614\",\"black\",\"darkgreen\")) +\n  theme(axis.ticks = element_blank(),\n        axis.text = element_blank(),\n        legend.position = \"bottom\",\n        legend.text = element_text(size=14),\n        plot.title = element_text(size=25, hjust= .5),\n        plot.subtitle = element_text(size=20, hjust=.5, colour=\"#414447\")) +\n  guides(fill=guide_legend(title=\"Land Use:\"))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSame R code using the data obtained from QGIS\nsts_clc_aoi_qgis &lt;- DBI::dbReadTable(docker_connection,\n                                     Id(schema=\"tycgis\",\n                                        table=\"resumen_stats_clc_ambito\"))\n\nfilter(sts_clc_aoi_qgis, ETIQUETA == sts_clc_aoi_postgis$ETIQUETA[1]) |&gt;\n  mutate(sum =  as.numeric(sum) * 10,\n         ha = sum/sum(sum)*100) |&gt; \n  ggplot(aes(x=\"\", y=ha, fill=LABEL1)) +\n  labs(title=\"Land use (QGIS)\",\n       subtitle= paste(sts_clc_aoi_postgis$ETIQUETA[1],\" municipality\")) +\n  ggplot2::theme_minimal() +\n  geom_col() +\n  geom_label(aes(label= paste(round(ha),\"%\")),\n             position = position_stack(vjust=.5),\n             show.legend =FALSE, \n             color=\"white\",\n             size=6) +\n  coord_polar(theta=\"y\") + \n  scale_fill_manual(values=c(\"#bd6614\",\"black\",\"darkgreen\")) +\n  theme(axis.ticks = element_blank(),\n        axis.text = element_blank(),\n        legend.position = \"bottom\",\n        legend.text = element_text(size=14),\n        plot.title = element_text(size=25, hjust= .5),\n        plot.subtitle = element_text(size=20, hjust=.5, colour=\"#414447\")) +\n  guides(fill=guide_legend(title=\"Land Use: \"))\n\n\n\n\n\n\n\n\n\n\n\n\nMap of the shape of clc coloured by the study area"
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_ud_2_1.html#postgis",
-    "href": "posts/tyc_gis_exercise_ud_2_1.html#postgis",
-    "title": "Unit2: Vector processings",
-    "section": "",
-    "text": "Incorpora a la capa del ámbito de estudio la información de los usos del suelo presentes en cada término municipal.\nUsos del suelo según Corine Land Cover (Nivel 1) – El Escorial\nCapas a utilizar:\n\nAmbito_Estudio.shp\nCLC_LEYENDA.shp\n\n\n\nPostGIS code fixed the geometry, calculated the area and aggregated that area by municipalities\n\n---- Fix geometry\nWITH clc_leyenda AS (\nSELECT \n    code_06,\n    \"CLC_CODE\",\n    \"LABEL1\",\n    \"LABEL2\",\n    \"LABEL3\",\n    st_makevalid(geom, 'method=structure') AS geom \nFROM clc_leyenda_un2),\n---- Intersection\nintersection AS (\nSELECT\n    \"ETIQUETA\",\n    \"CODIGO_INE\",\n    \"LABEL1\",\n    \"CLC_CODE\",\n    st_intersection(aoi.geom,clc.geom) AS geom\nFROM \n    ambito_estudio_un2 AS aoi,\n    clc_leyenda AS clc),\n--- Calculate area of each intersection\narea_ha AS (\nSELECT \n    *,\n    st_area(st_transform(geom,4326)::geography) / 10000 AS ha\nFROM \n    intersection \nWHERE NOT st_isempty(geom))\n--- Group by municipalities\nSELECT \n    \"ETIQUETA\",\n    \"LABEL1\",\n    sum(ha) AS sum_ha\nFROM  \n    area_ha\nGROUP BY\n    \"ETIQUETA\",\"LABEL1\";\n\n\nElaborar un gráfico circular que muestre el porcentaje de tipo de suelo por municipio como el que sigue:\n\n\nR code to create the pie chart\nsts_clc_aoi_postgis &lt;- DBI::dbReadTable(docker_connection,\n                                        Id(schema=\"tycgis\",\n                                           table=\"clc_aoi_postgis\"))\n\nfilter(sts_clc_aoi_postgis, ETIQUETA == sts_clc_aoi_postgis$ETIQUETA[1]) |&gt;\n  mutate(sum_ha_per = sum_ha/sum(sum_ha)*100) |&gt; \n  ggplot(aes(x=\"\", y=sum_ha_per, fill=LABEL1)) +\n  labs(title=\"Land use (PostGIS)\",\n       subtitle= paste(sts_clc_aoi_postgis$ETIQUETA[1],\" municipality\")) +\n  ggplot2::theme_minimal() +\n  geom_col() +\n  geom_label(aes(label= paste(round(sum_ha_per),\"%\")),\n             position = position_stack(vjust=.5),\n             show.legend =FALSE, \n             color=\"white\",\n             size=6) +\n  coord_polar(theta=\"y\") + \n  scale_fill_manual(values=c(\"#bd6614\",\"black\",\"darkgreen\")) +\n  theme(axis.ticks = element_blank(),\n        axis.text = element_blank(),\n        legend.position = \"bottom\",\n        legend.text = element_text(size=14),\n        plot.title = element_text(size=25, hjust= .5),\n        plot.subtitle = element_text(size=20, hjust=.5, colour=\"#414447\")) +\n  guides(fill=guide_legend(title=\"Land Use:\"))"
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_ud_2_1.html#qgis",
-    "href": "posts/tyc_gis_exercise_ud_2_1.html#qgis",
-    "title": "Unit2: Vector processings",
-    "section": "",
-    "text": "Same R code using the data obtained from QGIS\nsts_clc_aoi_qgis &lt;- DBI::dbReadTable(docker_connection,\n                                     Id(schema=\"tycgis\",\n                                        table=\"resumen_stats_clc_ambito\"))\n\nfilter(sts_clc_aoi_qgis, ETIQUETA == sts_clc_aoi_postgis$ETIQUETA[1]) |&gt;\n  mutate(sum =  as.numeric(sum) * 10,\n         ha = sum/sum(sum)*100) |&gt; \n  ggplot(aes(x=\"\", y=ha, fill=LABEL1)) +\n  labs(title=\"Land use (QGIS)\",\n       subtitle= paste(sts_clc_aoi_postgis$ETIQUETA[1],\" municipality\")) +\n  ggplot2::theme_minimal() +\n  geom_col() +\n  geom_label(aes(label= paste(round(ha),\"%\")),\n             position = position_stack(vjust=.5),\n             show.legend =FALSE, \n             color=\"white\",\n             size=6) +\n  coord_polar(theta=\"y\") + \n  scale_fill_manual(values=c(\"#bd6614\",\"black\",\"darkgreen\")) +\n  theme(axis.ticks = element_blank(),\n        axis.text = element_blank(),\n        legend.position = \"bottom\",\n        legend.text = element_text(size=14),\n        plot.title = element_text(size=25, hjust= .5),\n        plot.subtitle = element_text(size=20, hjust=.5, colour=\"#414447\")) +\n  guides(fill=guide_legend(title=\"Land Use: \"))\n\n\n\n\n\n\n\n\n\n\n\n\nMap of the shape of clc coloured by the study area"
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_ud_2_1.html#postgis-1",
-    "href": "posts/tyc_gis_exercise_ud_2_1.html#postgis-1",
-    "title": "Unit2: Vector processings",
-    "section": "PostGIS",
-    "text": "PostGIS\n\n\nMerge two vector layers using PostGIS\nCREATE TABLE curvas_ambito_postgis AS\nSELECT * FROM  curvas_nivel_533 \nUNION ALL\nSELECT * FROM curvas_nivel_558 ;"
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_ud_2_1.html#qgis-1",
-    "href": "posts/tyc_gis_exercise_ud_2_1.html#qgis-1",
-    "title": "Unit2: Vector processings",
-    "section": "QGIS",
-    "text": "QGIS"
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_ud_2_1.html#postgis-2",
-    "href": "posts/tyc_gis_exercise_ud_2_1.html#postgis-2",
-    "title": "Unit2: Vector processings",
-    "section": "PostGIS",
-    "text": "PostGIS\n\n\nCode\n--- Select same number of columns\nCREATE TABLE geom_558 AS \nSELECT \n    id, geom, \"DLO\", \"COLOR\",\"TRAMA_C\" \nFROM \n    \"GEO_558_ETRS89_UTM_30N\";\n---- Create table merging both layers\nCREATE TABLE GEO_533_558_25830_postgis AS\nSELECT * FROM  \"GEO_533_ETRS89_UTM_30N\"\nUNION ALL\nSELECT * FROM geom_558 ;"
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_ud_2_1.html#qgis-2",
-    "href": "posts/tyc_gis_exercise_ud_2_1.html#qgis-2",
-    "title": "Unit2: Vector processings",
-    "section": "QGIS",
-    "text": "QGIS"
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_3.html",
-    "href": "posts/tyc_gis_exercise_3.html",
-    "title": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions",
-    "section": "",
-    "text": "The exercise 3 requires to:\nLayers to be used:"
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_3.html#postgis",
-    "href": "posts/tyc_gis_exercise_3.html#postgis",
-    "title": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions",
-    "section": "PostGIS",
-    "text": "PostGIS\n\nTotal number of points of interest (POI) per region\n\nCREATE TABLE poi_comarca_count AS \nWITH poi_comarca AS (SELECT \n    \"ETIQUETA\" AS poi,\n    \"TIPO_0504\" AS poi_type,\n    \"PRIMARYIND\" AS id,\n    c.comarca,\n    p.geom AS poi_geom,\n    c.geom AS comarca_geom\nFROM \n    poi_castellon AS p\nLEFT JOIN\n    castellon_comarcas_pop_2017 AS c \n    ON st_intersects(p.geom, st_transform(c.geom,25830)))\n    SELECT\n        comarca,\n        count(*) AS count_poi,\n        poi_comarca.comarca_geom\n    FROM \n        poi_comarca\n    GROUP BY comarca,poi_comarca.comarca_geom;\n\n\n\nClosest POI for each urban center.\n\nCREATE TABLE poi_urban_center AS  \nSELECT  DISTINCT ON (urban_center)\n    uc.\"ETIQUETA\" AS urban_center,\n    poi.poi,\n    round(st_centroid(uc.geom)  &lt;-&gt; poi.poi_geom) AS distance,\n    st_centroid(uc.geom) as urban_center_geom,\n    poi.poi_geom AS poi_geom\nFROM \n     urbancenter_castellon uc\nLEFT JOIN LATERAL\n    (SELECT\n        \"ETIQUETA\" AS poi,\n        geom AS poi_geom\n    FROM poi_castellon poi\n    ORDER BY poi.geom &lt;-&gt; st_centroid(uc.geom)\n    LIMIT 1) AS poi ON true;"
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_3.html#qgis",
-    "href": "posts/tyc_gis_exercise_3.html#qgis",
-    "title": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions",
-    "section": "QGIS",
-    "text": "QGIS\n\nTotal number of points of interest (POI) per region\n\n\nClosest POI for each urban center."
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_3.html#postgis-1",
-    "href": "posts/tyc_gis_exercise_3.html#postgis-1",
-    "title": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions",
-    "section": "PostGIS",
-    "text": "PostGIS\nCalculate the total number of bird sightings for each municipality\n\nCREATE TABLE sigthings_municipalities AS\nSELECT\n    study_area.etiqueta,\n    count(aves.*),\n    study_area.geom \nFROM \n    general_postgis AS aves\nJOIN \n    ambito_estudio AS study_area\nON st_intersects(aves.geom, study_area.geom)\nGROUP BY \n    study_area.etiqueta, study_area.geom;"
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_3.html#total-number-of-points-of-interest-poi-per-region-2",
-    "href": "posts/tyc_gis_exercise_3.html#total-number-of-points-of-interest-poi-per-region-2",
-    "title": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions",
-    "section": "Total number of points of interest (POI) per region",
-    "text": "Total number of points of interest (POI) per region\n\nCREATE TABLE agp_city_libraries AS\nSELECT \n    n.\"NOMBARRIO\" AS neighbor,\n    count(l.id) AS total_library,\n    n.geom AS geom_neighbor\nFROM agp_city_library AS l\nJOIN agp_city_neighbor AS n \n    ON st_intersects(l.geom, n.geom)\nGROUP BY  \"NOMBARRIO\", n.geom\nORDER BY total_library DESC;"
-  },
-  {
-    "objectID": "posts/tyc_gis_exercise_3.html#closest-poi-for-each-urban-center.-2",
-    "href": "posts/tyc_gis_exercise_3.html#closest-poi-for-each-urban-center.-2",
-    "title": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions",
-    "section": "Closest POI for each urban center.",
-    "text": "Closest POI for each urban center.\n\nCREATE TABLE library_bus_agp AS\nWITH agp_geom_bus AS\n(SELECT \n    *,\n     st_transform(\n        st_setsrid(\n            st_point(lon::double precision, lat::double precision),4326),25830) AS geom\n    FROM  agp_city_bus) \nSELECT DISTINCT ON (l.\"NOMBRE\")\n    bs.\"nombreParada\" AS bus_stop,\n    l.\"NOMBRE\" AS library,\n    round(l.geom &lt;-&gt; bs.geom) AS distance,\n    l.geom AS library_geom,\n    bs.geom AS bus_geom\nFROM agp_city_library AS l\nLEFT JOIN LATERAL\n(SELECT \n    *\n    FROM  agp_geom_bus AS b\n    ORDER BY b.geom &lt;-&gt; l.geom\n    LIMIT 1) AS bs ON true;"
-  },
-  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Internship",
@@ -138,27 +47,6 @@
     "title": "Internship",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nhttps://www.uu.nl/en/masters/geographical-information-management-and-applications-gima↩︎"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "Ricardo Ruiz Sánchez",
-    "section": "",
-    "text": "Data-driven environmental scientist with a passion for geographical information data. Started collecting data from the laboratory as a technician, I graduated in Environmental Sciences understanding the value of making informed-decisions towards a sustainable future. Along this journey I lived in Scotland and Germany.\nDrafted by the interest on geospatial data I am in my second year of a master in Geographical Information Management and Applications (GIMA)."
-  },
-  {
-    "objectID": "about.html#education",
-    "href": "about.html#education",
-    "title": "Ricardo Ruiz Sánchez",
-    "section": "Education",
-    "text": "Education\n Msc in Geographical Information Management and Applications\n Bsc in Environmental Sciences\n Higher vocational training as Laboratory technician in quality control"
-  },
-  {
-    "objectID": "about.html#languages",
-    "href": "about.html#languages",
-    "title": "Ricardo Ruiz Sánchez",
-    "section": "Languages",
-    "text": "Languages\n English (C1, advance)\n German (B1, intermediate)\n Spanish (Native)"
   },
   {
     "objectID": "posts/tyc_gis_exercise_2.html",
@@ -245,6 +133,13 @@
     "text": "Query\n\nCREATE TABLE cueva_stop AS\nWITH agp_cuevas AS (\n                    SELECT \n                     nombre AS cueva,\n                     municipio,\n                     geom\n                    FROM \n                        ja_cavidad\n                    WHERE \n                        provincia ILIKE '%Laga'\n                    AND\n                        tipo = 'Cueva'\n                    AND acceso = 'Horizontal'),\n                    agp_bus AS (\n                    SELECT\n                        id_parada,\n                        geom  \n                    FROM \n                        \"JA_bus\"\n                    WHERE \n                        provincia ILIKE '%laga')\nSELECT DISTINCT ON (cueva)\n    agp_cuevas.geom AS geom_cueva,\n    cueva,\n    c.geom AS geom_bus,\n    agp_cuevas.municipio,\n    c.id_parada AS bus,\n    agp_cuevas.geom &lt;-&gt; c.geom AS distance\nFROM\n    agp_cuevas\nLEFT JOIN LATERAL\n    (SELECT id_parada,\n            geom \n    FROM agp_bus\n    ORDER BY\n        agp_bus.geom &lt;-&gt; agp_cuevas.geom \n    LIMIT 1) AS c ON true;"
   },
   {
+    "objectID": "data/satelite_bro/centros_educativos_andalucia.html",
+    "href": "data/satelite_bro/centros_educativos_andalucia.html",
+    "title": "Ricardo Ruiz Sánchez",
+    "section": "",
+    "text": "&lt;!DOCTYPE qgis PUBLIC ‘http://mrcc.com/qgis.dtd’ ‘SYSTEM’&gt;     \n\n\n         0 0     false"
+  },
+  {
     "objectID": "posts/tyc_gis_exercise_1.html",
     "href": "posts/tyc_gis_exercise_1.html",
     "title": "SIOSE",
@@ -273,10 +168,115 @@
     "text": "QGIS\nAfter clicking on properties of the selected vector data “CLC_ambito_qgis” and join, the following screenshot shows the parameters required to add columns from the spreadsheet “CLC2000legend.xls”."
   },
   {
-    "objectID": "data/satelite_bro/centros_educativos_andalucia.html",
-    "href": "data/satelite_bro/centros_educativos_andalucia.html",
+    "objectID": "posts/tyc_gis_exercise_3.html",
+    "href": "posts/tyc_gis_exercise_3.html",
+    "title": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions",
+    "section": "",
+    "text": "The exercise 3 requires to:\nLayers to be used:"
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_3.html#postgis",
+    "href": "posts/tyc_gis_exercise_3.html#postgis",
+    "title": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions",
+    "section": "PostGIS",
+    "text": "PostGIS\n\nTotal number of points of interest (POI) per region\n\nCREATE TABLE poi_comarca_count AS \nWITH poi_comarca AS (SELECT \n    \"ETIQUETA\" AS poi,\n    \"TIPO_0504\" AS poi_type,\n    \"PRIMARYIND\" AS id,\n    c.comarca,\n    p.geom AS poi_geom,\n    c.geom AS comarca_geom\nFROM \n    poi_castellon AS p\nLEFT JOIN\n    castellon_comarcas_pop_2017 AS c \n    ON st_intersects(p.geom, st_transform(c.geom,25830)))\n    SELECT\n        comarca,\n        count(*) AS count_poi,\n        poi_comarca.comarca_geom\n    FROM \n        poi_comarca\n    GROUP BY comarca,poi_comarca.comarca_geom;\n\n\n\nClosest POI for each urban center.\n\nCREATE TABLE poi_urban_center AS  \nSELECT  DISTINCT ON (urban_center)\n    uc.\"ETIQUETA\" AS urban_center,\n    poi.poi,\n    round(st_centroid(uc.geom)  &lt;-&gt; poi.poi_geom) AS distance,\n    st_centroid(uc.geom) as urban_center_geom,\n    poi.poi_geom AS poi_geom\nFROM \n     urbancenter_castellon uc\nLEFT JOIN LATERAL\n    (SELECT\n        \"ETIQUETA\" AS poi,\n        geom AS poi_geom\n    FROM poi_castellon poi\n    ORDER BY poi.geom &lt;-&gt; st_centroid(uc.geom)\n    LIMIT 1) AS poi ON true;"
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_3.html#qgis",
+    "href": "posts/tyc_gis_exercise_3.html#qgis",
+    "title": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions",
+    "section": "QGIS",
+    "text": "QGIS\n\nTotal number of points of interest (POI) per region\n\n\nClosest POI for each urban center."
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_3.html#postgis-1",
+    "href": "posts/tyc_gis_exercise_3.html#postgis-1",
+    "title": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions",
+    "section": "PostGIS",
+    "text": "PostGIS\nCalculate the total number of bird sightings for each municipality\n\nCREATE TABLE sigthings_municipalities AS\nSELECT\n    study_area.etiqueta,\n    count(aves.*),\n    study_area.geom \nFROM \n    general_postgis AS aves\nJOIN \n    ambito_estudio AS study_area\nON st_intersects(aves.geom, study_area.geom)\nGROUP BY \n    study_area.etiqueta, study_area.geom;"
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_3.html#total-number-of-points-of-interest-poi-per-region-2",
+    "href": "posts/tyc_gis_exercise_3.html#total-number-of-points-of-interest-poi-per-region-2",
+    "title": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions",
+    "section": "Total number of points of interest (POI) per region",
+    "text": "Total number of points of interest (POI) per region\n\nCREATE TABLE agp_city_libraries AS\nSELECT \n    n.\"NOMBARRIO\" AS neighbor,\n    count(l.id) AS total_library,\n    n.geom AS geom_neighbor\nFROM agp_city_library AS l\nJOIN agp_city_neighbor AS n \n    ON st_intersects(l.geom, n.geom)\nGROUP BY  \"NOMBARRIO\", n.geom\nORDER BY total_library DESC;"
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_3.html#closest-poi-for-each-urban-center.-2",
+    "href": "posts/tyc_gis_exercise_3.html#closest-poi-for-each-urban-center.-2",
+    "title": "Groupping POI by regions in PostgreSQL: Castellon’s POI by regions",
+    "section": "Closest POI for each urban center.",
+    "text": "Closest POI for each urban center.\n\nCREATE TABLE library_bus_agp AS\nWITH agp_geom_bus AS\n(SELECT \n    *,\n     st_transform(\n        st_setsrid(\n            st_point(lon::double precision, lat::double precision),4326),25830) AS geom\n    FROM  agp_city_bus) \nSELECT DISTINCT ON (l.\"NOMBRE\")\n    bs.\"nombreParada\" AS bus_stop,\n    l.\"NOMBRE\" AS library,\n    round(l.geom &lt;-&gt; bs.geom) AS distance,\n    l.geom AS library_geom,\n    bs.geom AS bus_geom\nFROM agp_city_library AS l\nLEFT JOIN LATERAL\n(SELECT \n    *\n    FROM  agp_geom_bus AS b\n    ORDER BY b.geom &lt;-&gt; l.geom\n    LIMIT 1) AS bs ON true;"
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_ud_2_1.html",
+    "href": "posts/tyc_gis_exercise_ud_2_1.html",
+    "title": "Unit2: Vector processings",
+    "section": "",
+    "text": "Incorpora a la capa del ámbito de estudio la información de los usos del suelo presentes en cada término municipal.\nUsos del suelo según Corine Land Cover (Nivel 1) – El Escorial\nCapas a utilizar:\n\nAmbito_Estudio.shp\nCLC_LEYENDA.shp\n\n\n\nPostGIS code fixed the geometry, calculated the area and aggregated that area by municipalities\n\n---- Fix geometry\nWITH clc_leyenda AS (\nSELECT \n    code_06,\n    \"CLC_CODE\",\n    \"LABEL1\",\n    \"LABEL2\",\n    \"LABEL3\",\n    st_makevalid(geom, 'method=structure') AS geom \nFROM clc_leyenda_un2),\n---- Intersection\nintersection AS (\nSELECT\n    \"ETIQUETA\",\n    \"CODIGO_INE\",\n    \"LABEL1\",\n    \"CLC_CODE\",\n    st_intersection(aoi.geom,clc.geom) AS geom\nFROM \n    ambito_estudio_un2 AS aoi,\n    clc_leyenda AS clc),\n--- Calculate area of each intersection\narea_ha AS (\nSELECT \n    *,\n    st_area(st_transform(geom,4326)::geography) / 10000 AS ha\nFROM \n    intersection \nWHERE NOT st_isempty(geom))\n--- Group by municipalities\nSELECT \n    \"ETIQUETA\",\n    \"LABEL1\",\n    sum(ha) AS sum_ha\nFROM  \n    area_ha\nGROUP BY\n    \"ETIQUETA\",\"LABEL1\";\n\n\nElaborar un gráfico circular que muestre el porcentaje de tipo de suelo por municipio como el que sigue:\n\n\nR code to create the pie chart\nsts_clc_aoi_postgis &lt;- DBI::dbReadTable(docker_connection,\n                                        Id(schema=\"tycgis\",\n                                           table=\"clc_aoi_postgis\"))\n\nfilter(sts_clc_aoi_postgis, ETIQUETA == sts_clc_aoi_postgis$ETIQUETA[1]) |&gt;\n  mutate(sum_ha_per = sum_ha/sum(sum_ha)*100) |&gt; \n  ggplot(aes(x=\"\", y=sum_ha_per, fill=LABEL1)) +\n  labs(title=\"Land use (PostGIS)\",\n       subtitle= paste(sts_clc_aoi_postgis$ETIQUETA[1],\" municipality\")) +\n  ggplot2::theme_minimal() +\n  geom_col() +\n  geom_label(aes(label= paste(round(sum_ha_per),\"%\")),\n             position = position_stack(vjust=.5),\n             show.legend =FALSE, \n             color=\"white\",\n             size=6) +\n  coord_polar(theta=\"y\") + \n  scale_fill_manual(values=c(\"#bd6614\",\"black\",\"darkgreen\")) +\n  theme(axis.ticks = element_blank(),\n        axis.text = element_blank(),\n        legend.position = \"bottom\",\n        legend.text = element_text(size=14),\n        plot.title = element_text(size=25, hjust= .5),\n        plot.subtitle = element_text(size=20, hjust=.5, colour=\"#414447\")) +\n  guides(fill=guide_legend(title=\"Land Use:\"))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSame R code using the data obtained from QGIS\nsts_clc_aoi_qgis &lt;- DBI::dbReadTable(docker_connection,\n                                     Id(schema=\"tycgis\",\n                                        table=\"resumen_stats_clc_ambito\"))\n\nfilter(sts_clc_aoi_qgis, ETIQUETA == sts_clc_aoi_postgis$ETIQUETA[1]) |&gt;\n  mutate(sum =  as.numeric(sum) * 10,\n         ha = sum/sum(sum)*100) |&gt; \n  ggplot(aes(x=\"\", y=ha, fill=LABEL1)) +\n  labs(title=\"Land use (QGIS)\",\n       subtitle= paste(sts_clc_aoi_postgis$ETIQUETA[1],\" municipality\")) +\n  ggplot2::theme_minimal() +\n  geom_col() +\n  geom_label(aes(label= paste(round(ha),\"%\")),\n             position = position_stack(vjust=.5),\n             show.legend =FALSE, \n             color=\"white\",\n             size=6) +\n  coord_polar(theta=\"y\") + \n  scale_fill_manual(values=c(\"#bd6614\",\"black\",\"darkgreen\")) +\n  theme(axis.ticks = element_blank(),\n        axis.text = element_blank(),\n        legend.position = \"bottom\",\n        legend.text = element_text(size=14),\n        plot.title = element_text(size=25, hjust= .5),\n        plot.subtitle = element_text(size=20, hjust=.5, colour=\"#414447\")) +\n  guides(fill=guide_legend(title=\"Land Use: \"))\n\n\n\n\n\n\n\n\n\n\n\n\nMap of the shape of clc coloured by the study area"
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_ud_2_1.html#postgis",
+    "href": "posts/tyc_gis_exercise_ud_2_1.html#postgis",
+    "title": "Unit2: Vector processings",
+    "section": "",
+    "text": "Incorpora a la capa del ámbito de estudio la información de los usos del suelo presentes en cada término municipal.\nUsos del suelo según Corine Land Cover (Nivel 1) – El Escorial\nCapas a utilizar:\n\nAmbito_Estudio.shp\nCLC_LEYENDA.shp\n\n\n\nPostGIS code fixed the geometry, calculated the area and aggregated that area by municipalities\n\n---- Fix geometry\nWITH clc_leyenda AS (\nSELECT \n    code_06,\n    \"CLC_CODE\",\n    \"LABEL1\",\n    \"LABEL2\",\n    \"LABEL3\",\n    st_makevalid(geom, 'method=structure') AS geom \nFROM clc_leyenda_un2),\n---- Intersection\nintersection AS (\nSELECT\n    \"ETIQUETA\",\n    \"CODIGO_INE\",\n    \"LABEL1\",\n    \"CLC_CODE\",\n    st_intersection(aoi.geom,clc.geom) AS geom\nFROM \n    ambito_estudio_un2 AS aoi,\n    clc_leyenda AS clc),\n--- Calculate area of each intersection\narea_ha AS (\nSELECT \n    *,\n    st_area(st_transform(geom,4326)::geography) / 10000 AS ha\nFROM \n    intersection \nWHERE NOT st_isempty(geom))\n--- Group by municipalities\nSELECT \n    \"ETIQUETA\",\n    \"LABEL1\",\n    sum(ha) AS sum_ha\nFROM  \n    area_ha\nGROUP BY\n    \"ETIQUETA\",\"LABEL1\";\n\n\nElaborar un gráfico circular que muestre el porcentaje de tipo de suelo por municipio como el que sigue:\n\n\nR code to create the pie chart\nsts_clc_aoi_postgis &lt;- DBI::dbReadTable(docker_connection,\n                                        Id(schema=\"tycgis\",\n                                           table=\"clc_aoi_postgis\"))\n\nfilter(sts_clc_aoi_postgis, ETIQUETA == sts_clc_aoi_postgis$ETIQUETA[1]) |&gt;\n  mutate(sum_ha_per = sum_ha/sum(sum_ha)*100) |&gt; \n  ggplot(aes(x=\"\", y=sum_ha_per, fill=LABEL1)) +\n  labs(title=\"Land use (PostGIS)\",\n       subtitle= paste(sts_clc_aoi_postgis$ETIQUETA[1],\" municipality\")) +\n  ggplot2::theme_minimal() +\n  geom_col() +\n  geom_label(aes(label= paste(round(sum_ha_per),\"%\")),\n             position = position_stack(vjust=.5),\n             show.legend =FALSE, \n             color=\"white\",\n             size=6) +\n  coord_polar(theta=\"y\") + \n  scale_fill_manual(values=c(\"#bd6614\",\"black\",\"darkgreen\")) +\n  theme(axis.ticks = element_blank(),\n        axis.text = element_blank(),\n        legend.position = \"bottom\",\n        legend.text = element_text(size=14),\n        plot.title = element_text(size=25, hjust= .5),\n        plot.subtitle = element_text(size=20, hjust=.5, colour=\"#414447\")) +\n  guides(fill=guide_legend(title=\"Land Use:\"))"
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_ud_2_1.html#qgis",
+    "href": "posts/tyc_gis_exercise_ud_2_1.html#qgis",
+    "title": "Unit2: Vector processings",
+    "section": "",
+    "text": "Same R code using the data obtained from QGIS\nsts_clc_aoi_qgis &lt;- DBI::dbReadTable(docker_connection,\n                                     Id(schema=\"tycgis\",\n                                        table=\"resumen_stats_clc_ambito\"))\n\nfilter(sts_clc_aoi_qgis, ETIQUETA == sts_clc_aoi_postgis$ETIQUETA[1]) |&gt;\n  mutate(sum =  as.numeric(sum) * 10,\n         ha = sum/sum(sum)*100) |&gt; \n  ggplot(aes(x=\"\", y=ha, fill=LABEL1)) +\n  labs(title=\"Land use (QGIS)\",\n       subtitle= paste(sts_clc_aoi_postgis$ETIQUETA[1],\" municipality\")) +\n  ggplot2::theme_minimal() +\n  geom_col() +\n  geom_label(aes(label= paste(round(ha),\"%\")),\n             position = position_stack(vjust=.5),\n             show.legend =FALSE, \n             color=\"white\",\n             size=6) +\n  coord_polar(theta=\"y\") + \n  scale_fill_manual(values=c(\"#bd6614\",\"black\",\"darkgreen\")) +\n  theme(axis.ticks = element_blank(),\n        axis.text = element_blank(),\n        legend.position = \"bottom\",\n        legend.text = element_text(size=14),\n        plot.title = element_text(size=25, hjust= .5),\n        plot.subtitle = element_text(size=20, hjust=.5, colour=\"#414447\")) +\n  guides(fill=guide_legend(title=\"Land Use: \"))\n\n\n\n\n\n\n\n\n\n\n\n\nMap of the shape of clc coloured by the study area"
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_ud_2_1.html#postgis-1",
+    "href": "posts/tyc_gis_exercise_ud_2_1.html#postgis-1",
+    "title": "Unit2: Vector processings",
+    "section": "PostGIS",
+    "text": "PostGIS\n\n\nMerge two vector layers using PostGIS\nCREATE TABLE curvas_ambito_postgis AS\nSELECT * FROM  curvas_nivel_533 \nUNION ALL\nSELECT * FROM curvas_nivel_558 ;"
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_ud_2_1.html#qgis-1",
+    "href": "posts/tyc_gis_exercise_ud_2_1.html#qgis-1",
+    "title": "Unit2: Vector processings",
+    "section": "QGIS",
+    "text": "QGIS"
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_ud_2_1.html#postgis-2",
+    "href": "posts/tyc_gis_exercise_ud_2_1.html#postgis-2",
+    "title": "Unit2: Vector processings",
+    "section": "PostGIS",
+    "text": "PostGIS\n\n\nCode\n--- Select same number of columns\nCREATE TABLE geom_558 AS \nSELECT \n    id, geom, \"DLO\", \"COLOR\",\"TRAMA_C\" \nFROM \n    \"GEO_558_ETRS89_UTM_30N\";\n---- Create table merging both layers\nCREATE TABLE GEO_533_558_25830_postgis AS\nSELECT * FROM  \"GEO_533_ETRS89_UTM_30N\"\nUNION ALL\nSELECT * FROM geom_558 ;"
+  },
+  {
+    "objectID": "posts/tyc_gis_exercise_ud_2_1.html#qgis-2",
+    "href": "posts/tyc_gis_exercise_ud_2_1.html#qgis-2",
+    "title": "Unit2: Vector processings",
+    "section": "QGIS",
+    "text": "QGIS"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
     "title": "Ricardo Ruiz Sánchez",
     "section": "",
-    "text": "&lt;!DOCTYPE qgis PUBLIC ‘http://mrcc.com/qgis.dtd’ ‘SYSTEM’&gt;     \n\n\n         0 0     false"
+    "text": "Data-driven environmental scientist with a passion for geographical information data. Started collecting data from the laboratory as a technician, I graduated in Environmental Sciences understanding the value of making informed-decisions towards a sustainable future. Along this journey I lived in Scotland and Germany.\nDrafted by the interest on geospatial data I am in my second year of a master in Geographical Information Management and Applications (GIMA)."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "Ricardo Ruiz Sánchez",
+    "section": "Education",
+    "text": "Education\n Msc in Geographical Information Management and Applications\n Bsc in Environmental Sciences\n Higher vocational training as Laboratory technician in quality control"
+  },
+  {
+    "objectID": "about.html#languages",
+    "href": "about.html#languages",
+    "title": "Ricardo Ruiz Sánchez",
+    "section": "Languages",
+    "text": "Languages\n English (C1, advance)\n German (B1, intermediate)\n Spanish (Native)"
   }
 ]
