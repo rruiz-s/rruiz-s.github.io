@@ -1,12 +1,12 @@
 ---
 title: "Mastering Shiny"
-description: "I practiced blablablabla"
+description: "Practising Hadley Wickham book on shiny apps"
 image: shiny.png
 comments:
   utterances: 
     repo: rruiz-s/rruiz-s.github.io
 author:
-  - name: Hadley Wickham
+  - name: Ricardo Ruiz Sánchez
 categories:
   - GIS
   - R
@@ -18,7 +18,7 @@ format:
     toc-location: right
 ---
 
-sdfsdffsdf
+Test with shinylive (R/Python)
 
 ```{shinylive-r}
 #| standalone: true

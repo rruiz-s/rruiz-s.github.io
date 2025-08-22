@@ -3,4 +3,4 @@ title: "getting_started"
 format: html
 ---
 
-asdasd
+Lorem ipsum

@@ -12,7 +12,7 @@ about:
   links:
   - icon: file-earmark-person
     text: Download CV
-    href: cv_gima_ricardo.pdf
+    href: /assets/data/ricardo_cv_en.pdf
   - icon: calendar-plus-fill
     text: Arrange a Quick Chat
     href: https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wee+talk+with+Ricardo&dates=20250630T150000Z/20250630T160000Z&details=Discuss+project&location=Online&add=ricardo.ruiz.sanchez@gmail.com
@@ -22,6 +22,7 @@ format:
     page-layout: article
     toc: true
     toc-location: left
+    css: assets/stylesheets/custom.scss
     
 execute:
   message: false

@@ -7,7 +7,7 @@ title-block-banner-color: "#f1f3f4"
 comments: 
   utterances: 
     repo:  RicardoRS/blogComments
-description: trying thingies
+description: A serie of posts on learning GIS
 execute:
   warning: false
 format:
