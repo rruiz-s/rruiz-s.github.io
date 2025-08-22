@@ -4,5 +4,32 @@
   },
   "about.qmd": {
     "about.html": "ecb908ed"
+  },
+  "posts/index.qmd": {
+    "index.html": "f594acc1"
+  },
+  "posts/posts.qmd": {
+    "posts.html": "4306d61d"
+  },
+  "posts/2024-05-12-post-siose/index.qmd": {
+    "index.html": "d0075df7"
+  },
+  "posts/projects/index.qmd": {
+    "index.html": "71d50325"
+  },
+  "posts/2025-07-23-post-graph/index.qmd": {
+    "index.html": "91b9d1ff"
+  },
+  "posts/2025-08-shiny/index.qmd": {
+    "index.html": "70596408"
+  },
+  "posts/2025-08-python-base/index.qmd": {
+    "index.html": "bb60e7d0"
+  },
+  "posts/2025-08-shiny/shiny_in_action.qmd": {
+    "shiny_in_action.html": "94713096"
+  },
+  "posts/2025-08-shiny/getting_started.qmd": {
+    "getting_started.html": "a870aa24"
   }
 }

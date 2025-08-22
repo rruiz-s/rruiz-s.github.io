@@ -1,0 +1,31 @@
+# options specified here will apply to all posts in this folder
+# re-render posts only when a change to the source file is made ----
+freeze: true
+# enable banner style title blocks ----
+title-block-banner: "../assets/images/google_earth_gray_purullena_5.jpg"
+title-block-banner-color: "#f1f3f4"
+comments: 
+  utterances: 
+    repo:  RicardoRS/blogComments
+description: trying thingies
+execute:
+  warning: false
+format:
+  html:
+    toc: true
+    toc-location: right
+    toc-title: "Sections and Filters"
+    number-sections: true   # Optional: to number sections
+    layout: article
+include-in-header:
+  - text: |
+      <style>
+      .quarto-title-block .quarto-title-banner {
+        background-position-y: center;
+        height: 240px;
+      }
+      div.description {
+        color: #8dd3c7;
+      }
+      </style>    
+    

@@ -1,0 +1,37 @@
+meta:
+  name: Ricardo Ruiz Sánchez
+  link: https://rruiz-s.github.io/
+  
+logo:
+  medium: assets/images/logo_icon.png
+
+color:
+  palette:
+    blue: "#060a26ff"
+    blue-light-tile: "#1e86a4ff"
+    blue-halfdark-tile: "#01467bff"
+  primary: blue
+  secondary: blue-halfdark-tile
+  background: "#f1f3f4"
+  foreground: "#000000"
+  
+typography:
+  fonts:
+    - family: Jost
+      source: google
+    - family: Lexend Deca
+      source: google
+    - family: Figtree
+      source: google
+    - family: Space mono
+      source: google
+  base: Figtree
+  headings: 
+    family: Lexend Deca
+    weight: 500
+  monospace-inline:
+    color: blue
+  link:
+    color: blue-light-tile
+     
+  

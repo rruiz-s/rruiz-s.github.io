@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Data-driven environmental scientist,   with a passion for geographical information data.">
 
-<title>About – rruiz-s.github.io</title>
+<title>Ricardo Ruiz Sánchez – rruiz-s.github.io</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -33,12 +68,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-dbcf5b06f4f0e6e72ac89cce8a2ff2b9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-3d3036da8527657e39ea9a3191705f0e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/iconify-3.0.0/iconify-icon.min.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -66,9 +101,23 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.33/datatables.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="site_libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="site_libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
+<script src="site_libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="site_libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="assets/stylesheets/custom.scss">
 </head>
 
 <body class="nav-fixed">
@@ -78,6 +127,9 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./assets/images/logo_icon.png" alt="" class="navbar-logo">
+    </a>
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">rruiz-s.github.io</span>
     </a>
@@ -87,14 +139,18 @@ ul.task-list li input[type="checkbox"] {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./about.html" aria-current="page"> 
-<span class="menu-text">About</span></a>
+<span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./posts/posts.html"> 
+<span class="menu-text">Blog</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -107,34 +163,330 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#about-me" id="toc-about-me" class="nav-link active" data-scroll-target="#about-me">About me</a></li>
+  <li><a href="#education" id="toc-education" class="nav-link" data-scroll-target="#education">Education</a></li>
+  <li><a href="#work-experience" id="toc-work-experience" class="nav-link" data-scroll-target="#work-experience">Work experience</a></li>
+  <li><a href="#other-courses" id="toc-other-courses" class="nav-link" data-scroll-target="#other-courses">Other courses</a></li>
+  <li><a href="#acknowledgement" id="toc-acknowledgement" class="nav-link" data-scroll-target="#acknowledgement">Acknowledgement</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+
+
+
+<div class="quarto-about-solana column-body">
+  <div class="about-entity">
+    <div class="entity-contents">
+      <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Ricardo Ruiz Sánchez</h1>
+<p class="subtitle lead">GIS Analyist | Environmental Scientist</p>
+</div>
+<div>
+  <div class="description">
+    Data-driven environmental scientist, <br> with a passion for geographical information data.
+  </div>
+</div>
+<div class="quarto-title-meta">
+  </div>
+</header> <div class="about-links">
+  <a href="/cv_gima_ricardo.pdf" class="about-link" rel="" target="">
+    <i class="bi bi-file-earmark-person"></i>
+     <span class="about-link-text">Download CV</span>
+  </a>
+  <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Wee+talk+with+Ricardo&amp;dates=20250630T150000Z/20250630T160000Z&amp;details=Discuss+project&amp;location=Online&amp;add=ricardo.ruiz.sanchez@gmail.com" class="about-link" rel="" target="">
+    <i class="bi bi-calendar-plus-fill"></i>
+     <span class="about-link-text">Arrange a Quick Chat</span>
+  </a>
+</div>
+      <div class="about-contents"><div id="solana-heading">
+</div></div>
+    </div>
+    <img src="assets/images/google_earth_gray_purullena_4.jpg" class="about-image
+  rounded " style="width: 20em;">
+  </div>
 </div>
 
+<section id="about-me" class="level2">
+<h2 data-anchor-id="about-me">About me</h2>
+<p>Started collecting data from samples as a <em>laboratory technician</em> :microscope:, I graduated as BSc <em>environmental scientist</em> <span style="color: #179498; font-size: 1.2em;"><iconify-icon role="img" inline="" icon="noto:globe-showing-europe-africa" aria-label="Icon globe-showing-europe-africa from noto Iconify.design set." title="Icon globe-showing-europe-africa from noto Iconify.design set."></iconify-icon></span> understanding the value of making informed-decisions towards a sustainable future. After this, I obtained a MSc in <em>Geographical Information Systems and Project Management</em> <span style="color: #179498; font-size: 1.2em;"><iconify-icon role="img" inline="" icon="noto:world-map" aria-label="Icon world-map from noto Iconify.design set." title="Icon world-map from noto Iconify.design set."></iconify-icon></span> and a <em>Master of Education</em> in Biology and Geology <span style="color: #179498; font-size: 1.2em;"><iconify-icon role="img" inline="" icon="noto:school" aria-label="Icon school from noto Iconify.design set." title="Icon school from noto Iconify.design set."></iconify-icon></span>.</p>
+<div class="my-first-grid">
+<div class="grid-item-1">
+<span><iconify-icon role="img" inline="" icon="circle-flags:uk" aria-label="Icon uk from circle-flags Iconify.design set." title="Icon uk from circle-flags Iconify.design set."></iconify-icon>Advance <a href="https://drive.google.com/file/d/1SHwUnEGKmmiI3GyT0qTeA3fUcxlWmK-E/view">(C1)</a></span>
+</div>
+<div class="grid-item-2">
+<span><iconify-icon role="img" inline="" icon="emojione:flag-for-germany" aria-label="Icon flag-for-germany from emojione Iconify.design set." title="Icon flag-for-germany from emojione Iconify.design set."></iconify-icon>Intermediate <a href="https://drive.google.com/file/d/1GIq_DL-HCzlP8QuViW7yv8ThlKJIumN8/view?usp=drive_link">(B1)</a></span>
+</div>
+<div class="grid-item-3">
+<span><iconify-icon role="img" inline="" icon="emojione:flag-for-spain" aria-label="Icon flag-for-spain from emojione Iconify.design set." title="Icon flag-for-spain from emojione Iconify.design set."></iconify-icon> Native</span>
+</div>
+</div>
+</section>
+<section id="education" class="level2">
+<h2 data-anchor-id="education">Education</h2>
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
+    <div class="timeline-item">
+      <button class="timeline-title w-100 text-start btn btn-link p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#content1" aria-expanded="false" aria-controls="content1">
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <h5 class="fw-bold mb-1"> <span class="noto--world-map"></span> MSc in Geographical Information Management and Applications</h5>
+             <p class="text-muted mb-2" style="color: #179498 !important;">
+              2022 September - 2025 February <br>
+              <span class="ms-4 text-secondary">University of Utrecht, The Netherlands</span>
+            </p>
+          </div>
+          <i class="bi bi-chevron-down toggle-icon"></i>
+        </div>
+      </button>
+      <div id="content1" class="collapse timeline-content">
+        <p class="text-muted">
+          A two-year joint-degree Master of Science programme taught by geo-information experts from four
+          universities in the Netherlands: University of Twente/ITC Enschede, TU Delft, Utrecht University and Wageningen University.
+          <br><br>
+          The GIS tools included ESRI products like ArcGIS and programming languages like PostGIS, R, Python or SparQL.
+        </p>
+        <ul class="text-muted">
+          <li><i>Topic:</i> MSc in GIS and Project Management</li>
+          <li><i>Internship graded 9/10:</i>Published a full paper for the Agile 2025 conference (Dreden) working for <a href="https://heigit.org/"> HeiGIT</a> (Heidelberg) with the university supervision from <a href="https://www.itc.nl/">ITC Enschede</a>.
+          </li>
+          <li><i>Thesis graded 8.5/10:</i> Published a conference paper for AgEng2024, apart from the master thesis with the university supervision from <a href="https://www.wur.nl/en.htm">Wageningen University</a>.“Multi-Object Tracking livestock method driven by foundation models in computer vision using UAV videos”.<br>
+          <a href="https://drive.google.com/file/d/1fWF-lU-6_DOHdDL8ttw2WaDHqiiY45G5/view?usp=drive_link" target="_blank">
+          <button class="button_muted">Download full academic record</button>
+          </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="timeline-item">
+  <button class="timeline-title w-100 text-start btn btn-link p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#content2" aria-expanded="false" aria-controls="content2">
+    <div class="d-flex justify-content-between align-items-start">
+      <div>
+        <h5 class="fw-bold mb-1"> <span class="noto--school"></span> Master in Education Biology and Geology</h5>
+        <p class="text-muted mb-2" style="color: #179498 !important;">
+              2022 September - 2023 September<br>
+          <span class="ms-4 text-secondary">National Distance University, Madrid, Spain</span>
+        </p>
+      </div>
+      <i class="bi bi-chevron-down toggle-icon"></i>
+    </div>
+  </button>
+  <div id="content2" class="collapse timeline-content">
+    <p class="text-muted">
+      A one-year Master of Education programme in Spain’s largest public university focused on distance learning. This official Master’s degree qualifies students to work as teachers of Secondary Education, Baccalaureate, Vocational Training and Language Teaching.
+    </p>
+    <ul class="text-muted">
+      <li><i>Topic:</i> Teaching Biology and Geology</li>
+      <li><i>Internship graded 9.7/10:</i> Worked in Biology and Geology classes for 5 months at
+        <a href="http://www.platerogreenschool.es/">IES Platero Green School</a> (Málaga).
+      </li>
+      <li><i>Thesis graded 9.3/10:</i> Introduced carbon footprint system from <a href="https://www.miteco.gob.es/">MITECO</a> using PostGIS and R with the master thesis “Eligiendo un futuro más sostenible a través de la huella de carbono y R/SQL en el aula”.<br>
+        <a href="https://drive.google.com/file/d/1lvC15R5G7S-ol7FlqMa8vT_o5NkJbGqV/view?usp=sharing" target="_blank">
+          <button class="button_muted">Download full academic record</button>
+        </a>
+      </li>
+    </ul>
   </div>
-  
+</div>
+<div class="timeline-item">
+  <button class="timeline-title w-100 text-start btn btn-link p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#content3" aria-expanded="false" aria-controls="content3">
+    <div class="d-flex justify-content-between align-items-start">
+      <div>
+        <h5 class="fw-bold mb-1"><span class="noto--globe-showing-europe-africa"></span> BSc in Environmental Sciences</h5>
+        <p class="text-muted mb-2" style="color: #179498 !important;">
+              2015 September - 2021 September<br>
+          <span class="ms-4 text-secondary">National Distance University, Madrid, Spain</span>
+        </p>
+      </div>
+      <i class="bi bi-chevron-down toggle-icon"></i>
+    </div>
+  </button>
+  <div id="content3" class="collapse timeline-content">
+    <p class="text-muted">
+      A four-year Bachelor of Sciences programme in Environmental Sciences where graduates are prepared to work in fields such as environmental quality management systems, consultancy and impact assessment, industrial technology or natural environment management.
+    </p>
+    <ul class="text-muted">
+      <li><i>Topic:</i> Environmental Sciences</li>
+      <li><i>Dissertation graded 10/10:</i> I Used R and the library OpenAir, with the invaluable assistance from
+        <a href="https://www.linkedin.com/in/fernandofollos/">Fernando Follos</a> to analyse the effect of air pollutants on health, as well as comparing their levels in Edinburgh before and after COVID19. The title of the dessertation is “Contaminantes atmosféricos: Sus mecanismos de acción molecular y sus niveles durante el confinamiento COVID 19 en Edimburgo”.<br>
+        <a href="https://drive.google.com/file/d/1lMja-ZzKqTz8_YtWFS5nEliO6XXubd7N/view?usp=sharing" target="_blank">
+          <button class="button_muted">Download full academic record</button>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</section>
+<section id="work-experience" class="level2">
+<h2 data-anchor-id="work-experience">Work experience</h2>
+<section>
+<div class="container py-5">
+<div class="main-timeline-2">
+<div class="timeline-2 left-2">
+<div class="card">
+<img src="./assets/images/heidelberg-3395743_1280.jpg" class="card-img-top" alt="heidelberg">
+<div class="card-body p-4">
+<h4 class="fw-bold mb-4">
+¹Heidelberg
+</h4>
+<p class="text-muted mb-1" style="color: #179498 !important;">
+<i class="far fa-clock" aria-hidden="true"></i> 2024- Intern Geo-Analytics
+</p>
+<p class="text-muted mb-4">
+<i class="far fa-clock" aria-hidden="true"></i> HeiGIT: Heidelberg Institute for Geoinformation Technology
+</p>
+<p class="mb-0">
+When I joined the Geoinformation for Humanitarian Aid we decided to design and implement a new workflow to evaluate connectivity of the road systems. I started to learn more about PostgreSQL and Pgrouting ending up with a methodology based on scripts and a published paper.
+</p>
+<ul>
+<li>
+Conducted network analysis of road systems from OpenStreetMap, focusing on the impact of floodings on their resilience and accesibility to hospitals using PostGIS and R.
+</li>
+<li>
+Designed data processing workflows, automating steps using PostGIS and R scripts integrated with GIS software (QGIS) for spatial analysis.
+</li>
+<li>
+Published a <a href="https://doi.org/10.5194/agile-giss-6-10-2025">full paper</a> in Agile 2025 conference (Dresden)
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="timeline-2 right-2">
+<div class="card">
+<img src="./assets/images/foto-principal-axarquia-balcon.jpg" class="card-img-top" alt="Responsive image">
+<div class="card-body p-4">
+<h4 class="fw-bold mb-4">
+²Málaga
+</h4>
+<p class="text-muted mb-1" style="color: #179498 !important;">
+<i class="far fa-clock" aria-hidden="true"></i> 2023- Intern Biology and Geology teacher
+</p>
+<p class="text-muted mb-4">
+<i class="far fa-clock" aria-hidden="true"></i> Platero Green School
+</p>
+<p class="mb-0">
+During my two-year full-time MSc in GIS and Project Management, I also enrolled in a one-year full-time Master in Education (Biology and Geology). During my internship in Platero Green School, I had the pleasure of working alongside Francisco Fernández Castro and strengthened my organization skills by successfully completing both masters
+</p>
+<ul>
+<li>
+Strong communication skills developed by teaching science clearly to students, parents, and colleagues across varied contexts.
+</li>
+<li>
+Communicate biology and geology concepts effectively to a range of audiences, both in writing and speaking.
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="timeline-2 left-2">
+<div class="card">
+<img src="./assets/images/Cala_Petita_03.jpg" class="card-img-top" alt="Responsive image">
+<div class="card-body p-4">
+<h4 class="fw-bold mb-4">
+³Palma de Mallorca
+</h4>
+<p class="text-muted mb-1" style="color: #179498 !important;">
+<i class="far fa-clock" aria-hidden="true"></i> 2022- Environmental and Quality Technician
+</p>
+<p class="text-muted mb-4">
+<i class="far fa-clock" aria-hidden="true"></i> Air Europa
+</p>
+<p class="mb-0">
+After moving on from a high vocational training as laboratory technician to a recent graduate in Environmental Sciences, I moved to Palma de Mallorca to work as an Environmental and Quality Technician. In this role I participated in external audits including ISO 19001, 14001, and EMAS by AENOR, all of them were successfully passed.
+</p>
+<ul>
+<li>
+Strong analytical and problem-solving skills evaluating more than 20 indicators across 16 work centers and a total number of 3.145 employers
+</li>
+<li>
+Solid knowledge in MS Office including excel to manage pivot tables, functions and managed data workflows with Qlik or PowerBI
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="timeline-2 right-2">
+<div class="card">
+<img src="./assets/images/edinburgh.jpg" class="card-img-top" alt="Responsive image">
+<div class="card-body p-4">
+<h4 class="fw-bold mb-4">
+⁴Edinburgh
+</h4>
+<p class="text-muted mb-1" style="color: #179498 !important;">
+<i class="far fa-clock" aria-hidden="true"></i> Before 2022 - Jobs abroad
+</p>
+<p class="text-muted mb-4">
+<i class="far fa-clock" aria-hidden="true"></i> Seasonal jobs
+</p>
+<p class="mb-0">
+When the young unemployment⁵ rate reached a 70% in Andalucía, I wanted to get a job, so I moved abroad to Edinburgh (UK-Scotland). I found my first job after 2 weeks. From then on, my first employer and colleagues kept referring me to other roles year after year, grounded in the mutual trust that came from how we worked together.
+</p>
+<ul>
+<li>
+Fluent in English through daily work and life in the UK, complemented by the Cambridge Certificate of Advanced English (CAE).
+</li>
+<li>
+Clear communication and collaborative work within international teams, developed in fast-paced environments.
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="other-courses" class="level2">
+<h2 data-anchor-id="other-courses">Other courses</h2>
+
+<div style="text-align: center;">
+  <iframe src="assets/widgets/circle.html" width="500" scrolling="no"></iframe>
+</div>
+
+<div class="cell">
+<details class="code-fold">
+<summary>Code to create the table</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>courses_certificates <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/home/ricardors/rrs_website/rruiz-s.github.io/posts/cv_certificates.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">link_url =</span> <span class="fu">paste0</span>(<span class="st">'&lt;a href="'</span>, link, <span class="st">'"&gt;link&lt;/a&gt;'</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(link,id)) <span class="co"># an index makes the id column redundant and link is formatted properly using HTML in link_url</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DT)  </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>DT<span class="sc">::</span><span class="fu">datatable</span>(courses_certificates, <span class="at">escape=</span><span class="cn">FALSE</span>, <span class="at">filter=</span><span class="st">"top"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">options =</span> <span class="fu">list</span>(</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                <span class="at">pageLength=</span><span class="dv">5</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>              ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-93889eeae7ce377d84e9" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-93889eeae7ce377d84e9">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"15\" data-max=\"240\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19"],["ENV","ENV","LNG","LNG","ENV","LNG","ENV","GIS","B&G","GIS","GIS","ENV","GIS","ENV","ENV","ENV","ENV","ENV","GIS"],["CURSO SEGURIDAD Y SALUD EN EL TRABAJO. ISO 45001:2018.","II EDICIÓN CURSO SISTEMAS DE GESTIÓN INTEGRADA. CALIDAD Y MEDIO AMBIENTE","INGLÉS C1","Curso de Inmersión en Lengua Inglesa - Profesorado (C1)","SBN e infraestructuras verdes en entornos urbanos mediterráneos","Curso de Inmersión en Lengua Inglesa C1","Reducción de emisiones y Huella de Carbono para empresas","Iniciación al Análisis Estadístico en Investigación Científica con Rstudio","Técnico especialista de laboratorio Agroalimentario (Intensivo)","Teledetección para la humedad del suelo: Fuentes, Procesamiento y Asimilación de Datos para el Modelado Hidrológico","Introducción al Manejo y Análisis de Datos Ambientales en R","Cálculo de Huella de Carbono","PostGIS: Bases de datos espaciales","Simposio SIAGA","Gestión de Especies Invasoras Marinas: Construyendo una Propuesta para Andalucía","Diversidad Biológica, Conservación Y Cooperación Internacional hacia la sostenibilidad del archipiélago de Galápagos","El clima que viene y su impacto en el medio ambiente en España","Valores naturales de la provincia de Málaga","QGIS Y GRASS – Nivel Avanzado"],[50,150,240,40,25,43,60,100,50,33,50,120,120,30,15,50,20,20,30],["<a href=\"https://drive.google.com/file/d/1YhHZgCTsFxKhkYgwnAL9y76pGGktTeCL/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1uIpLHoSeg9DV86umbFE4_QxcBc80PywJ/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1pTQYdbcloZMeZMnWu7w8v26oZ9P-m7b-/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1ozr5WpdXleWMxNQP5S5aFR3AKa8TOK9O/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1mbtMe-iEqBLmhQvKrivQElovgiPBtabm/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1Ekqyw2bpMdhJtKoQOJxBDlK6MSzGCG6i/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1Jja7MKalbzv38GONnyGspUDltzKqwNUg/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1CEbxFrce50PMg8CY8tNHatrdxzIPkRqu/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1OnLp_t1nWR_dYFsKxLn8TZ38Xf4qi3FQ/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1-vFDK0xpkkvcFoYQC19s7QSCoTvz1Upk/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1Hsnyck4T8DHTQav1TgpeUp_WwxbH8Lx2/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1jynbDBbRw7o7rUmt0sSBk3Lp5dOgHrUY/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/14wdZwogjO-DmD8Jlnkgld7gRwQKFPW4O/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1n-kxKxpjfbOFoVzhEzTmXmiO3IzjWCCe/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1yAqN8ufo3mi0FVppNbOSxXYrhl1CxEUk/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/13NSPEP_u6epUkHPG84Mi3rscV839cDQM/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1BX4g2ffmK76utuKeNZ1zFj04Vy4nQmDW/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1Qa4lvlGv_dDOhZ3OBLYEuqYiiZeGw-XH/view?usp=sharing\">link<\/a>","<a href=\"https://drive.google.com/file/d/1aqPzP-OtCG3jBqYS6K4zOg6xgc2dOGjF/view?usp=sharing\">link<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>group<\/th>\n      <th>description<\/th>\n      <th>value<\/th>\n      <th>link_url<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":5,"columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"group","targets":1},{"name":"description","targets":2},{"name":"value","targets":3},{"name":"link_url","targets":4}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true,"lengthMenu":[5,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="acknowledgement" class="level2">
+<h2 data-anchor-id="acknowledgement">Acknowledgement</h2>
+<ul>
+<li>How to use <a href="https://github.com/mcanouil/quarto-iconify">iconiy in quarto</a> originally from <a href="https://github.com/iconify/iconify">Vjacheslav Trushkin</a></li>
+<li>How to create a timeline with images using bootstrap from <a href="https://mdbootstrap.com/docs/standard/extended/timeline/">MDB</a></li>
+<li>How to set up code chunks <a href="https://quarto.org/docs/output-formats/html-code.html">link</a> options in quarto</li>
+<li>¹ Image by <a href="https://pixabay.com/users/rperucho-7689351/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3395743">Ramon Perucho</a></li>
+<li>² https://www.andaluciasimple.com/wp-content/uploads/2020/11/foto-principal-axarquia-balcon.jpg</li>
+<li>³ https://de.wikipedia.org/wiki/Cala_Petita</li>
+<li>⁴ Photo by Agnieszka Palmowska: https://www.pexels.com/photo/brown-chateau-631911/</li>
+<li>⁵ https://datosmacro.expansion.com/paro-epa/espana-comunidades-autonomas/andalucia?sc=T&amp;anio=2010</li>
+</ul>
 
 
-</header>
 
-
-<p>About this site</p>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -157,13 +509,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

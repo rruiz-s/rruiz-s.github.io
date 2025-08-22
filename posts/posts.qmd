@@ -1,0 +1,78 @@
+---
+title: Blog
+bibliography: ../references.bib
+listing:
+  - id: 2025-07-23-post-graph
+    contents: ["2025-07-23-post-graph/index.qmd"]
+    sort: "date desc"
+    type: grid
+    categories: true
+    filter-ui: true
+  - id: 2024-05-12-post-siose
+    contents: ["2024-05-12-post-siose/**/index.qmd", "2025-08-shiny/**/index.qmd"]
+    sort: "date desc"
+    type: grid
+    categories: true
+    filter-ui: true   
+  - id: projects
+    contents: "projects/projects.yml"
+    type: grid
+    sort: "date desc"
+    categories: true
+    filter-ui: true
+    max-description-length: 250
+    
+    
+---
+
+This blog section contains small data science projects in form of posts to practice. The goal is to force myself to learn something new by sharing some work that help me to realize I don't know something as well as I thought I did [@Robinson2020-sg]. A common pattern on how these posts are structured are the tools used in a data science projects [@Grolemund2017-in] (See @fig-data-science). 
+
+![A model of the tools
+needed in a typical data science project](../assets/images/data_science_tools_v4.png){#fig-data-science .column-margin .lightbox}
+
+
+In addition, these posts are grouped by the sections Projects, Books and Quick fix based on their length. The motivation of choice to publish these posts is sharing what I learnt, so I aim for operative solutions rather than optimal solutions. Moreove, I heard from Marcel Reinmuth, Emily Robinson and Marinus (Marien) de Bakker that Perfection is an endless chase; The perfect is the enemy of the good ; Doing enough is the winning strategy (related to fit for business purpose see @fig-winning_strategy).
+
+![Visualization of Fit for business purpose where doing enough is the winning strategy from Marinus (Marien) de Bakker at the MSc GIMA PM](../assets/images/winning_strategy.png){#fig-winning_strategy .column-margin .lightbox}
+
+From the technical design, it is possible to filter the posts based on the technology used or to the applied field. The main technology are programming languages such as PostgreSQL (@fig-technical-framework) and its spatial extension PostGIS, R and Python, while the applied fields are Geographic Information System (GIS), Project Management (PM) or Environmental Sciences (ENV).
+
+
+:::{#fig-technical-framework layout-ncol=4}
+
+![PostgreSQL-PostGIS](../assets/images/PostGIS.png){#fig-postgis width=25%}
+
+![R](../assets/images/R.png){#fig-R width=25%}
+
+![Python](../assets/images/Python.png){#fig-python width=25%}
+
+![QGIS](../assets/images/QGIS.png){#fig-qgis width=25%}
+
+Main technical framework shown in the filters named as categories
+
+:::
+
+
+
+## Projects
+
+:::{#projects}
+:::
+
+
+## Quick fix
+
+:::{#2025-07-23-post-graph}
+:::
+
+
+
+## Books
+
+:::{#2024-05-12-post-siose}
+:::
+
+## Notes
+
+I used this ([link](https://rstudio-conf-2022.github.io/get-started-quarto/materials/07-plots-tables.html#/plots-graphics-and-tables)) to refresh how to structure the general layout.
+

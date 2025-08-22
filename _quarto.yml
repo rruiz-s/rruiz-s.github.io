@@ -5,18 +5,26 @@ project:
 website:
   title: "rruiz-s.github.io"
   navbar:
-    left:
+    right:
       - href: index.qmd
         text: Home
-      - about.qmd
+      - href: about.qmd
+        text: CV
+      - href: posts/posts.qmd
+        text: Blog
 
+  
+  sidebar:
+    - title: "Mastering Shiny"
+      style: "docked"
+      contents:
+       - posts/2025-08-shiny/index.qmd
+       - posts/2025-08-shiny/getting_started.qmd
+       - posts/2025-08-shiny/shiny_in_action.qmd
+    
 format:
   html:
-    theme:
-      - cosmo
-      - brand
-    css: styles.css
+    css: assets/stylesheets/custom.scss
     toc: true
-
-
-
+filters:
+  - shinylive

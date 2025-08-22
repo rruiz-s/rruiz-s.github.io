@@ -1,0 +1,7 @@
+- title: Flooding in Brazil
+  path: https://rruiz-s.github.io/agile-gscience-2024-rs-flood/
+  image: ../../assets/images/floodings_heigit.png
+  description: >
+    How much and where is road connectivity most affected by floodings? Which hospitals have the most resilient access? At HeiGIT, we published a paper in Agile 2025 answering these questions as part of my 6-month internship from the Msc GIMA. 
+  categories: [PostGIS, R, GIS]
+  date: 2025-02-02

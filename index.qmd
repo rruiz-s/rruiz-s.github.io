@@ -1,7 +1,34 @@
 ---
-title: "rruiz-s.github.io"
+title: |
+  Ricardo Ruiz Sánchez
+subtitle: "GIS Analyst | Environmental Scientist"
+format: 
+  html:
+    toc: false
+    grid:
+      body-width: 600px
+
 ---
 
-This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+Environmental Scientist specialised in Geographical Information Systems and worked as Research assitant at [HeiGIT](https://heigit.org/). My work focused on evaluating the impact of floodings on the road network connectivity and healthcare accessibility. During my Master ([GIMA](https://www.uu.nl/en/masters/geographical-information-management-and-applications-gima/get-to-know)) I mostly worked in network analysis for my internship at HeiGIT using pgrouting (PostgreSQL) and object recognition based on foundation models such as SAM (Segment-Anything-Model) for my master thesis. 
+
+# Short bio
+
+Born in Spain, I obtained my bachelor's degree in Environmental Sciences from the National University of Distance Education (UNED) in 2021 and started a two-year master's degree in Geographical Information Management and Applications from the University of Utrecht in 2022 and finishing it in February 2025.  
+
+During my undergraduate studies I changed the direction of my bachelor thesis from analysing samples in a laboratory to analyse data from a monitoring station in Edinburgh due to COVID19. It was then when I started using programming languages (R) and specific libraries (openair) to obtain large amount of data guided by [Fernando Follos Pliego](https://www.linkedin.com/in/fernandofollos/).
+
+After that, I started a joint MSc program of Geographical Information Management, spending time in each of the partners, University of Wageningen, ITC/UT Enschede, TU Delft and Utrecht University. I developed an interest for computer vision models and spatial analysis while working on my master thesis and internship respectively. I am extremely grateful to [Manuel López Antequera](https://m.lopezantequera.com/) for encouraging me to do this MSc and also for sharing me the contact of [Christopher Beddow](https://www.linkedin.com/in/cbed/?originalSubdomain=ch), who kindly recommended me to contact HeiGIT for my master internship.
+
+Supervised by [Joao Valente](https://www.linkedin.com/in/j0a0-valente/) we submitted a conference paper along the master thesis that was graded 8.5/10. Similarly, supervised by [Marcel Reinmuth](https://www.linkedin.com/in/marcel-reinmuth/) and [Monika Kuffer](https://www.linkedin.com/in/monika-kuffer-95a5a511/) working in the [Geoinformation For Humanitarian Aid](https://heigit.org/geoinformation-for-humanitarian-aid/) team in HeiGIT we submitted a full paper for the Agile 2025 conference obtaining a 9/10 in the master internship. 
+
+These experiences made me develop a great interest on transforming data into information by giving meaning and context to take better informed-decisions.
+
+# Acknowledgments
+
+- How to create a quarto website [(link)](https://ucsb-meds.github.io/creating-quarto-websites/) from Sam Shanny-Csik 
+- How to add a blog section in your website [(link)](https://samanthacsik.github.io/posts/2022-10-24-quarto-blogs/) from Sam Shanny-Csik 
+- How to Consistent Branding with brand.yml [(youtube)](https://www.youtube.com/watch?v=zuhflYFruMw&t=6s) from Garrick Aden-Buie hosted by R for the Rest of Us
+- How to design a personal website from looking at the repository from [Ella Kayle](https://github.com/EllaKaye/ellakaye.co.uk), [Mickael Canouil](https://github.com/mcanouil/mickael.canouil.fr/tree/main) and layout from [Manuel López Antequera](https://m.lopezantequera.com/).
+- How to add interaction with the audience from [Albert Rapp](https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html#interact-with-your-audience) using [utterances](https://utteranc.es/).

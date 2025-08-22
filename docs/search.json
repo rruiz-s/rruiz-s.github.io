@@ -2,15 +2,227 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Ricardo Ruiz Sánchez",
     "section": "",
-    "text": "About this site"
+    "text": "Download CV\n  \n  \n    \n     Arrange a Quick Chat"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "rruiz-s.github.io",
+    "title": "Ricardo Ruiz Sánchez",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "Environmental Scientist specialised in Geographical Information Systems and worked as Research assitant at HeiGIT. My work focused on evaluating the impact of floodings on the road network connectivity and healthcare accessibility. During my Master (GIMA) I mostly worked in network analysis for my internship at HeiGIT using pgrouting (PostgreSQL) and object recognition based on foundation models such as SAM (Segment-Anything-Model) for my master thesis.\n\nShort bio\nBorn in Spain, I obtained my bachelor’s degree in Environmental Sciences from the National University of Distance Education (UNED) in 2021 and started a two-year master’s degree in Geographical Information Management and Applications from the University of Utrecht in 2022 and finishing it in February 2025.\nDuring my undergraduate studies I changed the direction of my bachelor thesis from analysing samples in a laboratory to analyse data from a monitoring station in Edinburgh due to COVID19. It was then when I started using programming languages (R) and specific libraries (openair) to obtain large amount of data guided by Fernando Follos Pliego.\nAfter that, I started a joint MSc program of Geographical Information Management, spending time in each of the partners, University of Wageningen, ITC/UT Enschede, TU Delft and Utrecht University. I developed an interest for computer vision models and spatial analysis while working on my master thesis and internship respectively. I am extremely grateful to Manuel López Antequera for encouraging me to do this MSc and also for sharing me the contact of Christopher Beddow, who kindly recommended me to contact HeiGIT for my master internship.\nSupervised by Joao Valente we submitted a conference paper along the master thesis that was graded 8.5/10. Similarly, supervised by Marcel Reinmuth and Monika Kuffer working in the Geoinformation For Humanitarian Aid team in HeiGIT we submitted a full paper for the Agile 2025 conference obtaining a 9/10 in the master internship.\nThese experiences made me develop a great interest on transforming data into information by giving meaning and context to take better informed-decisions.\n\n\nAcknowledgments\n\nHow to create a quarto website (link) from Sam Shanny-Csik\nHow to add a blog section in your website (link) from Sam Shanny-Csik\nHow to Consistent Branding with brand.yml (youtube) from Garrick Aden-Buie hosted by R for the Rest of Us\nHow to design a personal website from looking at the repository from Ella Kayle, Mickael Canouil and layout from Manuel López Antequera.\nHow to add interaction with the audience from Albert Rapp using utterances."
+  },
+  {
+    "objectID": "posts/index.html",
+    "href": "posts/index.html",
+    "title": "Blog",
+    "section": "",
+    "text": "This blog section contains small data science projects in form of posts to practice. The goal is to force myself to learn something new by sharing some work that help me to realize I don’t know something as well as I thought I did (Robinson and Nolis 2020). A common pattern on how these posts are structured are the tools used in a data science projects (Grolemund and Wickham 2017) (See Figure 1).\nIn addition, these posts are grouped by the sections Projects, Books and Quick fix based on their length. The motivation of choice to publish these posts is sharing what I learnt, so I aim for operative solutions rather than optimal solutions. Moreove, I heard from Marcel Reinmuth, Emily Robinson and Marinus (Marien) de Bakker that Perfection is an endless chase; The perfect is the enemy of the good ; Doing enough is the winning strategy (related to fit for business purpose see Figure 2).\nFrom the technical design, it is possible to filter the posts based on the technology used or to the applied field. The main technology are programming languages such as PostgreSQL (Figure 3) and its spatial extension PostGIS, R and Python, while the applied fields are Geographic Information System (GIS), Project Management (PM) or Environmental Sciences (ENV)."
+  },
+  {
+    "objectID": "posts/index.html#projects",
+    "href": "posts/index.html#projects",
+    "title": "Blog",
+    "section": "1 Projects",
+    "text": "1 Projects\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nFlooding in Brazil\n\n\n\nPostGIS\n\n\nR\n\n\nGIS\n\n\n\nHow much and where is road connectivity most affected by floodings? Which hospitals have the most resilient access? At HeiGIT, we published a paper in Agile 2025 answering these questions as part of my 6-month internship from the Msc GIMA.\n\n\n\nFeb 2, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/index.html#quick-fix",
+    "href": "posts/index.html#quick-fix",
+    "title": "Blog",
+    "section": "2 Quick fix",
+    "text": "2 Quick fix\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nprueba\n\n\n\nR\n\n\nGraph\n\n\n\ntrying thingies\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/index.html#books",
+    "href": "posts/index.html#books",
+    "title": "Blog",
+    "section": "3 Books",
+    "text": "3 Books\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nSIOSE\n\n\n\nTransform\n\n\nPostGIS\n\n\nQGIS\n\n\nTYC GIS-IMFE\n\n\n\nExercise 1: JOINS\n\n\n\nRicardo Ruiz Sánchez\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/index.html#notes",
+    "href": "posts/index.html#notes",
+    "title": "Blog",
+    "section": "4 Notes",
+    "text": "4 Notes\nI used this (link) to refresh how to structure the general layout."
+  },
+  {
+    "objectID": "posts/posts.html",
+    "href": "posts/posts.html",
+    "title": "Blog",
+    "section": "",
+    "text": "This blog section contains small data science projects in form of posts to practice. The goal is to force myself to learn something new by sharing some work that help me to realize I don’t know something as well as I thought I did (Robinson and Nolis 2020). A common pattern on how these posts are structured are the tools used in a data science projects (Grolemund and Wickham 2017) (See Figure 1).\nIn addition, these posts are grouped by the sections Projects, Books and Quick fix based on their length. The motivation of choice to publish these posts is sharing what I learnt, so I aim for operative solutions rather than optimal solutions. Moreove, I heard from Marcel Reinmuth, Emily Robinson and Marinus (Marien) de Bakker that Perfection is an endless chase; The perfect is the enemy of the good ; Doing enough is the winning strategy (related to fit for business purpose see Figure 2).\nFrom the technical design, it is possible to filter the posts based on the technology used or to the applied field. The main technology are programming languages such as PostgreSQL (Figure 3) and its spatial extension PostGIS, R and Python, while the applied fields are Geographic Information System (GIS), Project Management (PM) or Environmental Sciences (ENV)."
+  },
+  {
+    "objectID": "posts/posts.html#projects",
+    "href": "posts/posts.html#projects",
+    "title": "Blog",
+    "section": "1 Projects",
+    "text": "1 Projects\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nFlooding in Brazil\n\n\n\nPostGIS\n\n\nR\n\n\nGIS\n\n\n\nHow much and where is road connectivity most affected by floodings? Which hospitals have the most resilient access? At HeiGIT, we published a paper in Agile 2025 answering these questions as part of my 6-month internship from the Msc GIMA.\n\n\n\nFeb 2, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/posts.html#quick-fix",
+    "href": "posts/posts.html#quick-fix",
+    "title": "Blog",
+    "section": "2 Quick fix",
+    "text": "2 Quick fix\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nGantt chart\n\n\n\nPM\n\n\nR\n\n\nPython\n\n\n\ntrying thingies\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/posts.html#books",
+    "href": "posts/posts.html#books",
+    "title": "Blog",
+    "section": "3 Books",
+    "text": "3 Books\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nSIOSE\n\n\n\nTransform\n\n\nPostGIS\n\n\nQGIS\n\n\nTYC GIS-IMFE\n\n\n\nExercise 1: JOINS\n\n\n\nRicardo Ruiz Sánchez\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMastering Shiny\n\n\n\nGIS\n\n\nR\n\n\nPython\n\n\n\nI practiced blablablabla\n\n\n\nHadley Wickham\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/posts.html#notes",
+    "href": "posts/posts.html#notes",
+    "title": "Blog",
+    "section": "4 Notes",
+    "text": "4 Notes\nI used this (link) to refresh how to structure the general layout."
+  },
+  {
+    "objectID": "posts/projects/index.html",
+    "href": "posts/projects/index.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Flooding in Brazil\n\n\n\nPostGIS\n\n\nR\n\n\nGIS\n\n\n\nHow much and where is road connectivity most affected by floodings? Which hospitals have the most resilient access? At HeiGIT, we published a paper in Agile 2025 answering these questions as part of my 6-month internship from the Msc GIMA.\n\n\n\nFeb 2, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/2024-05-12-post-siose/index.html",
+    "href": "posts/2024-05-12-post-siose/index.html",
+    "title": "SIOSE",
+    "section": "",
+    "text": "Completa la capa del SIOSE de la provincia de Castellón con la descripción del tipo de cobertura, para ello debemos relacionar la capa SIOSE_CASTELLON.shp con su leyenda. La leyenda se encuentra desglosada en 2 tablas T_VALORES y TC_SIOSE_COBERTURAS. Estudia las tablas, para establecer las relaciones necesarias entre ellas y así lograr incorporar la información de cobertura a la capa SIOSE. Nota: La capa SIOSE_CASTELLON.shp ha sido tomada en el S.C. ETRS89 UTM 30N. Finalmente representa la capa a través del campo cobertura con un tipo de simbología adecuado.\nCapas a utilizar:\n\nSIOSE_CASTELLON.shp\nT_VALORES\nT_COBERTURAS\n\n\n\n\n\n\nCode\nCREATE TABLE siose AS \nSELECT\n    s.geom,\n    v.\"ID_COBERTURAS\" AS cobertura_id,\n    c.\"DESCRIPCION_COBERTURAS\" AS description\nFROM\n    siose_shape AS s\nJOIN siose_valores AS v ON  v.\"ID_POLYGON\" = s.\"ID_POLYGON\" \nJOIN siose_coberturas AS c ON c.\"ID_COBERTURAS\" = v.\"ID_COBERTURAS\""
+  },
+  {
+    "objectID": "posts/2024-05-12-post-siose/index.html#postgis",
+    "href": "posts/2024-05-12-post-siose/index.html#postgis",
+    "title": "SIOSE",
+    "section": "",
+    "text": "Code\nCREATE TABLE siose AS \nSELECT\n    s.geom,\n    v.\"ID_COBERTURAS\" AS cobertura_id,\n    c.\"DESCRIPCION_COBERTURAS\" AS description\nFROM\n    siose_shape AS s\nJOIN siose_valores AS v ON  v.\"ID_POLYGON\" = s.\"ID_POLYGON\" \nJOIN siose_coberturas AS c ON c.\"ID_COBERTURAS\" = v.\"ID_COBERTURAS\""
+  },
+  {
+    "objectID": "posts/2024-05-12-post-siose/index.html#postgis-1",
+    "href": "posts/2024-05-12-post-siose/index.html#postgis-1",
+    "title": "SIOSE",
+    "section": "2.1 PostGIS",
+    "text": "2.1 PostGIS\nImport the data is possible using ogr2ogr or shp2pgsql. The following ogr2ogr command import the data, since it combines polygon and multipolygon, it is need to add the parameter -nln (post)\n\n\nogr2ogr command to import the shp data\nogr2ogr -f PostgreSQL PG:\"host=localhost port=25432 user=docker password=docker dbname=gis schemas=tycgis\" CLC_ambito.shp -nln clc_ambito -lco GEOMETRY_NAME=geom -nlt PROMOTE_TO_MULTI\n\n\n\n\nCode\n--- Explore relevant data, columns used for join & srid of the geometry\nSELECT pg_typeof(code_06) FROM clc_ambito; ---character\nSELECT pg_typeof(\"CLC_CODE\") FROM clc2000legend; ---integer\nSELECT st_srid(geom) FROM  clc_ambito ;  --- check srid is imported correctly automatically\n---- Create table CLC_LEYENDA\nCREATE TABLE CLC_LEYENDA AS\nSELECT \n    *,\n    replace(xls,\"RGB\", '-',',')AS RGB_csv \nFROM \n    clc_ambito AS shp\nLEFT JOIN  \n    clc2000legend AS xls\nON shp.code_06::int = xls.\"CLC_CODE\"; --- the ::int cast the character into integer.\n\n\nNote: - The column “RGB” stored the colour values and it was used replacing the “-” for “,” as this post indicated. If the RGB values were in three different columns, then this other post would have applied."
+  },
+  {
+    "objectID": "posts/2024-05-12-post-siose/index.html#qgis-1",
+    "href": "posts/2024-05-12-post-siose/index.html#qgis-1",
+    "title": "SIOSE",
+    "section": "2.2 QGIS",
+    "text": "2.2 QGIS\nAfter clicking on properties of the selected vector data “CLC_ambito_qgis” and join, the following screenshot shows the parameters required to add columns from the spreadsheet “CLC2000legend.xls”."
+  },
+  {
+    "objectID": "posts/2025-07-23-post-graph/index.html",
+    "href": "posts/2025-07-23-post-graph/index.html",
+    "title": "Gantt chart",
+    "section": "",
+    "text": "This quick fix is a small data science projects that builds a Gantt Chart using scripts in R 1 and Python 2. A Gantt Chart is a bar plot that displays project activities as bars against time (Meredith, Shafer, and Mantel 2017) used to manage the schedule not only during the planning process group 3, but also during controlling (Silvius et al. 2013). The scope base line contains the project deliverables that are considered when building the schedule model (Project Management Institute 2017). The main strength of this technique is the ability to clearly display the status of each activity at a glance (European Commission: Directorate-General for Digital Services 2023).\nBut is this relevant in the industry too?\nThe following quote is a main task in project controlling and reporting for a job advertisment from Siemens as Project Manager.\nThe next figure is an example taken from Snyder (2017) of a Gantt Chart\nThe goal of this quick fix is to automatize the creation of a similar bar plot from a spradsheet file in R and Python."
+  },
+  {
+    "objectID": "posts/2025-07-23-post-graph/index.html#footnotes",
+    "href": "posts/2025-07-23-post-graph/index.html#footnotes",
+    "title": "Gantt chart",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nTutorial in R to build Gantt Charts by Zach Bogart and Joyce Robbins from EDAV19, Colorado University↩︎\nTutorial in Python to build Gantt Charts by Elena Kosourova from Datacamp↩︎\nFrom a manager view on a project, the five group processes are:  1. Initiation,2. Planning,3. Implementation,4. Controlling and 5. Closing of planning↩︎"
+  },
+  {
+    "objectID": "about.html#about-me",
+    "href": "about.html#about-me",
+    "title": "Ricardo Ruiz Sánchez",
+    "section": "About me",
+    "text": "About me\nStarted collecting data from samples as a laboratory technician :microscope:, I graduated as BSc environmental scientist  understanding the value of making informed-decisions towards a sustainable future. After this, I obtained a MSc in Geographical Information Systems and Project Management  and a Master of Education in Biology and Geology .\n\n\nAdvance (C1)\n\n\nIntermediate (B1)\n\n\n Native"
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "Ricardo Ruiz Sánchez",
+    "section": "Education",
+    "text": "Education\n\n    \n      \n        \n          \n              MSc in Geographical Information Management and Applications\n             \n              2022 September - 2025 February \n              University of Utrecht, The Netherlands\n            \n          \n          \n        \n      \n      \n        \n          A two-year joint-degree Master of Science programme taught by geo-information experts from four\n          universities in the Netherlands: University of Twente/ITC Enschede, TU Delft, Utrecht University and Wageningen University.\n          \n          The GIS tools included ESRI products like ArcGIS and programming languages like PostGIS, R, Python or SparQL.\n        \n        \n          Topic: MSc in GIS and Project Management\n          Internship graded 9/10:Published a full paper for the Agile 2025 conference (Dreden) working for  HeiGIT (Heidelberg) with the university supervision from ITC Enschede.\n          \n          Thesis graded 8.5/10: Published a conference paper for AgEng2024, apart from the master thesis with the university supervision from Wageningen University.“Multi-Object Tracking livestock method driven by foundation models in computer vision using UAV videos”.\n          \n          Download full academic record\n          \n          \n        \n      \n    \n    \n  \n    \n      \n          Master in Education Biology and Geology\n        \n              2022 September - 2023 September\n          National Distance University, Madrid, Spain\n        \n      \n      \n    \n  \n  \n    \n      A one-year Master of Education programme in Spain’s largest public university focused on distance learning. This official Master’s degree qualifies students to work as teachers of Secondary Education, Baccalaureate, Vocational Training and Language Teaching.\n    \n    \n      Topic: Teaching Biology and Geology\n      Internship graded 9.7/10: Worked in Biology and Geology classes for 5 months at\n        IES Platero Green School (Málaga).\n      \n      Thesis graded 9.3/10: Introduced carbon footprint system from MITECO using PostGIS and R with the master thesis “Eligiendo un futuro más sostenible a través de la huella de carbono y R/SQL en el aula”.\n        \n          Download full academic record\n        \n      \n    \n  \n\n\n  \n    \n      \n         BSc in Environmental Sciences\n        \n              2015 September - 2021 September\n          National Distance University, Madrid, Spain\n        \n      \n      \n    \n  \n  \n    \n      A four-year Bachelor of Sciences programme in Environmental Sciences where graduates are prepared to work in fields such as environmental quality management systems, consultancy and impact assessment, industrial technology or natural environment management.\n    \n    \n      Topic: Environmental Sciences\n      Dissertation graded 10/10: I Used R and the library OpenAir, with the invaluable assistance from\n        Fernando Follos to analyse the effect of air pollutants on health, as well as comparing their levels in Edinburgh before and after COVID19. The title of the dessertation is “Contaminantes atmosféricos: Sus mecanismos de acción molecular y sus niveles durante el confinamiento COVID 19 en Edimburgo”.\n        \n          Download full academic record"
+  },
+  {
+    "objectID": "about.html#work-experience",
+    "href": "about.html#work-experience",
+    "title": "Ricardo Ruiz Sánchez",
+    "section": "Work experience",
+    "text": "Work experience\n\n\n\n\n\n\n\n\n¹Heidelberg\n\n\n 2024- Intern Geo-Analytics\n\n\n HeiGIT: Heidelberg Institute for Geoinformation Technology\n\n\nWhen I joined the Geoinformation for Humanitarian Aid we decided to design and implement a new workflow to evaluate connectivity of the road systems. I started to learn more about PostgreSQL and Pgrouting ending up with a methodology based on scripts and a published paper.\n\n\n\nConducted network analysis of road systems from OpenStreetMap, focusing on the impact of floodings on their resilience and accesibility to hospitals using PostGIS and R.\n\n\nDesigned data processing workflows, automating steps using PostGIS and R scripts integrated with GIS software (QGIS) for spatial analysis.\n\n\nPublished a full paper in Agile 2025 conference (Dresden)\n\n\n\n\n\n\n\n\n\n\n²Málaga\n\n\n 2023- Intern Biology and Geology teacher\n\n\n Platero Green School\n\n\nDuring my two-year full-time MSc in GIS and Project Management, I also enrolled in a one-year full-time Master in Education (Biology and Geology). During my internship in Platero Green School, I had the pleasure of working alongside Francisco Fernández Castro and strengthened my organization skills by successfully completing both masters\n\n\n\nStrong communication skills developed by teaching science clearly to students, parents, and colleagues across varied contexts.\n\n\nCommunicate biology and geology concepts effectively to a range of audiences, both in writing and speaking.\n\n\n\n\n\n\n\n\n\n\n³Palma de Mallorca\n\n\n 2022- Environmental and Quality Technician\n\n\n Air Europa\n\n\nAfter moving on from a high vocational training as laboratory technician to a recent graduate in Environmental Sciences, I moved to Palma de Mallorca to work as an Environmental and Quality Technician. In this role I participated in external audits including ISO 19001, 14001, and EMAS by AENOR, all of them were successfully passed.\n\n\n\nStrong analytical and problem-solving skills evaluating more than 20 indicators across 16 work centers and a total number of 3.145 employers\n\n\nSolid knowledge in MS Office including excel to manage pivot tables, functions and managed data workflows with Qlik or PowerBI\n\n\n\n\n\n\n\n\n\n\n⁴Edinburgh\n\n\n Before 2022 - Jobs abroad\n\n\n Seasonal jobs\n\n\nWhen the young unemployment⁵ rate reached a 70% in Andalucía, I wanted to get a job, so I moved abroad to Edinburgh (UK-Scotland). I found my first job after 2 weeks. From then on, my first employer and colleagues kept referring me to other roles year after year, grounded in the mutual trust that came from how we worked together.\n\n\n\nFluent in English through daily work and life in the UK, complemented by the Cambridge Certificate of Advanced English (CAE).\n\n\nClear communication and collaborative work within international teams, developed in fast-paced environments."
+  },
+  {
+    "objectID": "about.html#other-courses",
+    "href": "about.html#other-courses",
+    "title": "Ricardo Ruiz Sánchez",
+    "section": "Other courses",
+    "text": "Other courses\n\n\n  \n\n\n\n\nCode to create the table\nlibrary(tidyverse)\ncourses_certificates &lt;- read.csv(\"/home/ricardors/rrs_website/rruiz-s.github.io/posts/cv_certificates.csv\") |&gt;\n   mutate(link_url = paste0('&lt;a href=\"', link, '\"&gt;link&lt;/a&gt;')) |&gt;\n   select(-c(link,id)) # an index makes the id column redundant and link is formatted properly using HTML in link_url\nlibrary(DT)  \nDT::datatable(courses_certificates, escape=FALSE, filter=\"top\",\n              options = list(\n                pageLength=5\n              ))"
+  },
+  {
+    "objectID": "about.html#acknowledgement",
+    "href": "about.html#acknowledgement",
+    "title": "Ricardo Ruiz Sánchez",
+    "section": "Acknowledgement",
+    "text": "Acknowledgement\n\nHow to use iconiy in quarto originally from Vjacheslav Trushkin\nHow to create a timeline with images using bootstrap from MDB\nHow to set up code chunks link options in quarto\n¹ Image by Ramon Perucho\n² https://www.andaluciasimple.com/wp-content/uploads/2020/11/foto-principal-axarquia-balcon.jpg\n³ https://de.wikipedia.org/wiki/Cala_Petita\n⁴ Photo by Agnieszka Palmowska: https://www.pexels.com/photo/brown-chateau-631911/\n⁵ https://datosmacro.expansion.com/paro-epa/espana-comunidades-autonomas/andalucia?sc=T&anio=2010"
+  },
+  {
+    "objectID": "posts/2025-08-shiny/index.html",
+    "href": "posts/2025-08-shiny/index.html",
+    "title": "Mastering Shiny",
+    "section": "",
+    "text": "sdfsdffsdf\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| components: [editor, viewer]\n\nlibrary(shiny)\nlibrary(bslib)\n\n# Define UI for app that draws a histogram ----\nui &lt;- page_sidebar(\n\n  # App title ----\n  title = \"Hello Shiny!\",\n\n  # Sidebar panel for inputs ----\n  sidebar = sidebar(\n\n    # Input: Slider for the number of bins ----\n    sliderInput(\n      inputId = \"bins\",\n      label = \"Number of bins:\",\n      min = 1,\n      max = 50,\n      value = 30\n    )\n  ),\n\n  # Output: Histogram ----\n  plotOutput(outputId = \"distPlot\")\n)\n\n# Define server logic required to draw a histogram ----\nserver &lt;- function(input, output) {\n\n  # Histogram of the Old Faithful Geyser Data ----\n  # with requested number of bins\n  # This expression that generates a histogram is wrapped in a call\n  # to renderPlot to indicate that:\n  #\n  # 1. It is \"reactive\" and therefore should be automatically\n  #    re-executed when inputs (input$bins) change\n  # 2. Its output type is a plot\n  output$distPlot &lt;- renderPlot({\n    x &lt;- faithful$waiting\n    bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)\n\n    hist(\n      x,\n      breaks = bins,\n      col = \"#75AADB\",\n      border = \"white\",\n      xlab = \"Waiting time to next eruption (in mins)\",\n      main = \"Histogram of waiting times\"\n    )\n  })\n}\n\n# Create Shiny app ----\nshinyApp(ui = ui, server = server)",
+    "crumbs": [
+      "Mastering Shiny"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-shiny/shiny_in_action.html",
+    "href": "posts/2025-08-shiny/shiny_in_action.html",
+    "title": "shiny_in_action",
+    "section": "",
+    "text": "asdasd",
+    "crumbs": [
+      "shiny_in_action"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-base/index.html",
+    "href": "posts/2025-08-python-base/index.html",
+    "title": "SIOSE",
+    "section": "",
+    "text": "Completa la capa del SIOSE de la provincia de Castellón con la descripción del tipo de cobertura, para ello debemos relacionar la capa SIOSE_CASTELLON.shp con su leyenda. La leyenda se encuentra desglosada en 2 tablas T_VALORES y TC_SIOSE_COBERTURAS. Estudia las tablas, para establecer las relaciones necesarias entre ellas y así lograr incorporar la información de cobertura a la capa SIOSE. Nota: La capa SIOSE_CASTELLON.shp ha sido tomada en el S.C. ETRS89 UTM 30N. Finalmente representa la capa a través del campo cobertura con un tipo de simbología adecuado.\nCapas a utilizar:\n\nSIOSE_CASTELLON.shp\nT_VALORES\nT_COBERTURAS\n\n\n\n\n\n\nCode\nCREATE TABLE siose AS \nSELECT\n    s.geom,\n    v.\"ID_COBERTURAS\" AS cobertura_id,\n    c.\"DESCRIPCION_COBERTURAS\" AS description\nFROM\n    siose_shape AS s\nJOIN siose_valores AS v ON  v.\"ID_POLYGON\" = s.\"ID_POLYGON\" \nJOIN siose_coberturas AS c ON c.\"ID_COBERTURAS\" = v.\"ID_COBERTURAS\""
+  },
+  {
+    "objectID": "posts/2025-08-python-base/index.html#postgis",
+    "href": "posts/2025-08-python-base/index.html#postgis",
+    "title": "SIOSE",
+    "section": "",
+    "text": "Code\nCREATE TABLE siose AS \nSELECT\n    s.geom,\n    v.\"ID_COBERTURAS\" AS cobertura_id,\n    c.\"DESCRIPCION_COBERTURAS\" AS description\nFROM\n    siose_shape AS s\nJOIN siose_valores AS v ON  v.\"ID_POLYGON\" = s.\"ID_POLYGON\" \nJOIN siose_coberturas AS c ON c.\"ID_COBERTURAS\" = v.\"ID_COBERTURAS\""
+  },
+  {
+    "objectID": "posts/2025-08-python-base/index.html#postgis-1",
+    "href": "posts/2025-08-python-base/index.html#postgis-1",
+    "title": "SIOSE",
+    "section": "2.1 PostGIS",
+    "text": "2.1 PostGIS\nImport the data is possible using ogr2ogr or shp2pgsql. The following ogr2ogr command import the data, since it combines polygon and multipolygon, it is need to add the parameter -nln (post)\n\n\nogr2ogr command to import the shp data\nogr2ogr -f PostgreSQL PG:\"host=localhost port=25432 user=docker password=docker dbname=gis schemas=tycgis\" CLC_ambito.shp -nln clc_ambito -lco GEOMETRY_NAME=geom -nlt PROMOTE_TO_MULTI\n\n\n\n\nCode\n--- Explore relevant data, columns used for join & srid of the geometry\nSELECT pg_typeof(code_06) FROM clc_ambito; ---character\nSELECT pg_typeof(\"CLC_CODE\") FROM clc2000legend; ---integer\nSELECT st_srid(geom) FROM  clc_ambito ;  --- check srid is imported correctly automatically\n---- Create table CLC_LEYENDA\nCREATE TABLE CLC_LEYENDA AS\nSELECT \n    *,\n    replace(xls,\"RGB\", '-',',')AS RGB_csv \nFROM \n    clc_ambito AS shp\nLEFT JOIN  \n    clc2000legend AS xls\nON shp.code_06::int = xls.\"CLC_CODE\"; --- the ::int cast the character into integer.\n\n\nNote: - The column “RGB” stored the colour values and it was used replacing the “-” for “,” as this post indicated. If the RGB values were in three different columns, then this other post would have applied."
+  },
+  {
+    "objectID": "posts/2025-08-python-base/index.html#qgis-1",
+    "href": "posts/2025-08-python-base/index.html#qgis-1",
+    "title": "SIOSE",
+    "section": "2.2 QGIS",
+    "text": "2.2 QGIS\nAfter clicking on properties of the selected vector data “CLC_ambito_qgis” and join, the following screenshot shows the parameters required to add columns from the spreadsheet “CLC2000legend.xls”."
+  },
+  {
+    "objectID": "posts/2025-08-shiny/getting_started.html",
+    "href": "posts/2025-08-shiny/getting_started.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "asdasd",
+    "crumbs": [
+      "getting_started"
+    ]
   }
 ]
