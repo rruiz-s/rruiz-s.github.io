@@ -22,7 +22,7 @@ format:
     page-layout: article
     toc: true
     toc-location: left
-    css: assets/stylesheets/custom.scss
+#    css: assets/stylesheets/custom.scss
     
 execute:
   message: false
