@@ -224,5 +224,19 @@
     "crumbs": [
       "getting_started"
     ]
+  },
+  {
+    "objectID": "posts/2025-07-23-post-graph/index-live.html",
+    "href": "posts/2025-07-23-post-graph/index-live.html",
+    "title": "Gantt chart",
+    "section": "",
+    "text": "This quick fix is a small data science projects that builds a Gantt Chart using scripts in R 1 and Python 2. A Gantt Chart is a bar plot that displays project activities as bars against time (Meredith, Shafer, and Mantel 2017) used to manage the schedule not only during the planning process group 3, but also during controlling (Silvius et al. 2013). The scope base line contains the project deliverables that are considered when building the schedule model (Project Management Institute 2017). The main strength of this technique is the ability to clearly display the status of each activity at a glance (European Commission: Directorate-General for Digital Services 2023).\nBut is this relevant in the industry too?\nThe following quote is a main task in project controlling and reporting for a job advertisment from Siemens as Project Manager.\nThe next figure is an example taken from Snyder (2017) of a Gantt Chart\nThe goal of this quick fix is to automatize the creation of a similar bar plot from a spradsheet file in R and Python."
+  },
+  {
+    "objectID": "posts/2025-07-23-post-graph/index-live.html#footnotes",
+    "href": "posts/2025-07-23-post-graph/index-live.html#footnotes",
+    "title": "Gantt chart",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nTutorial in R to build Gantt Charts by Zach Bogart and Joyce Robbins from EDAV19, Colorado University↩︎\nTutorial in Python to build Gantt Charts by Elena Kosourova from Datacamp↩︎\nFrom a manager view on a project, the five group processes are:  1. Initiation,2. Planning,3. Implementation,4. Controlling and 5. Closing of planning↩︎"
   }
 ]

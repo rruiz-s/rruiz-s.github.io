@@ -102,7 +102,11 @@ p.subtitle {
 div.description{
   text-indent:0rem;
   text-align: left;
-  color: #5f5c5d;
+  color: #turquoise-cv;
+}
+
+.quarto-category:hover a{
+  font-weight: bold;
 }
 
 li {

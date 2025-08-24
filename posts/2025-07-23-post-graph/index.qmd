@@ -3,8 +3,10 @@ title: Gantt chart
 image: heidelberg.jpg
 categories: [PM, R, Python]
 bibliography: ../../references.bib
+  
 format:
   live-html:
+    output-file: index-live.html
     toc: true
     resources:
       - list_tasks.xlsx
@@ -285,6 +287,9 @@ plt.show()
 
 # Conclussion
 
+# Acknowledgment
+
+- How to fix [Object.renameSync](https://github.com/quarto-dev/quarto-cli/issues/10544)
 # References
 
 [^1]: [Tutorial in R to build Gantt Charts by Zach Bogart and Joyce Robbins from EDAV19, Colorado University](https://jtr13.github.io/cc19/gantt-charts.html)
