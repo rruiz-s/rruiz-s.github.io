@@ -6,7 +6,6 @@ bibliography: ../../references.bib
   
 format:
   live-html:
-    output-file: index-live.html
     toc: true
     resources:
       - list_tasks.xlsx
@@ -297,4 +296,4 @@ plt.show()
 [^4]: [Tutorial in Python about colours in matplotlib](https://mljar.com/blog/matplotlib-colors/)
 [^longnote]: From a manager view on a project, the five group processes are: <br> 1. Initiation,2. Planning,3. Implementation,4. Controlling and 5. Closing of planning
 [^longnote2]: The warnings from the code are silenced using the execute [options in the YML](https://quarto.org/docs/computations/execution-options.html) file named _metadata.yml that applies to all posts
-[^longnote3]: This [website](https://quarto-webr.thecoatlessprofessor.com/qwebr-loading-data.html) shows different options to load data in live-html 
+[^longnote3]: This [website](https://quarto-webr.thecoatlessprofessor.com/qwebr-loading-data.html) shows different options to load data in live-html      output-file: index-live.html
