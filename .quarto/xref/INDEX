@@ -32,5 +32,96 @@
   },
   "posts/2025-08-shiny/getting_started.qmd": {
     "getting_started.html": "a870aa24"
+  },
+  "posts/2025-08-25-circle_map/index.qmd": {
+    "index-live.html": "9dcd37eb",
+    "index.html": "1a2fe31c"
+  },
+  "posts/2025-08-opendronemap/getting_started.qmd": {
+    "getting_started.html": "7f6e7e52"
+  },
+  "posts/2025-08-opendronemap/index.qmd": {
+    "index.html": "596bdc06"
+  },
+  "posts/2025-08-opendronemap/opendrone_map.qmd": {
+    "opendrone_map.html": "c914f86a"
+  },
+  "posts/2025-08-python-automating/shiny_in_action.qmd": {
+    "shiny_in_action.html": "b4806f49"
+  },
+  "posts/2025-08-python-automating/getting_started.qmd": {
+    "getting_started.html": "8e64ad33"
+  },
+  "posts/2025-08-python-automating/index.qmd": {
+    "index.html": "625186f8"
+  },
+  "posts/2025-08-opendronemap/advanced_usages.qmd": {
+    "advanced_usages.html": "c461fee7"
+  },
+  "posts/2025-08-shiny/best_practices.qmd": {
+    "best_practices.html": "86e16b6f"
+  },
+  "posts/2025-08-shiny/mastering_reactivity.qmd": {
+    "mastering_reactivity.html": "14f84e3e"
+  },
+  "posts/2025-08-python-automating/17_working_csv_files.qmd": {
+    "17_working_csv_files.html": "3128dd04"
+  },
+  "posts/2025-08-python-automating/16_working_with_csv.qmd": {
+    "16_working_with_csv.html": "934ed5ff"
+  },
+  "posts/2025-08-python-automating/8_input_validation.qmd": {
+    "8_input_validation.html": "2e94eddf"
+  },
+  "posts/2025-08-python-automating/7_pattern_matching_regex.qmd": {
+    "7_pattern_matching_regex.html": "4857d821"
+  },
+  "posts/2025-08-python-automating/6_manipulating_strings.qmd": {
+    "6_manipulating_strings.html": "c675c8db"
+  },
+  "posts/2025-08-python-automating/1_python_basics.qmd": {
+    "1_python_basics.html": "8b282090"
+  },
+  "posts/2025-08-python-automating/20_controlling_keyboard_mouse_gui.qmd": {
+    "20_controlling_keyboard_mouse_gui.html": "dc94bcac"
+  },
+  "posts/2025-08-python-automating/11_debugging.qmd": {
+    "11_debugging.html": "1a64d4a6"
+  },
+  "posts/2025-08-python-automating/9_reading_and_writing_files.qmd": {
+    "9_reading_and_writing_files.html": "cdda65e3"
+  },
+  "posts/2025-08-python-automating/10_organizing_files.qmd": {
+    "10_organizing_files.html": "8e643076"
+  },
+  "posts/2025-08-python-automating/3_functions.qmd": {
+    "3_functions.html": "0b2c982f"
+  },
+  "posts/2025-08-python-automating/2_flow_control.qmd": {
+    "2_flow_control.html": "a559d3ad"
+  },
+  "posts/2025-08-python-automating/15_working_with_pdf_word.qmd": {
+    "15_working_with_pdf_word.html": "2047861d"
+  },
+  "posts/2025-08-python-automating/5_dictionaries_structuring_data.qmd": {
+    "5_dictionaries_structuring_data.html": "5808b2d9"
+  },
+  "posts/2025-08-python-automating/14_working_google_sheets.qmd": {
+    "14_working_google_sheets.html": "7e946856"
+  },
+  "posts/2025-08-python-automating/12_web_scrapping.qmd": {
+    "12_web_scrapping.html": "53d61b00"
+  },
+  "posts/2025-08-python-automating/13_working_with_excel.qmd": {
+    "13_working_with_excel.html": "8ec6690f"
+  },
+  "posts/2025-08-python-automating/4_lists.qmd": {
+    "4_lists.html": "2118d820"
+  },
+  "posts/2025-08-python-automating/19_manipulating_images.qmd": {
+    "19_manipulating_images.html": "964408b1"
+  },
+  "posts/2025-08-python-automating/18_sending_email_and_text_messages.qmd": {
+    "18_sending_email_and_text_messages.html": "0b0ab973"
   }
 }

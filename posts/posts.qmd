@@ -3,17 +3,19 @@ title: Blog
 bibliography: ../references.bib
 listing:
   - id: 2025-07-23-post-graph
-    contents: ["2025-07-23-post-graph/index.qmd"]
+    contents: ["2025-07-23-post-graph/index.qmd", "2025-08-25-circle_map/index.qmd"]
     sort: "date desc"
     type: grid
     categories: true
     filter-ui: true
+    max-description-length: 125
   - id: 2024-05-12-post-siose
-    contents: ["2024-05-12-post-siose/**/index.qmd", "2025-08-shiny/**/index.qmd"]
+    contents: ["2025-08-opendronemap/**/index.qmd", "2025-08-shiny/**/index.qmd", "2025-08-python-automating/**/index.qmd"]
     sort: "date desc"
     type: grid
     categories: true
     filter-ui: true   
+    max-description-length: 125
   - id: projects
     contents: "projects/projects.yml"
     type: grid

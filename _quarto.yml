@@ -21,6 +21,38 @@ website:
        - posts/2025-08-shiny/index.qmd
        - posts/2025-08-shiny/getting_started.qmd
        - posts/2025-08-shiny/shiny_in_action.qmd
+       - posts/2025-08-shiny/mastering_reactivity.qmd
+       - posts/2025-08-shiny/best_practices.qmd
+    - title: "Automating the boring stuff with Python"
+      style: "docked"
+      contents:
+       - posts/2025-08-python-automating/index.qmd
+       - posts/2025-08-python-automating/1_python_basics.qmd
+       - posts/2025-08-python-automating/2_flow_control.qmd
+       - posts/2025-08-python-automating/3_functions.qmd
+       - posts/2025-08-python-automating/4_lists.qmd
+       - posts/2025-08-python-automating/5_dictionaries_structuring_data.qmd
+       - posts/2025-08-python-automating/6_manipulating_strings.qmd
+       - posts/2025-08-python-automating/7_pattern_matching_regex.qmd
+       - posts/2025-08-python-automating/8_input_validation.qmd
+       - posts/2025-08-python-automating/9_reading_and_writing_files.qmd
+       - posts/2025-08-python-automating/10_organizing_files.qmd
+       - posts/2025-08-python-automating/11_debugging.qmd
+       - posts/2025-08-python-automating/12_web_scrapping.qmd
+       - posts/2025-08-python-automating/13_working_with_excel.qmd
+       - posts/2025-08-python-automating/14_working_google_sheets.qmd
+       - posts/2025-08-python-automating/15_working_with_pdf_word.qmd
+       - posts/2025-08-python-automating/16_working_with_csv.qmd
+       - posts/2025-08-python-automating/17_working_csv_files.qmd
+       - posts/2025-08-python-automating/18_sending_email_and_text_messages.qmd
+       - posts/2025-08-python-automating/19_manipulating_images.qmd
+       - posts/2025-08-python-automating/20_controlling_keyboad_mouse_gui.qmd
+    - title: "Mastering Shiny"
+      style: "docked"
+      contents:
+       - posts/2025-08-shiny/index.qmd
+       - posts/2025-08-shiny/getting_started.qmd
+       - posts/2025-08-shiny/shiny_in_action.qmd
     
 format:
   html:

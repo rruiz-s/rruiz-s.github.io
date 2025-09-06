@@ -1,0 +1,197 @@
+---
+title: "Circle Tree map"
+description: "Which groups share the most common ground? A circular treemap"
+image: circle_tree_map.png
+categories: [R, Python]
+bibliography: ../../references.bib
+  
+format:
+  live-html:
+    toc: true
+    resources:
+      - data
+engine: knitr
+webr:
+  packages:
+    - dplyr
+    - ggplot2
+    - data.tree
+    - downloadthis
+    - slopes
+pyodide:
+  packages:
+    - pandas
+    - anytree
+---
+
+{{< include ./../../_extensions/r-wasm/live/_knitr.qmd >}}
+
+  
+```{r}
+#| eval: true
+#| echo: false
+
+library(ggplot2)
+
+theme_light <- function() {
+  theme_minimal(base_size = 14) %+%
+  theme(
+    panel.border = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    text = element_text(colour = "black"),
+    axis.text = element_text(colour = "black"),
+    rect = element_rect(colour = "white", fill = "black"),
+    plot.background = element_rect(fill = "white", colour = NA),
+    plot.subtitle = element_text(colour="#615f60"),
+    axis.line = element_line(colour = "black"),
+    axis.ticks = element_line(colour = "black")
+  )
+}
+
+theme_dark <- function() {
+  theme_minimal(base_size = 14) %+%
+  theme(
+    panel.border = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    text = element_text(colour = "white"),
+    axis.text = element_text(colour = "white"),
+    rect = element_rect(colour = "#272b30", fill = "#272b30"),
+    plot.background = element_rect(fill = "#272b30", colour = NA),
+    plot.subtitle = element_text(colour="white"),
+    axis.line = element_line(colour = "white"),
+    axis.ticks = element_line(colour = "white")
+  )
+}
+darksvglite <- function(file, width, height) {
+  on.exit(reset_theme_settings())
+  theme_set(theme_dark())
+  ggsave(
+    filename = file,
+    width = width,
+    height = height,
+    dev = "svg",
+    bg = "transparent"
+  )
+}
+
+```
+
+```{=html}
+<style>
+.exercise-editor-btn-run-code {
+  color: #179498 !important; /* override Bootstrap if necessary */
+  border-color: #179498 !important;
+  background-color: white !important; /* if you want to change bg */
+}
+
+.exercise-editor-btn-run-code:hover {
+  background-color: #179498 !important;
+  color: white !important;
+}
+</style>
+```
+
+This quick fix is a small data science project that builds a circle tree map using R, while the data wrangling, including impot, tidy and transform, are in Python and R. A circle tree map is a plot that represents hierarchically structured data with the root at the top and the tree unfolding beneath with parent pointing to its children [@Nguyen2005]. An example of a circle tree map is the [body of knowledge of GIS](https://bok.eo4geo.eu/GIST) by SpaceSUITE.
+
+![](example_circular_tree_map.png){.lightbox}
+
+In this case, the reason to write the post was to share this idea with C., who currently works for [EKSH](https://www.eksh.org/). As he landed to the company, C needed to visualize what were the main focus areas or research fields to better understand the company, find common interest between their colleagues or to find out which area receives greatest attention.
+
+> What insights about balance and distribution can a circular treemap uncover in hierarchical data?
+
+For educational purposes, the data of this post are courses I have completed. Therefore, the purpose is to see the balance and distribution of the courses structured in four main childrens, Geographical Information System (GIS), Environmental Sciences (ENV), Languages(LNG) and Biology & Geology (B&G).
+
+# Import
+
+::: {.panel-tabset group="language"}
+
+# R
+
+```{webr}
+#| label: import-data-r
+# See where we are in the file system:
+data <- read.csv("data/cv_certificates.csv", encoding="latin3")
+str(data)
+```
+
+# Python
+
+```{pyodide}
+#| label: import-data-py
+import pandas as pd
+data = pd.read_csv('data/cv_certificates.csv', encoding='latin1')
+data.info()
+```
+
+:::
+
+# Tidy
+
+# Transform
+
+:::{.panel-tabset group="language"}
+
+# R
+
+```{webr}
+#| label: transform-node-r
+# Create hierarchy
+data$pathString <- paste("world", data$group, data$id, sep = "/")
+library(data.tree)
+population <- as.Node(data)
+population
+```
+
+# Python
+
+```{pyodide}
+data['pathString'] = 'world/' + data['group']+ data['id'].astype(str)
+data['pathString']
+```
+
+
+:::
+# Visualize
+
+https://python-graph-gallery.com/circular-packing-several-levels-of-hierarchy/
+
+The package [circlepackeR](https://jeromefroe.github.io/circlepackeR/) available in R used the nodes and link obtained from the transformation step to a circular tree map. 
+
+```{r}
+#| label: transform-r
+#| output: false
+#| echo: false
+data <- read.csv("data/cv_certificates.csv")
+data$pathString <- paste("world", data$group, data$id, sep = "/")
+library(data.tree)
+population <- as.Node(data)
+```
+
+
+```{r}
+#| label: fig-circle-certificates
+library(circlepackeR)
+circle_certificates <- circlepackeR(
+  population,
+  size = "value",
+  width = "100%",    # Critical: do NOT use numeric width
+  height = 400,      # You can adjust this height
+  color_min = "hsl(171, 60%, 66%)",
+  color_max = "hsl(231, 75%, 11%)"
+)
+circle_certificates
+# Save widget as HTML
+# htmlwidgets::saveWidget(circle_certificates, "circle.html", selfcontained = TRUE)
+```
+
+Falta la tabla
+
+The circular map shows that most courses fall into ENV, GIS, and LNG. In terms of numbers, the LNG area is unbalanced compared to GIS and ENV, since one large circle for a C1 English course (240h) takes up the same space as three smaller GIS courses. A limitation of the circle tree map is that it doesn’t always reflect meaning well, because a GIS course could also relate to ENV, for example when using biodiversity data.
+
+   

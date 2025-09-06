@@ -67,14 +67,14 @@
     "href": "posts/posts.html#quick-fix",
     "title": "Blog",
     "section": "2 Quick fix",
-    "text": "2 Quick fix\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nGantt chart\n\n\n\nPM\n\n\nR\n\n\nPython\n\n\n\nA serie of posts on learning GIS\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "2 Quick fix\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nGantt chart\n\n\n\nPM\n\n\nR\n\n\nPython\n\n\n\nWhere are we in the schedule, and what needs closer monitoring? A scripted Gantt chart keeps projects on track.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCircle Tree map\n\n\n\nR\n\n\nPython\n\n\n\nWhich groups share the most common ground? A circular treemap\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/posts.html#books",
     "href": "posts/posts.html#books",
     "title": "Blog",
     "section": "3 Books",
-    "text": "3 Books\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nSIOSE\n\n\n\nTransform\n\n\nPostGIS\n\n\nQGIS\n\n\nTYC GIS-IMFE\n\n\n\nExercise 1: JOINS\n\n\n\nRicardo Ruiz Sánchez\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMastering Shiny\n\n\n\nGIS\n\n\nR\n\n\nPython\n\n\n\nPractising Hadley Wickham book on shiny apps\n\n\n\nRicardo Ruiz Sánchez\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "3 Books\n\n\n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nMastering Shiny\n\n\n\nGIS\n\n\nR\n\n\nPython\n\n\n\nPractising Hadley Wickham book on shiny apps\n\n\n\nRicardo Ruiz Sánchez\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMastering Shiny\n\n\n\nGIS\n\n\nR\n\n\nPython\n\n\n\nPractising Hadley Wickham book on shiny apps\n\n\n\nRicardo Ruiz Sánchez\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAutomating the boring stuff with Python\n\n\n\nGIS\n\n\nR\n\n\nPython\n\n\n\nPractising Al Sweigart book\n\n\n\nRicardo Ruiz Sánchez\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/posts.html#notes",
@@ -238,5 +238,308 @@
     "title": "Gantt chart",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nTutorial in R to build Gantt Charts by Zach Bogart and Joyce Robbins from EDAV19, Colorado University↩︎\nTutorial in Python to build Gantt Charts by Elena Kosourova from Datacamp↩︎\nFrom a manager view on a project, the five group processes are:  1. Initiation,2. Planning,3. Implementation,4. Controlling and 5. Closing of planning↩︎"
+  },
+  {
+    "objectID": "posts/2025-08-25-circle_map/index-live.html",
+    "href": "posts/2025-08-25-circle_map/index-live.html",
+    "title": "Circle Tree map",
+    "section": "",
+    "text": "Import\n\nRPython\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy\n\n\nTransform\n\nRPython\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVisualize\n\nlibrary(circlepackeR)\ncircle_certificates &lt;- circlepackeR(\n  population,\n  size = \"value\",\n  width = \"100%\",    # Critical: do NOT use numeric width\n  height = 400,      # You can adjust this height\n  color_min = \"hsl(171, 60%, 66%)\",\n  color_max = \"hsl(231, 75%, 11%)\"\n)\ncircle_certificates\n\n\n\n\n\n\n\nFigure 1\n\n\n\n# Save widget as HTML\n# htmlwidgets::saveWidget(circle_certificates, \"circle.html\", selfcontained = TRUE)"
+  },
+  {
+    "objectID": "posts/2025-08-25-circle_map/index.html",
+    "href": "posts/2025-08-25-circle_map/index.html",
+    "title": "Circle Tree map",
+    "section": "",
+    "text": "This quick fix is a small data science project that builds a circle tree map using R, while the data wrangling, including impot, tidy and transform, are in Python and R. A circle tree map is a plot that represents hierarchically structured data with the root at the top and the tree unfolding beneath with parent pointing to its children (Nguyen and Huang 2005). An example of a circle tree map is the body of knowledge of GIS by SpaceSUITE.\n\nIn this case, the reason to write the post was to share this idea with C., who currently works for EKSH. As he landed to the company, C needed to visualize what were the main focus areas or research fields to better understand the company, find common interest between their colleagues or to find out which area receives greatest attention.\n\nWhat insights about balance and distribution can a circular treemap uncover in hierarchical data?\n\nFor educational purposes, the data of this post are courses I have completed. Therefore, the purpose is to see the balance and distribution of the courses structured in four main childrens, Geographical Information System (GIS), Environmental Sciences (ENV), Languages(LNG) and Biology & Geology (B&G).\n\nImport\n\nRPython\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTidy\n\n\nTransform\n\nRPython\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVisualize\nhttps://python-graph-gallery.com/circular-packing-several-levels-of-hierarchy/\nThe package circlepackeR available in R used the nodes and link obtained from the transformation step to a circular tree map.\n\nlibrary(circlepackeR)\ncircle_certificates &lt;- circlepackeR(\n  population,\n  size = \"value\",\n  width = \"100%\",    # Critical: do NOT use numeric width\n  height = 400,      # You can adjust this height\n  color_min = \"hsl(171, 60%, 66%)\",\n  color_max = \"hsl(231, 75%, 11%)\"\n)\ncircle_certificates\n\n\n\n\n\n\n\nFigure 1\n\n\n\n# Save widget as HTML\n# htmlwidgets::saveWidget(circle_certificates, \"circle.html\", selfcontained = TRUE)\n\nFalta la tabla\nThe circular map shows that most courses fall into ENV, GIS, and LNG. In terms of numbers, the LNG area is unbalanced compared to GIS and ENV, since one large circle for a C1 English course (240h) takes up the same space as three smaller GIS courses. A limitation of the circle tree map is that it doesn’t always reflect meaning well, because a GIS course could also relate to ENV, for example when using biodiversity data.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nReferences\n\nNguyen, Quang Vinh, and Mao Lin Huang. 2005. “EncCon: An Approach to Constructing Interactive Visualization of Large Hierarchical Data.” Information Visualization 4 (1): 1–21. https://doi.org/10.1057/palgrave.ivs.9500087."
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/index.html",
+    "href": "posts/2025-08-python-automating/index.html",
+    "title": "Automating the boring stuff with Python",
+    "section": "",
+    "text": "Test with shinylive (R/Python)\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| components: [editor, viewer]\n\nlibrary(shiny)\nlibrary(bslib)\n\n# Define UI for app that draws a histogram ----\nui &lt;- page_sidebar(\n\n  # App title ----\n  title = \"Hello Shiny!\",\n\n  # Sidebar panel for inputs ----\n  sidebar = sidebar(\n\n    # Input: Slider for the number of bins ----\n    sliderInput(\n      inputId = \"bins\",\n      label = \"Number of bins:\",\n      min = 1,\n      max = 50,\n      value = 30\n    )\n  ),\n\n  # Output: Histogram ----\n  plotOutput(outputId = \"distPlot\")\n)\n\n# Define server logic required to draw a histogram ----\nserver &lt;- function(input, output) {\n\n  # Histogram of the Old Faithful Geyser Data ----\n  # with requested number of bins\n  # This expression that generates a histogram is wrapped in a call\n  # to renderPlot to indicate that:\n  #\n  # 1. It is \"reactive\" and therefore should be automatically\n  #    re-executed when inputs (input$bins) change\n  # 2. Its output type is a plot\n  output$distPlot &lt;- renderPlot({\n    x &lt;- faithful$waiting\n    bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)\n\n    hist(\n      x,\n      breaks = bins,\n      col = \"#75AADB\",\n      border = \"white\",\n      xlab = \"Waiting time to next eruption (in mins)\",\n      main = \"Histogram of waiting times\"\n    )\n  })\n}\n\n# Create Shiny app ----\nshinyApp(ui = ui, server = server)",
+    "crumbs": [
+      "Automating the boring stuff with Python"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/shiny_in_action.html",
+    "href": "posts/2025-08-python-automating/shiny_in_action.html",
+    "title": "shiny_in_action",
+    "section": "",
+    "text": "Lorem ipsum"
+  },
+  {
+    "objectID": "posts/2025-08-opendronemap/opendrone_map.html",
+    "href": "posts/2025-08-opendronemap/opendrone_map.html",
+    "title": "OpenDroneMap",
+    "section": "",
+    "text": "Lorem ipsum"
+  },
+  {
+    "objectID": "posts/2025-08-opendronemap/getting_started.html",
+    "href": "posts/2025-08-opendronemap/getting_started.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum"
+  },
+  {
+    "objectID": "posts/2025-08-opendronemap/index.html",
+    "href": "posts/2025-08-opendronemap/index.html",
+    "title": "Mastering Shiny",
+    "section": "",
+    "text": "Test with shinylive (R/Python)\n#| '!! shinylive warning !!': |\n#|   shinylive does not work in self-contained HTML documents.\n#|   Please set `embed-resources: false` in your metadata.\n#| standalone: true\n#| components: [editor, viewer]\n\nlibrary(shiny)\nlibrary(bslib)\n\n# Define UI for app that draws a histogram ----\nui &lt;- page_sidebar(\n\n  # App title ----\n  title = \"Hello Shiny!\",\n\n  # Sidebar panel for inputs ----\n  sidebar = sidebar(\n\n    # Input: Slider for the number of bins ----\n    sliderInput(\n      inputId = \"bins\",\n      label = \"Number of bins:\",\n      min = 1,\n      max = 50,\n      value = 30\n    )\n  ),\n\n  # Output: Histogram ----\n  plotOutput(outputId = \"distPlot\")\n)\n\n# Define server logic required to draw a histogram ----\nserver &lt;- function(input, output) {\n\n  # Histogram of the Old Faithful Geyser Data ----\n  # with requested number of bins\n  # This expression that generates a histogram is wrapped in a call\n  # to renderPlot to indicate that:\n  #\n  # 1. It is \"reactive\" and therefore should be automatically\n  #    re-executed when inputs (input$bins) change\n  # 2. Its output type is a plot\n  output$distPlot &lt;- renderPlot({\n    x &lt;- faithful$waiting\n    bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)\n\n    hist(\n      x,\n      breaks = bins,\n      col = \"#75AADB\",\n      border = \"white\",\n      xlab = \"Waiting time to next eruption (in mins)\",\n      main = \"Histogram of waiting times\"\n    )\n  })\n}\n\n# Create Shiny app ----\nshinyApp(ui = ui, server = server)"
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/getting_started.html",
+    "href": "posts/2025-08-python-automating/getting_started.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum"
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/18_sending_email_and_text_messages.html",
+    "href": "posts/2025-08-python-automating/18_sending_email_and_text_messages.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/4_lists.html",
+    "href": "posts/2025-08-python-automating/4_lists.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/12_web_scrapping.html",
+    "href": "posts/2025-08-python-automating/12_web_scrapping.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/5_dictionaries_structuring_data.html",
+    "href": "posts/2025-08-python-automating/5_dictionaries_structuring_data.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/2_flow_control.html",
+    "href": "posts/2025-08-python-automating/2_flow_control.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/10_organizing_files.html",
+    "href": "posts/2025-08-python-automating/10_organizing_files.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/11_debugging.html",
+    "href": "posts/2025-08-python-automating/11_debugging.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/1_python_basics.html",
+    "href": "posts/2025-08-python-automating/1_python_basics.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/7_pattern_matching_regex.html",
+    "href": "posts/2025-08-python-automating/7_pattern_matching_regex.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/16_working_with_csv.html",
+    "href": "posts/2025-08-python-automating/16_working_with_csv.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-shiny/mastering_reactivity.html",
+    "href": "posts/2025-08-shiny/mastering_reactivity.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-opendronemap/advanced_usages.html",
+    "href": "posts/2025-08-opendronemap/advanced_usages.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum"
+  },
+  {
+    "objectID": "posts/2025-08-shiny/best_practices.html",
+    "href": "posts/2025-08-shiny/best_practices.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/17_working_csv_files.html",
+    "href": "posts/2025-08-python-automating/17_working_csv_files.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/8_input_validation.html",
+    "href": "posts/2025-08-python-automating/8_input_validation.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/6_manipulating_strings.html",
+    "href": "posts/2025-08-python-automating/6_manipulating_strings.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/20_controlling_keyboard_mouse_gui.html",
+    "href": "posts/2025-08-python-automating/20_controlling_keyboard_mouse_gui.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum"
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/9_reading_and_writing_files.html",
+    "href": "posts/2025-08-python-automating/9_reading_and_writing_files.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/3_functions.html",
+    "href": "posts/2025-08-python-automating/3_functions.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/15_working_with_pdf_word.html",
+    "href": "posts/2025-08-python-automating/15_working_with_pdf_word.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/14_working_google_sheets.html",
+    "href": "posts/2025-08-python-automating/14_working_google_sheets.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/13_working_with_excel.html",
+    "href": "posts/2025-08-python-automating/13_working_with_excel.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-python-automating/19_manipulating_images.html",
+    "href": "posts/2025-08-python-automating/19_manipulating_images.html",
+    "title": "getting_started",
+    "section": "",
+    "text": "Lorem ipsum",
+    "crumbs": [
+      "getting_started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-shiny/getting_started.html#server-function",
+    "href": "posts/2025-08-shiny/getting_started.html#server-function",
+    "title": "Getting started",
+    "section": "2.1 Server Function",
+    "text": "2.1 Server Function",
+    "crumbs": [
+      "Getting started"
+    ]
+  },
+  {
+    "objectID": "posts/2025-08-shiny/getting_started.html#reactive-programming",
+    "href": "posts/2025-08-shiny/getting_started.html#reactive-programming",
+    "title": "Getting started",
+    "section": "2.2 Reactive Programming",
+    "text": "2.2 Reactive Programming",
+    "crumbs": [
+      "Getting started"
+    ]
   }
 ]

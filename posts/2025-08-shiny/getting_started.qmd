@@ -1,6 +1,12 @@
 ---
-title: "getting_started"
+title: "Getting started"
 format: html
 ---
 
-Lorem ipsum
+# Chapter 2: Basic UI
+## Inputs
+## Outputs
+# Chapter 3: Basic Reactivity
+## Server Function
+## Reactive Programming
+# Chapter 4: Case Study - Education Centers

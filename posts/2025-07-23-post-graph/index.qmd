@@ -1,6 +1,7 @@
 ---
 title: Gantt chart
-image: heidelberg.jpg
+image: gantt.png
+description: "Where are we in the schedule, and what needs closer monitoring? A scripted Gantt chart keeps projects on track."
 categories: [PM, R, Python]
 bibliography: ../../references.bib
   
@@ -219,8 +220,6 @@ ggplot() +
   geom_line(data=wbs_tidy_long, mapping=aes(x=fct_rev(fct_inorder(titulo)), y=date, color=asignado_a), linewidth=10) +
   ### titles
   labs(
-    title ="Schedule for project",
-    subtitle = "Made computer friendly",
     x = "WBS",
     y="August 2025",
     colour = "Responsible", 
@@ -296,4 +295,4 @@ plt.show()
 [^4]: [Tutorial in Python about colours in matplotlib](https://mljar.com/blog/matplotlib-colors/)
 [^longnote]: From a manager view on a project, the five group processes are: <br> 1. Initiation,2. Planning,3. Implementation,4. Controlling and 5. Closing of planning
 [^longnote2]: The warnings from the code are silenced using the execute [options in the YML](https://quarto.org/docs/computations/execution-options.html) file named _metadata.yml that applies to all posts
-[^longnote3]: This [website](https://quarto-webr.thecoatlessprofessor.com/qwebr-loading-data.html) shows different options to load data in live-html      output-file: index-live.html
+[^longnote3]: This [website](https://quarto-webr.thecoatlessprofessor.com/qwebr-loading-data.html) shows different options to load data in live-html      
